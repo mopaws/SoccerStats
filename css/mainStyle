@@ -1,1 +1,15 @@
+header{
+  position: fixed;
+  float: left;
 
+  z-index: 10;
+
+  top: 0px;
+  left: 0px;
+
+  min-height 100px: 
+  height: 5%;
+  width: 101%;
+
+  background-color: rgb(80,20,210);
+}
