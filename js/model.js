@@ -1,12 +1,16 @@
-var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
-db.transaction(function (tx) {
-  tx.executeSql('CREATE TABLE IF NOT EXISTS foo (id unique, text)');
-  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "synergies")');
+const initSqlJs = window.initSqlJs;
+
+const SQL = await initSqlJs({
+  // Required to load the wasm binary asynchronously. Of course, you can host it wherever you want
+  // You can omit locateFile completely when running in node
+  locateFile: file => `https://sql.js.org/dist/${file}`
 });
 
-tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
-  var len = results.rows.length, i;
-  for (i = 0; i < len; i++) {
-    alert(results.rows.item(i).text);
-  }
-});
+// Create a database
+const db = new SQL.Database();
+
+// Execute a single SQL string that contains multiple statements
+let sqlstr = "CREATE TABLE testData (a int, b char); \
+INSERT INTO testData VALUES (0, 'hello'); \
+INSERT INTO testData VALUES (1, 'world');";
+db.run(sqlstr);
