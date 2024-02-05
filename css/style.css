@@ -13,3 +13,8 @@ header{
 
   background-color: rgb(80,20,210);
 }
+
+#loginBox{
+  min-margin-top = 105px;
+  margin-top = 6%;
+}
