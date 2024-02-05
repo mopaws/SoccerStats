@@ -15,6 +15,6 @@ header{
 }
 
 #loginBox{
-  min-margin-top = 105px;
-  margin-top = 6%;
+  background-color: rgb(80,20,210);
+  margin: 40%;
 }
