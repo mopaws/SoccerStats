@@ -12,8 +12,13 @@ cursor.execute('''
         name TEXT PRIMARY KEY,
         password TEXT NOT NULL,
         admin BOOLEAN DEFAULT false
-    )
+    );
 ''')
+
+cursor.execute('SELECT * FROM users')
+
+# Fetch all rows as a list of tuples
+rows = cursor.fetchall()
 
 # Commit the changes
 connection.commit()
