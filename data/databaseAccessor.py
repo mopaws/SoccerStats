@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, jsonify
+import flask
 
 # Create the application.
 APP = flask.Flask(__name__)
