@@ -6,16 +6,16 @@ if(! localStorage.getItem("logged in")){
   localStorage.setItem("logged in", false);
 }
 
-fetch('https//127.0.0.1:5000', {
+fetch('https://127.0.0.1:5000', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     })
-    .then(response => response.json())
+    .then(response => response)
     .then(data => {
         // Handle the data returned from Flask
-        console.log(json.stringify(data));
+        console.log(data);
     })
     .catch(error => {
         console.error('Error:', error);
