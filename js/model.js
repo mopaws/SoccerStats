@@ -6,7 +6,7 @@ if(! localStorage.getItem("logged in")){
   localStorage.setItem("logged in", false);
 }
 
-fetch('https://127.0.0.1:5000/get_data')
+fetch('https://127.0.0.1:5000/getData')
   .then(response => response.json())
   .then(data => {
     console.log('Data received:', data);
