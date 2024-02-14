@@ -1,20 +1,104 @@
-header{
-  position: fixed;
-  float: left;
-
-  z-index: 10;
-
-  top: 0px;
-  left: 0px;
-
-  min-height 100px: 
-  height: 5%;
-  width: 100%;
-
-  background-color: rgb(80,20,210);
+*{
+  outline:none;
+  transition: all 0.5s cubic-bezier(0, 0, 0.05, 1);
 }
 
+body{
+  background-color:#f9f2f7;
+
+  margin:0px;
+  padding:0px;
+  
+  overflow-y:hidden;
+  
+}
+
+
+header{
+  position: fixed;
+  padding:10px;
+  padding-left:20px;
+  padding-bottom:25px;
+  
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  height: 150px;
+  width: 100%;
+  background-color: #29394b;
+}
+
+
+h1{
+  font-family: navigo, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+  color:#f9f2f7;
+}
+
+h5{
+  font-size:10pt;
+}
+
+#wrapper{
+  display: grid;
+  position: relative;
+  width:100%;
+  height:100%;
+  top: 200px;
+  justify-content: center;
+}
+
+h5,a,button,input{
+  font-family: navigo, sans-serif;
+  font-weight: 500;
+  color:#f9f2f7;
+}
+
+a{
+  text-decoration:none;
+  color:white
+  
+}
+
+input,button,a{
+  border-radius:10px;
+  border-style:none;
+  padding:10px;
+
+  background-color:#055e8b;
+  
+  min-width:fit-content;
+}
+
+button:hover, input:hover{
+  background:#054a6ed1;
+}
+
+
 #loginBox{
-  background-color: rgb(80,20,210);
-  margin: 40%;
+  display: grid;
+  
+  width:600px;
+  height:400px;
+  max-height:fit-content;
+  
+  background-color: #29394b;
+  
+  padding:10px;
+  margin:20px;
+  
+  border-radius:10px;
+}
+
+#loginBox *{
+  align-items: center;
+  margin:5px;
+  font-size: 20pt;
+}
+
+input[type="checkbox"] {
+  width: 65px;
+  justify-self: center;
 }
