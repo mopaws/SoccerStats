@@ -1,9 +1,10 @@
 import sqlite3
-import flask
+from flask import Flask, jsonify
+from flask_cors import CORS
 
 # Create the application.
-APP = flask.Flask(__name__)
-
+APP = Flask(__name__)
+CORS(APP)
 
 # Connect to the database (creates a new file if it doesn't exist)
 connection = sqlite3.connect('Soccer.db')
@@ -23,12 +24,11 @@ cursor.execute('''
 cursor.execute("SELECT * FROM users")
 
 rows = cursor.fetchall()
-print(rows)
 
 # Commit the changes
 connection.commit()
 
-@APP.route('/')
+@APP.route('/getData')
 def index():
     """ Displays the index page accessible at '/'
     """
