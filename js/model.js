@@ -10,7 +10,7 @@ function generateSignInRequest(name, password){
   let user = document.getElementById("username");
 
 
-  fetch('http://127.0.0.1:5000/getData')
+  fetch('http://127.0.0.1:5000/getUserData')
   .then(response => response.json())
   .then(data => {
     for(let i = 0; i < data.length; i++){
