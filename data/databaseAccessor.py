@@ -27,12 +27,25 @@ rows = cursor.fetchall()
 
 # Commit the changes
 connection.commit()
+connection.close()
 
-@APP.route('/getData')
-def index():
-    """ Displays the index page accessible at '/'
-    """
+@APP.route('/')
+def getData():
     return jsonify(rows)
+
+def addData():
+    data = request.json.get('data')
+
+    if data:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+        cursor.execute('INSERT INTO users (data) VALUES (?)', (data,))
+        connection.commit()
+        connection.close()
+
+        return jsonify({'success': True})
+    else:
+        return jsonify({'success': False, 'error': 'Data not provided'})
 
 
 if __name__ == '__main__':
