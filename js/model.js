@@ -1,14 +1,11 @@
 //Set up local storage login stuff if it hasn't already been created for the current user.
-localStorage.setItem("save login", false);
-
-
+if(! localStorage.getItem("save login")){
+  localStorage.setItem("save login", false);
+}
 
 function generateSignInRequest(name, password){
 
   let box = document.getElementById("keepLogin");
-  let pass = document.getElementById("password");
-  let user = document.getElementById("username");
-
 
   fetch('http://127.0.0.1:5000/getUserData')
   .then(response => response.json())
@@ -19,8 +16,8 @@ function generateSignInRequest(name, password){
         localStorage.setItem("save login", box.checked);
         loadPage(true);
         if(box.checked){
-          localStorage.setItem("user", user.value);
-          localStorage.setItem("pass", pass.value);
+          localStorage.setItem("user", name);
+          localStorage.setItem("pass", password);
         } else {
           if(localStorage.getItem("user")){
             localStorage.removeItem("user");
