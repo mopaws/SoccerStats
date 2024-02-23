@@ -75,11 +75,11 @@ connection.commit()
 connection.close()
 
 @APP.route('/getUser')
-def index():
+def getUser():
     return jsonify(userData)
 
 @APP.route('/addUser')
-def index():
+def addUser():
     data = request.json.get('data')
 
     if data:
