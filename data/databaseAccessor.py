@@ -98,17 +98,14 @@ def getUser(name, password):
 @APP.route('/addUser/<name>/<password>')
 def addUser(name, password):
     try:
-        print("oppening connection")
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
-        print(name + " " + password)
 
         cursor.execute("INSERT INTO users (name, password) VALUES (?, ?)", (name, password))
-        print("inserted")
         connection.commit()
         connection.close()
-        return jsonify({'inserted data!': True})
+        return jsonify({'inserted data': True})
     except:
         print("faild to insert data")
         return jsonify({'failed to insert data': False})
