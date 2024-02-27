@@ -65,33 +65,42 @@ cursor.execute('''
         );
 ''')
 
-# Fetch all rows as a list of tuples
-cursor.execute("SELECT * FROM users")
-
-userData = cursor.fetchall()
 
 # Commit the changes
 connection.commit()
 connection.close()
 
 @APP.route('/getUser')
-def getUser():
-    return jsonify(userData)
-
-@APP.route('/addUser')
-def addUser():
-    data = request.json.get('data')
-
-    if data:
+def getUser(name, password):
+    try:
         connection = sqlite3.connect('Soccer.db')
+        # Create a cursor object
         cursor = connection.cursor()
-        cursor.execute('INSERT INTO users (data) VALUES (?)', (data,))
+        # Fetch all rows as a list of tuples
+        cursor.execute("SELECT * FROM users")
+        userData = cursor.fetchall()
         connection.commit()
         connection.close()
 
-        return jsonify({'success': True})
-    else:
-        return jsonify({'success': False, 'error': 'Data not provided'})
+        for x in len(userData):
+            if userData[x][0] == name and userData[x][1] == password:
+                return True
+        return False
+    except:
+        print("faild to retrive data")
+
+@APP.route('/addUser')
+def addUser(name, password):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        # Create a cursor object
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO users (name, password, admin) VALUES (%s, %s, %s)" %(name, password, False))
+        connection.commit()
+        connection.close()
+    except:
+        print("faild to insert data")
+    
 
 
 if __name__ == '__main__':

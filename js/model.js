@@ -7,15 +7,14 @@ function generateSignInRequest(name, password){
 
   let box = document.getElementById("keepLogin");
 
-  fetch('http://127.0.0.1:5000/getUser')
+  fetch("http://127.0.0.1:5000/getUser/" + name +"/"+password)
   .then(response => response.json())
   .then(data => {
-    for(let i = 0; i < data.length; i++){
-
-      if(data[i][0] == name && data[i][1] == password){
+    
+      if(data){
         localStorage.setItem("save login", box.checked);
         loadPage(true);
-        if(box.checked){
+        if(localStorage.getItem("save login") == true){
           localStorage.setItem("user", name);
           localStorage.setItem("pass", password);
         } else {
@@ -27,7 +26,6 @@ function generateSignInRequest(name, password){
           }
         } 
       }
-    }
   })
   .catch(error => console.error('Error:', error));
 }
