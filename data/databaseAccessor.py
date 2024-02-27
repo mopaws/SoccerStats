@@ -19,6 +19,7 @@ cursor.execute('''
         password TEXT NOT NULL,
         admin BOOLEAN);
 ''')
+
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS game (
         gameID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,36 +71,47 @@ cursor.execute('''
 connection.commit()
 connection.close()
 
-@APP.route('/getUser')
+@APP.route('/getUser/<name>/<password>')
 def getUser(name, password):
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
-        # Fetch all rows as a list of tuples
+        # Fetch all rows as a list of tuples and close the connection
         cursor.execute("SELECT * FROM users")
         userData = cursor.fetchall()
         connection.commit()
         connection.close()
 
-        for x in len(userData):
-            if userData[x][0] == name and userData[x][1] == password:
-                return True
-        return False
+
+        #iterate over all returned users and check their names and passwords on the server
+        for x in userData:
+            #if there is a match, return a positive result
+            if x[0] == name and x[1] == password:
+                return jsonify({'good': True})
+            #otherwise return false if the input was bad or the user isn't in the directory
+        return jsonify({'bad': True})
     except:
         print("faild to retrive data")
+        return jsonify({'error': False})
 
-@APP.route('/addUser')
+@APP.route('/addUser/<name>/<password>')
 def addUser(name, password):
     try:
+        print("oppening connection")
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
-        cursor.execute("INSERT INTO users (name, password, admin) VALUES (%s, %s, %s)" %(name, password, False))
+        print(name + " " + password)
+
+        cursor.execute("INSERT INTO users (name, password) VALUES (?, ?)", (name, password))
+        print("inserted")
         connection.commit()
         connection.close()
+        return jsonify({'inserted data!': True})
     except:
         print("faild to insert data")
+        return jsonify({'failed to insert data': False})
     
 
 
