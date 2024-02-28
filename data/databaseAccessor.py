@@ -17,7 +17,6 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         name TEXT PRIMARY KEY,
         password TEXT NOT NULL,
-        visibility INTEGER NOT NULL,
         admin BOOLEAN);
 ''')
 
@@ -95,14 +94,14 @@ def getUser(name, password):
         return jsonify({'good': False})
 
 
-@APP.route('/addUser/<name>/<password>/<visibility>')
-def addUser(name, password, visibility):
+@APP.route('/addUser/<name>/<password>')
+def addUser(name, password):
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("INSERT INTO users (name, password, visibility) VALUES (?, ?, ?)", (name, password, visibility))
+        cursor.execute("INSERT INTO users (name, password) VALUES (?, ?)", (name, password))
         connection.commit()
         connection.close()
         return jsonify({'data': True})

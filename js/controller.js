@@ -36,9 +36,10 @@ function tryCreateUser(){
   }
 
   if(n.value.length > 0 && p.value.length > 0 && p.value == cp.value){
-    createNewUser(n.value, p.value, vis);
+    createNewUser(n.value, p.value);
   }
 }
+
 function updateVcheck(){
   let field = document.getElementById("viewSelector");
   let type = document.getElementById("vTypes");

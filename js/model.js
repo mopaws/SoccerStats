@@ -1,10 +1,9 @@
 //Set up local storage login stuff if it hasn't already been created for the current user.
-if(! localStorage.getItem("save login")){
+if(!localStorage.getItem("save login")){
   localStorage.setItem("save login", false);
 }
 
 function generateSignInRequest(name, password){
-
   let box = document.getElementById("keepLogin");
   fetch("http://127.0.0.1:5000/getUser/" + name +"/"+password)
   .then(response => response.json())
@@ -30,9 +29,9 @@ function generateSignInRequest(name, password){
 }
 
 //creates a non admin account
-function createNewUser(name, password, visible){
+function createNewUser(name, password){
 
-  fetch("http://127.0.0.1:5000/addUser/" + name + "/" +password+ "/" + visible)
+  fetch("http://127.0.0.1:5000/addUser/" + name + "/" +password)
   .then(response => response.json())
   .then(data => {
     
