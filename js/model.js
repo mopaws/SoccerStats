@@ -9,11 +9,10 @@ function generateSignInRequest(name, password){
   fetch("http://127.0.0.1:5000/getUser/" + name +"/"+password)
   .then(response => response.json())
   .then(data => {
-    
-      if(data[0] == 'good'){
+      console.log(data["good"])
+      if(data["good"]){
         localStorage.setItem("save login", box.checked);
-        loadPage(true);
-        if(localStorage.getItem("save login") == true){
+        if(box.checked){
           localStorage.setItem("user", name);
           localStorage.setItem("pass", password);
         } else {
@@ -24,15 +23,16 @@ function generateSignInRequest(name, password){
             localStorage.removeItem("pass");
           } 
         } 
+        loadPage(true);
       }
   })
   .catch(error => console.error('Error:', error));
 }
 
 //creates a non admin account
-function createNewUser(name, password){
+function createNewUser(name, password, visible){
 
-  fetch("http://127.0.0.1:5000/addUser/" + name +"/"+password)
+  fetch("http://127.0.0.1:5000/addUser/" + name + "/" +password+ "/" + visible)
   .then(response => response.json())
   .then(data => {
     

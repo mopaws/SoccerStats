@@ -17,6 +17,7 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         name TEXT PRIMARY KEY,
         password TEXT NOT NULL,
+        visibility INTEGER NOT NULL,
         admin BOOLEAN);
 ''')
 
@@ -82,33 +83,32 @@ def getUser(name, password):
         userData = cursor.fetchall()
         connection.commit()
         connection.close()
-
-
         #iterate over all returned users and check their names and passwords on the server
         for x in userData:
             #if there is a match, return a positive result
             if x[0] == name and x[1] == password:
                 return jsonify({'good': True})
             #otherwise return false if the input was bad or the user isn't in the directory
-        return jsonify({'bad': True})
+        return jsonify({'good': False})
     except:
         print("faild to retrive data")
-        return jsonify({'error': False})
+        return jsonify({'good': False})
 
-@APP.route('/addUser/<name>/<password>')
-def addUser(name, password):
+
+@APP.route('/addUser/<name>/<password>/<visibility>')
+def addUser(name, password, visibility):
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("INSERT INTO users (name, password) VALUES (?, ?)", (name, password))
+        cursor.execute("INSERT INTO users (name, password, visibility) VALUES (?, ?, ?)", (name, password, visibility))
         connection.commit()
         connection.close()
-        return jsonify({'inserted data': True})
+        return jsonify({'data': True})
     except:
         print("faild to insert data")
-        return jsonify({'failed to insert data': False})
+        return jsonify({'data': False})
     
 
 

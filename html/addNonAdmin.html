@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Add Common User</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <header padding-top:="" 10px;="" padding-bottom:="" 20px;="" "="">
+        <h1>DRHS Soccer</h1>
+        <h5>Stats Tracker</h5>
+        <nav>
+     		    <button> <a href="html/AwayTeam.html">Away</a> </button>
+			    <button> <a href="html/HomeTeam.html">Home Team</a> </button>
+			    <button> <a href="html/PlayerStats.html">Stats</a> </button>
+                <button> <a href="html/addNonAdmin.html">Add User</a> </button>
+		</nav>
+    </header>
+	
+    <h4>Please style this later</h4>
+    <input type="text" ,="user name" id="newName"/>
+
+    <select name = "visibility type", id = "vTypes", onclick="updateVcheck()">
+        <option value = 0>Can view All</option>
+        <option value = 1>Can view self</option>
+        <div id = "viewSelector"></div>
+    </select>
+
+    <input type="text" ,="password" id="newPass"/>
+    <input type="text" ,="confirm password" id="confPass"/>
+    <button onclick="tryCreateUser()">Create</button>
+
+
+</body>
+
+</html>
