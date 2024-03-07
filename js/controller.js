@@ -19,6 +19,10 @@ function tryCreateUser(){
   }
 }
 
+function tryAddData(){
+  
+}
+
 window.onload = (event) => {
   //access login data fields.
   let pass = document.getElementById("password");
