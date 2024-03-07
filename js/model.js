@@ -41,3 +41,27 @@ function createNewUser(name, password){
   })
   .catch(error => console.error('Error:', error));
 }
+
+function addData(stat, game, num){
+  fetch("http://127.0.0.1:5000/addData/" + stat + "/" +game+ "/"+num)
+  .then(response => response.json())
+  .then(data => {
+    
+      if(data[0] == 'inserted data'){
+        console.log("done");
+      }
+  })
+  .catch(error => console.error('Error:', error));
+}
+function addDataPlayer(stat, game, num, player){
+
+  fetch("http://127.0.0.1:5000/addDataPlayer/" + stat + "/" +game+ "/"+ num + "/"+player)
+  .then(response => response.json())
+  .then(data => {
+    
+      if(data[0] == 'inserted data'){
+        console.log("done");
+      }
+  })
+  .catch(error => console.error('Error:', error));
+}
