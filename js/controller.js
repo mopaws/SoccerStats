@@ -19,8 +19,15 @@ function tryCreateUser(){
   }
 }
 
-function tryAddData(){
-  
+function tryAddData(sID, pos){
+  let gameID;
+  let player;
+
+  if(player){
+    addfinalData(gameID, sID, pos, player);
+  } else {
+    addfinalDataPlayer(gameID, sID, pos);
+  }
 }
 
 window.onload = (event) => {
