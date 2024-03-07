@@ -108,8 +108,38 @@ def addUser(name, password):
     except:
         print("faild to insert data")
         return jsonify({'data': False})
+
+
+@APP.route('/addToStat/<int: stat>/<int: game>/<int: num>)
+def addData(stat, game, num):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        # Create a cursor object
+        cursor = connection.cursor()
+
+        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf) VALUES (?, ?, ?)", (stat, game, num))
+        connection.commit()
+        connection.close()
+        return jsonify({'data': True})
+    except:
+        print("faild to insert data")
+        return jsonify({'data': False})
+
+@APP.route('/addToStat/<int: stat>/<int: game>/<int: num>/<int: player>)
+def addData(stat, game, num, player):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        # Create a cursor object
+        cursor = connection.cursor()
+
+        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, playerID, numberOf) VALUES (?, ?, ?, ?)", (stat, game, player, num))
+        connection.commit()
+        connection.close()
+        return jsonify({'data': True})
+    except:
+        print("faild to insert data")
+        return jsonify({'data': False})
     
-@APP.route('/addToStat/<int: stat>/<int: game>/<int: num>/)
 
 if __name__ == '__main__':
     APP.debug=True
