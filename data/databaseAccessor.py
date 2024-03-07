@@ -55,7 +55,7 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS trackedStatistics (
         statID INT NOT NULL,
         gameID INT NOT NULL,
-        playerID INT NOT NULL,
+        playerID INT,
         numberOf INT
         );
 ''')
@@ -109,7 +109,7 @@ def addUser(name, password):
         print("faild to insert data")
         return jsonify({'data': False})
     
-
+@APP.route('/addToStat/<int: stat>/<int: game>/<int: num>/)
 
 if __name__ == '__main__':
     APP.debug=True
