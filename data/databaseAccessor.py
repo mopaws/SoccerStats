@@ -126,7 +126,7 @@ def addData(stat, game, num):
         return jsonify({'data': False})
 
 @APP.route('/addToStat/<int: stat>/<int: game>/<int: num>/<int: player>)
-def addData(stat, game, num, player):
+def addDataPlayer(stat, game, num, player):
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
