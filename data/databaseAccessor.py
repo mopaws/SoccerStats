@@ -110,14 +110,15 @@ def addUser(name, password):
         return jsonify({'data': False})
 
 
-@APP.route('/addToStat/<int: stat>/<int: game>/<int: num>)
-def addData(stat, game, num):
+@APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>')
+def addGeneralStat(stat, game, num):
+    print("entered function")
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf) VALUES (?, ?, ?)", (stat, game, num))
+        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, playerID, numberOf) VALUES (?, ?, ?, ?)", (stat, game, -1, num))
         connection.commit()
         connection.close()
         return jsonify({'data': True})
@@ -125,8 +126,8 @@ def addData(stat, game, num):
         print("faild to insert data")
         return jsonify({'data': False})
 
-@APP.route('/addToStat/<int: stat>/<int: game>/<int: num>/<int: player>)
-def addDataPlayer(stat, game, num, player):
+@APP.route('/addPlayerStat/<int:stat>/<int:game>/<int:num>/<int:player>')
+def addPlayerStat(stat, game, num, player):
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
@@ -140,6 +141,34 @@ def addDataPlayer(stat, game, num, player):
         print("faild to insert data")
         return jsonify({'data': False})
     
+@APP.route('/fetchStats')
+def fechAllStats():
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID')
+        rows = cursor.fetchall()
+        connection.commit()
+        return jsonify(rows)
+    except:
+        return jsonify({'feched': False})
+
+@APP.route('/newStat/<name>')
+def addNewStat(name):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('''
+            INSERT INTO statisticTypes (statName)
+            VALUES (NULL, ?)
+        ''', (name,))
+         
+        connection.commit()
+        return jsonify({'added':True})
+    except:
+        return jsonify({'added': False})
 
 if __name__ == '__main__':
     APP.debug=True
