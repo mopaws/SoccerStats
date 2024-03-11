@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
 <head>
 <style>
 body{
@@ -8,28 +9,84 @@ background-color: #5DADE2;
 }
 </style>
 </head>
+
+<ul>
+  <li><a href="default.asp">AwayTeam</a></li>
+  <li><a href="news.asp">HomeTeam</a></li>
+  <li><a href="contact.asp">Opponents</a></li>
+  <li><a href="about.asp">Past_Games</a></li>
+</ul>
 <body>
+<div class="container">
 <h1 style="color:white;">Player Stats</h1>
-<h2 style="color:white;"> Goals </h2>
-<div class ="quantity">
-<button class="btn minus" type="button">
-<i class = "fa-solid fa-minus"></i>
-</button>
-<input type = "text" value ="1" id ="qtyInput">
-<button class="btn plus" type = "button>
-<i class="fa-solid fa-plus"></i>
+
+<div class = "heading heading-1">
+<h2 style="color:black;"> Goals </h2>
 </div>
-<h3 style="color:white;"> Assists </h3>
-<div class ="quantity">
-<button class="btn minus" type="button">
-<i class = "fa-solid fa-minus"></i>
-</button>
-<input type = "text" value ="1" id ="qtyInput">
-<button class="btn plus" type = "button>
-<i class="fa-solid fa-plus"></i>
+
+<div class ="quantity quantity-1">
+<span class ="minus">-</span>
+<span class ="num">01</span>
+<span class ="plus">+</span>
 </div>
+<script>
+const plus = document.querySelector(".plus"),
+	minus = document.querySelector(".minus"),
+	num = document.querySelector(".num");
+	
+	let a =1;
+	plus.addEventListener("click", ()=>{
+		a++;
+		a = (a<10)? "0" + a:a;
+		num.innerText = a;
+		console.log("a");
+	});
+	
+	minus.addEventListener("click", ()=>{
+		if(a>1){
+		a--;
+		a = (a<10)? "0" + a:a;
+		num.innerText = a;
+		}
+	});
+		
+</script>
+
+
+<div class = "heading heading-2">
+<h2 style="color:black;"> Assists </h2>
+</div>
+
+<div class ="quantity quantity-2">
+<span class ="minus2">-</span>
+<span class ="num2">01</span>
+<span class ="plus2">+</span>
+</div>
+<script>
+const plus2 = document.querySelector(".plus2"),
+	minus2 = document.querySelector(".minus2"),
+	num2 = document.querySelector(".num2");
+	
+	let b =1;
+	plus2.addEventListener("click", ()=>{
+		b++;
+		b = (b<10)? "0" + b:b;
+		num2.innerText = b;
+		console.log("b");
+	});
+	
+	minus2.addEventListener("click", ()=>{
+		if(b>1){
+		b--;
+		b = (b<10)? "0" + b:b;
+		num2.innerText = b;
+		}
+	});
+		
+</script>
+
+<div class ="quantity quantity-3">
 <h4 style="color:white;"> Saves </h4>
-<div class ="quantity">
 <button class="btn minus" type="button">
 <i class = "fa-solid fa-minus"></i>
 </button>
@@ -37,8 +94,9 @@ background-color: #5DADE2;
 <button class="btn plus" type = "button>
 <i class="fa-solid fa-plus"></i>
 </div>
+
+<div class ="quantity quantity-4">
 <h5 style="color:white;"> Shots on goal </h5>
-<div class ="quantity">
 <button class="btn minus" type="button">
 <i class = "fa-solid fa-minus"></i>
 </button>
@@ -46,5 +104,7 @@ background-color: #5DADE2;
 <button class="btn plus" type = "button>
 <i class="fa-solid fa-plus"></i>
 </div>
+
 <script></script>
+</div>
 </body>
