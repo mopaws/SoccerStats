@@ -1,125 +1,148 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
-<!-- Learned from W3 Schools Start -->
 h1 {text-align: center;}
 body {
   font-family: arial, sans-serif;
-  background:#f9f2f7;
-  //background-repeat: no-repeat;
-  //background-attachment: fixed;
-  //background-size: cover;
+  background-image: url("website_bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 
-.center {
-  width: 100%;
-  padding: 1px 0;
-  border: 3px solid black;
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.item1 { grid-area: header; }
+.item2 { grid-area: score; }
+.item3 { grid-area: date; }
+.item4 { grid-area: type; }
+.item5 {
+  grid-area: opponent;
+  font-weight: bold;
+}
+.item6 { grid-area: subheader; }
+.item7 { grid-area: category; }
+.item8 { grid-area: value; }
+.item9 { grid-area: category2; }
+.item10 { grid-area: value2; }
+.item11 { grid-area: category3; }
+.item12 { grid-area: value3; }
+.item13 { grid-area: category4; }
+.item14 { grid-area: value4; }
+.item15 { grid-area: category5; }
+.item16 { grid-area: value5; }
+.item17 { grid-area: category6; }
+.item18 { grid-area: value6; }
+
+.item3 h3, .item4 h3 {
+  justify-self: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'score score date type type'
+    'score score opponent opponent opponent'
+    'subheader subheader subheader subheader subheader'
+    'category category category category value'
+    'category2 category2 category2 category2 value2'
+    'category3 category3 category3 category3 value3'
+    'category4 category4 category4 category4 value4'
+    'category5 category5 category5 category5 value5'
+    'category6 category6 category6 category6 value6';
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+  margin-left: 160px;
+  font-size: 28px;
+  justify-self: center;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  background-color: #29394b;
-  color: #f9f2f7;
-}
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 3px solid black;
-  text-align: center;
-  padding: 8px;
-  background-color: #29394b;
-  color:#f9f2f7;
-}
-
-th {
-  text-align: center;
+  padding: 20px 0;
   font-size: 30px;
 }
 
-<!-- Learned from W3 Schools End -->
-
 </style>
 </head>
-
 <body>
 
-<!-- Deep Run Logo -->
-<img src="DRHS_Logo.png" width="216" height="80">
-
-<br>
-<br>
-
-<div class="center">
-<h2>- Past Games -</h2>
+<div class="sidenav">
+  <a href="#sample">3/15/24 Glen Allen High School</a>
+  <a href="#sample">3/8/24 Godwin High School</a>
+  <a href="#sample">3/1/24 Maggie Walker High School</a>
+  <a href="#sample">2/23/24 Tucker High School</a>
 </div>
 
-<br>
-
-<div class="center">
-<h1>Score</h1>
-<h1>3 - 0</h1>
+<div class="grid-container">
+  <div class="item1">
+    <h2>Past Games</h2>
+  </div>
+  <div class="item2">
+    <h3>Score</h3>
+    <h3>3 - 0</h3>
+  </div>
+  <div class="item3">
+    <h3>2/27/24</h3>
+  </div>  
+  <div class="item4">
+    <h3>Away Game</h3>
+  </div>
+  <div class="item5">Freeman High School</div>
+  <div class="item6">
+    <h3>All Stats</h3>
+  </div>
+  <div class="item7">Corners - Home</div>
+  <div class="item8">0</div>
+  <div class="item9">Corners - Away</div>
+  <div class="item10">0</div>
+  <div class="item11">Goal Kicks - Home</div>
+  <div class="item12">0</div>
+  <div class="item13">Goal Kicks - Away</div>
+  <div class="item14">0</div>
+  <div class="item15">Fouls - Home</div>
+  <div class="item16">0</div>
+  <div class="item17">Fouls - Away</div>
+  <div class="item18">0</div>
 </div>
-
-<br>
-
-<table>
-  <tr>
-    <!-- Merged Cell as header, Learned from geeksforgeeks.org Start -->
-    <th colspan="2">General Information</th>
-    <!-- Learned from geeksforgeeks.org End -->
-  </tr>
-  <tr>
-    <td>Opponent</td>
-    <td>Freeman High School</td>
-  </tr>
-  <tr>
-    <td>Date</td>
-    <td>2/27/24</td>
-  </tr>
-  </tr>
-</table>
-
-<br>
-
-<table>
-  <tr>
-    <!-- Merged Cell as header, Learned from geeksforgeeks.org Start -->
-    <th colspan="2">All Stats</th>
-    <!-- Learned from geeksforgeeks.org End -->
-  </tr>
-  <tr>
-    <td>Corners - Home</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Corners - Away</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Goal Kicks - Home</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Goal Kicks - Away</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Fouls - Home</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Fouls - Away</td>
-    <td>0</td>
-  </tr>
-</table>
-
+   
 </body>
-
 </html>
