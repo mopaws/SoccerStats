@@ -1,0 +1,95 @@
+.container{
+	display: grid;
+	grid-template-rows: 100px 100px 100px 100px 100px;
+	grid-template-columns: 200px 200px 200px 200px 200px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.heading-1{
+	grid-row:2/3;
+	grid-column: 1/2;
+}
+	
+
+.quantity-1{
+	grid-row: 3/5;
+	grid-column: 1/2;
+	background: #FFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	
+}
+.quantity-1 span{
+	width: 50%
+	text-align: center;
+	font-size: 55px;
+	font-weight: 600;
+}
+
+.quantity-1 span.num{
+	font-size: 50px;
+	border-right: 2px solid rgba(0,0,0,0.2);
+	border-left: 2px solid rgba(0,0,0,0.2);
+}
+
+.heading-2{
+	grid-row:2/3;
+	grid-column: 2/3;
+}
+	
+
+.quantity-2{
+	grid-row: 3/5;
+	grid-column: 2/3;
+	background: #FFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	
+}
+.quantity-2 span{
+	width: 50%
+	text-align: center;
+	font-size: 55px;
+	font-weight: 600;
+}
+
+.quantity-2 span.num{
+	font-size: 50px;
+	border-right: 2px solid rgba(0,0,0,0.2);
+	border-left: 2px solid rgba(0,0,0,0.2);
+}
+
+.quantity-3{
+	grid-row: 2/3;
+	grid-column: 3/4;
+}
+
+.quantity-4{
+	grid-row: 2/3;
+	grid-column: 4/5;
+}
