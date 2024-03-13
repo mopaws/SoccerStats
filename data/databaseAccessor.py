@@ -12,7 +12,7 @@ connection = sqlite3.connect('Soccer.db')
 # Create a cursor object
 cursor = connection.cursor()
 
-# Execute SQL commands
+# Create all the tables if the database doesn't already contain them
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         name TEXT PRIMARY KEY,
@@ -67,11 +67,13 @@ cursor.execute('''
 ''')
 
 
-# Commit the changes
+# Commit the tables t the database and cut off connection to stay secure. 
 connection.commit()
 connection.close()
 
-@APP.route('/getUser/<name>/<password>')
+
+#take in a name and password and check if they exist in the database, return true if so, false elswise
+@APP.route('/getUser/<name>/<password>') # define the url ending to access method
 def getUser(name, password):
     try:
         connection = sqlite3.connect('Soccer.db')
@@ -93,14 +95,16 @@ def getUser(name, password):
         print("faild to retrive data")
         return jsonify({'good': False})
 
-
-@APP.route('/addUser/<name>/<password>')
+#adds a user to the users table in the database
+@APP.route('/addUser/<name>/<password>')#url with 2 paramaters
 def addUser(name, password):
     try:
+        #connect to the database
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
 
+        #inert the data into the table
         cursor.execute("INSERT INTO users (name, password) VALUES (?, ?)", (name, password))
         connection.commit()
         connection.close()
