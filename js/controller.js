@@ -19,14 +19,14 @@ function tryCreateUser(){
   }
 }
 
-function tryAddData(sID, pos){
+function tryAddData(sID, num){
   let gameID;
   let player;
 
   if(player){
-    addfinalData(gameID, sID, pos, player);
+    addfinalData(sID, gameID, num, player);
   } else {
-    addfinalDataPlayer(gameID, sID, pos);
+    addfinalDataPlayer(sID, gameID, num);
   }
 }
 
