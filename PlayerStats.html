@@ -17,11 +17,42 @@ background-color: #5DADE2;
   <li><a href="about.asp">Past_Games</a></li>
 </ul>
 <body>
-<div class="container">
-<h1 style="color:white;">Player Stats</h1>
 
-<div class = "heading heading-1">
-<h2 style="color:black;"> Goals </h2>
+
+<div class="container">
+<div class="grid-item item1">
+<h1 style="color:black;"> Score<br>X-X </h1>
+</div>
+
+<div class="dropdown dropdown1">
+  <button class="dropbtn1">Dropdown</button>
+  <div class="dropdown-content1">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+
+<div class="dropdown dropdown2">
+  <button class="dropbtn2">Dropdown</button>
+  <div class="dropdown-content2">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+
+<div class="grid-item item2">
+<h1 style="color:black;"> Goal <br><br><br> Assist </h1>
+</div>
+
+
+<div class="grid-item item3">
+<h1 style="color:black;"> All Stats<br><br> Corners-Home<br><br>Corners-Away<br><br>Goal Kicks-Home <br><br>Goal Kicks-Away <br><br> Fouls-Home </h1>
+</div>
+
+<div class="grid-item item4">
+<h1 style="color:black;"> Corner Kick<br><br>Goal Kick<br><br> Free Kick<br><br>Fouls</h1>
 </div>
 
 <div class ="quantity quantity-1">
@@ -53,10 +84,6 @@ const plus = document.querySelector(".plus"),
 </script>
 
 
-<div class = "heading heading-2">
-<h2 style="color:black;"> Assists </h2>
-</div>
-
 <div class ="quantity quantity-2">
 <span class ="minus2">-</span>
 <span class ="num2">01</span>
@@ -86,24 +113,62 @@ const plus2 = document.querySelector(".plus2"),
 </script>
 
 <div class ="quantity quantity-3">
-<h4 style="color:white;"> Saves </h4>
-<button class="btn minus" type="button">
-<i class = "fa-solid fa-minus"></i>
-</button>
-<input type = "text" value ="1" id ="qtyInput">
-<button class="btn plus" type = "button>
-<i class="fa-solid fa-plus"></i>
+<span class ="minus3">-</span>
+<span class ="num3">01</span>
+<span class ="plus3">+</span>
 </div>
+<script>
+const plus3 = document.querySelector(".plus3"),
+	minus3 = document.querySelector(".minus3"),
+	num3 = document.querySelector(".num3");
+	
+	let c =1;
+	plus3.addEventListener("click", ()=>{
+		c++;
+		c = (c<10)? "0" + c:c;
+		num3.innerText = c;
+		console.log("c");
+	});
+	
+	minus3.addEventListener("click", ()=>{
+		if(c>1){
+		c--;
+		c = (c<10)? "0" + c:c;
+		num3.innerText = c;
+		}
+	});
+		
+</script>
 
 <div class ="quantity quantity-4">
-<h5 style="color:white;"> Shots on goal </h5>
-<button class="btn minus" type="button">
-<i class = "fa-solid fa-minus"></i>
-</button>
-<input type = "text" value ="1" id ="qtyInput">
-<button class="btn plus" type = "button>
-<i class="fa-solid fa-plus"></i>
+<span class ="minus4">-</span>
+<span class ="num4">01</span>
+<span class ="plus4">+</span>
 </div>
+<script>
+const plus4 = document.querySelector(".plus4"),
+	minus4 = document.querySelector(".minus4"),
+	num4 = document.querySelector(".num4");
+	
+	let d =1;
+	plus4.addEventListener("click", ()=>{
+		d++;
+		d = (d<10)? "0" + d:d;
+		num4.innerText = d;
+		console.log("d");
+	});
+	
+	minus4.addEventListener("click", ()=>{
+		if(d>1){
+		d--;
+		d = (d<10)? "0" + d:d;
+		num4.innerText = d;
+		}
+	});
+		
+</script>
+
+
 
 <script></script>
 </div>
