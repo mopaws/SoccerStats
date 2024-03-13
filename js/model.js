@@ -42,25 +42,30 @@ function createNewUser(name, password){
   .catch(error => console.error('Error:', error));
 }
 
-function addData(stat, game, num){
-  fetch("http://127.0.0.1:5000/addData/" + stat + "/" +game+ "/"+num)
+function addfinalData(stat, game, num){
+  fetch("http://127.0.0.1:5000/addGeneralStat/" + stat + "/" +game+ "/"+num)
   .then(response => response.json())
   .then(data => {
-    
-      if(data[0] == 'inserted data'){
+      if(data['data'] == true){
         console.log("done");
+      }
+      else{
+        console.log("failed");
       }
   })
   .catch(error => console.error('Error:', error));
 }
-function addDataPlayer(stat, game, num, player){
+function addfinalDataPlayer(stat, game, num, player){
 
-  fetch("http://127.0.0.1:5000/addDataPlayer/" + stat + "/" +game+ "/"+ num + "/"+player)
+  fetch("http://127.0.0.1:5000/addPlayerStat/" + stat + "/" +game+ "/"+ num + "/"+player)
   .then(response => response.json())
   .then(data => {
     
-      if(data[0] == 'inserted data'){
+      if(data['data'] == true){
         console.log("done");
+      }
+      else{
+        console.log("failed");
       }
   })
   .catch(error => console.error('Error:', error));
