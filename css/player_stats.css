@@ -3,6 +3,8 @@
 	grid-template-rows: 100px 100px 100px 80px 80px 80px 80px 80px 100px 100px 100px;
 	grid-template-columns: 200px 200px 200px 200px 200px 200px 200px;
 	column-gap: 50px;
+	float: left;
+	padding: 0;
 }
 
 ul {
