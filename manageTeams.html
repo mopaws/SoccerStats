@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Soccer Stats Entry</title>
     <style>
-        /* Style for the container */
+      
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -20,14 +19,14 @@
             padding: 20px;
         }
 
-        /* Style for the header box */
+       
         #header-box {
             background-color: #29394b;
             padding: 20px;
             text-align: center;
         }
 
-        /* Style for the home screen header */
+       
         #home-header {
             font-weight: 700;
   	    font-style: normal;
@@ -36,19 +35,19 @@
             margin: 0;
         }
 
-        /* Style for the "Add New Team" button */
+       
         #add-team-button {
             font-size: 18px;
             padding: 10px 20px;
             margin: auto;
         }
 
-        /* Style for the table container */
+       
         #table-container {
             display: none; /* Hide the table container by default */
         }
 
-        /* Style for the saved data */
+       
         #saved-data {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -84,17 +83,17 @@
 </head>
 <body>
 
-<!-- Home screen content -->
+
 <div id="container">
     <!-- Header box -->
     <div id="header-box">
         <h1 id="home-header">Manage Teams</h1>
     </div>
 
-    <!-- Add New Team button -->
+  
     <button id="add-team-button" onclick="toggleTable()">Add New Team</button>
 
-    <!-- Table for data entry -->
+    
     <div id="table-container">
         <h2>Soccer Stats Entry</h2>
         <table>
@@ -128,12 +127,12 @@
         </table>
     </div>
 
-    <!-- Box to display saved data -->
+  
     <div id="saved-data"></div>
 </div>
 
 <script>
-    // Function to toggle the visibility of the table container
+    
     function toggleTable() {
         var tableContainer = document.getElementById('table-container');
 
@@ -144,7 +143,7 @@
         }
     }
 
-    // Function to save the entered data and display it
+   
     function saveData() {
         var year = document.getElementById('year').value;
         var level = document.getElementById('level').value;
@@ -157,28 +156,28 @@
         var newData = document.createElement('div');
         newData.className = 'saved-item';
 
-        // Add the year and level information
+       
         var yearLevel = document.createElement('small');
         yearLevel.textContent = level + '  ' + year;
         newData.appendChild(yearLevel);
 
-        // Add the players, goals scored, games played, and games won
+        
         newData.innerHTML += '<p>Players: ' + numPlayers + '</p>';
         newData.innerHTML += '<p>Goals Scored: ' + numGoals + '</p>';
         newData.innerHTML += '<p>Games Played: ' + numGames + '</p>';
         newData.innerHTML += '<p>Games Won: ' + numGamesWon + '</p>';
 
-        // Append the new data to the saved data box
+        
         savedData.appendChild(newData);
 
-        // Clear the input fields after saving
+   
         document.getElementById('year').value = '';
         document.getElementById('num-players').value = '';
         document.getElementById('num-goals').value = '';
         document.getElementById('num-games').value = '';
         document.getElementById('num-games-won').value = '';
 
-        // Hide the table container after saving
+      
         document.getElementById('table-container').style.display = 'none';
     }
 </script>
