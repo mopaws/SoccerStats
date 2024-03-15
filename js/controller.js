@@ -21,9 +21,9 @@ function tryCreateUser(){
 
 function tryAddData(sID, num, gameID, player){
   if(player){
-    addfinalData(sID, gameID, num, player);
-  } else {
     addfinalDataPlayer(sID, gameID, num);
+  } else {
+    addfinalData(sID, gameID, num, player);
   }
 }
 
