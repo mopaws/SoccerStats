@@ -71,6 +71,8 @@ const plus = document.querySelector(".plus"),
 		a = (a<10)? "0" + a:a;
 		num.innerText = a;
 		console.log("a");
+		//replace the 3rd paramater (1) with a game number
+		tryAddData(1,a,1,null);
 	});
 	
 	minus.addEventListener("click", ()=>{
