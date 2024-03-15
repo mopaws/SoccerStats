@@ -19,10 +19,7 @@ function tryCreateUser(){
   }
 }
 
-function tryAddData(sID, num){
-  let gameID;
-  let player;
-
+function tryAddData(sID, num, gameID, player){
   if(player){
     addfinalData(sID, gameID, num, player);
   } else {
