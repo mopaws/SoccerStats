@@ -17,7 +17,8 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         name TEXT PRIMARY KEY,
         password TEXT NOT NULL,
-        admin BOOLEAN);
+        admin BOOLEAN
+    );
 ''')
 
 cursor.execute('''
@@ -32,7 +33,7 @@ cursor.execute('''
         outcome INT NOT NULL,
         gameConditions VARCHAR(500),
         notes VARCHAR(1000)
-        );
+    );
 ''')
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS player (
@@ -43,31 +44,24 @@ cursor.execute('''
         jerseyNumber INT NOT NULL,
         positionsPlayed VARCHAR(100) NOT NULL,
         notes VARCHAR(1000)
-        );
+    );
 ''')
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS team (
-        name VARCHAR(50),
+        name VARCHAR(50) NOT NULL UNIQUE,
         notes VARCHAR(1000)
-        );
+    );
 ''')
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS trackedStatistics (
-        statID INT NOT NULL,
-        gameID INT NOT NULL,
-        playerID INT,
-        numberOf INT
-        );
-''')
+
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS statisticTypes (
         statID INTEGER PRIMARY KEY AUTOINCREMENT,
-        statName VARCHAR(50)
-        );
+        statName VARCHAR(50) NOT NULL UNIQUE
+    );
 ''')
 
 
-# Commit the tables t the database and cut off connection to stay secure. 
+# Commit the tables to the database and cut off connection to stay secure. 
 connection.commit()
 connection.close()
 
@@ -104,19 +98,20 @@ def addUser(name, password):
         # Create a cursor object
         cursor = connection.cursor()
 
-        #inert the data into the table
+        #inert the data into the table using a sql command
         cursor.execute("INSERT INTO users (name, password) VALUES (?, ?)", (name, password))
         connection.commit()
         connection.close()
+        #after closing the connection, if nothing has gone bad, return a positive result
         return jsonify({'data': True})
     except:
+        # if anything broke, return a false result
         print("faild to insert data")
         return jsonify({'data': False})
 
 
 @APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>')
 def addGeneralStat(stat, game, num):
-    print("entered function")
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
@@ -166,7 +161,7 @@ def addNewStat(name):
 
         cursor.execute('''
             INSERT INTO statisticTypes (statName)
-            VALUES (NULL, ?)
+            VALUES (?)
         ''', (name,))
          
         connection.commit()
