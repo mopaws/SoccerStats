@@ -19,11 +19,11 @@ function tryCreateUser(){
   }
 }
 
-function tryAddData(sID, num, gameID, player){
+function tryAddData(stat, game, num, player){
   if(player){
-    addfinalDataPlayer(sID, gameID, num);
+    addfinalDataPlayer(stat, game, num, player);
   } else {
-    addfinalData(sID, gameID, num, player);
+    addfinalData(stat, game, num);
   }
 }
 
