@@ -1,7 +1,9 @@
 # [live page](https://0ddsh33p.github.io/SoccerStats)
 
 ## backend documentation
+
 ###Adding data to the database
+
 adding data to the database has been partially set up, but more methods are to come, se the following for deatils on current methods
 
 > the method tryCreateUser() is used to create a new user. It takes no parameters, but looks for 3 fields whith IDs: newName, newPass, confPass
