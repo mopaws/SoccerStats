@@ -2,8 +2,7 @@
 
 ## backend documentation
 
-###Adding data to the database
-
+### Adding data to the database
 adding data to the database has been partially set up, but more methods are to come, se the following for deatils on current methods
 
 > the method tryCreateUser() is used to create a new user. It takes no parameters, but looks for 3 fields whith IDs: newName, newPass, confPass
