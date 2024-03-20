@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100vw; /* Full viewport width */
+        padding: 20px;
+        margin-top: 0; /* Remove spacing at the top */
+    }
+
+    .header {
+        background-color: #29394b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .form-container {
+        padding: 20px;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .form-container h2 {
+        margin-top: 0;
+    }
+
+    .form-container label {
+        display: inline-block;
+        width: 150px; /* Set width for the label */
+        margin-bottom: 10px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="checkbox"] {
+        width: calc(100% - 170px); /* Adjust width for the input */
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .remove-button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    .remove-button:hover {
+        background-color: #d32f2f;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Settings</h1>
+    </div>
+    <div class="form-container">
+        <h2>Add New Stat</h2>
+        <form id="statForm">
+            <label for="statType">New Stat Type:</label>
+            <input type="text" id="statType" name="statType"><br>
+            <label for="trackWithPlayer">Track with Player:</label>
+            <input type="checkbox" id="trackWithPlayer" name="trackWithPlayer">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div>
+        <h2 style="text-align: center;">Tracked Stats</h2>
+        <table id="trackedStats">
+            <thead>
+                <tr>
+                    <th>New Stat Type</th>
+                    <th>Track with Player</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById("statForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var statType = document.getElementById("statType").value.trim(); // Trim whitespace
+        var trackWithPlayer = document.getElementById("trackWithPlayer").checked;
+        addStatToTable(statType, trackWithPlayer);
+        document.getElementById("statForm").reset();
+    });
+
+    function addStatToTable(statType, trackWithPlayer) {
+        var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        newRow.insertCell(0).textContent = statType;
+        newRow.insertCell(1).textContent = trackWithPlayer ? "Player" : "Generic";
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.classList.add("remove-button");
+        removeButton.onclick = function() {
+            table.deleteRow(newRow.rowIndex);
+        };
+        newRow.insertCell(2).appendChild(removeButton);
+    }
+</script>
+
+</body>
+</html>
+
