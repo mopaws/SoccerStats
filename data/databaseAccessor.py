@@ -166,6 +166,12 @@ def addNewStat(name):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
+        cursor.execute('SELECT * FROM statisticTypes')
+        m = cursor.fetchall();
+
+        for l in m:
+            if l[1] == name:
+                return jsonify({'added': False})
 
         cursor.execute('''
             INSERT INTO statisticTypes (statName)
@@ -178,7 +184,7 @@ def addNewStat(name):
         return jsonify({'added': False})
 
 @APP.route('/stats')
-def fechStats():
+def stats():
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()

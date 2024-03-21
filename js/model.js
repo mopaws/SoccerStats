@@ -64,6 +64,7 @@ function getStatTypes(){
   fetch("http://127.0.0.1:5000/stats/")
   .then(response => response.json())
   .then(data => {
+    console.log(data);
     return data;
   })
   .catch(error => console.error('Error:', error));
@@ -74,7 +75,7 @@ function addfinalData(stat, game, num){
   .then(response => response.json())
   .then(data => {
       if(data['data'] == true){
-        console.log("done");
+        console.log(num + " added to stat id " + stat );
       }
       else{
         console.log("failed");

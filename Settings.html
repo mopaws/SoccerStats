@@ -32,7 +32,7 @@
     .form-container {
         padding: 20px;
         width: 100%;
-        margin-top: 0;
+        margin-top: 120px;
     }
 
     .form-container h2 {
@@ -162,21 +162,17 @@
 
     function addStatToTable(statType, trackWithPlayer) {
         addStatType(statType);
-        
-	var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
-	let stats = getStatTypes();
-	for(let i = 0; i < stats.length; i++){
-		
-	}    
-	var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
+	
+        var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
+	    var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
         var newRow = table.insertRow(table.rows.length);
         newRow.insertCell(0).textContent = statType;
-        newRow.insertCell(1).textContent = trackWithPlayer ? "Player" : "Generic";
+        newRow.insertCell(1).textContent = trackWithPlayer ? "True" : "False";
         var removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
         removeButton.classList.add("remove-button");
         removeButton.onclick = function() {
-            table.deleteRow(newRow.rowIndex);
+            newRow.remove();
         };
         newRow.insertCell(2).appendChild(removeButton);
     }
