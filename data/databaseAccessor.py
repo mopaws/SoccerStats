@@ -54,6 +54,14 @@ cursor.execute('''
 ''')
 
 cursor.execute('''
+    CREATE TABLE IF NOT EXISTS trackedStatistics (
+        statID INT NOT NULL,
+        gameID INT NOT NULL,
+        playerID INT,
+        numberOf INT
+    );
+''')
+cursor.execute('''
     CREATE TABLE IF NOT EXISTS statisticTypes (
         statID INTEGER PRIMARY KEY AUTOINCREMENT,
         statName VARCHAR(50) NOT NULL UNIQUE
@@ -117,7 +125,7 @@ def addGeneralStat(stat, game, num):
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, playerID, numberOf) VALUES (?, ?, ?, ?)", (stat, game, -1, num))
+        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf) VALUES (?, ?, ?)", (stat, game, num))
         connection.commit()
         connection.close()
         return jsonify({'data': True})
@@ -168,6 +176,19 @@ def addNewStat(name):
         return jsonify({'added':True})
     except:
         return jsonify({'added': False})
+
+@APP.route('/stats')
+def fechStats():
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM statisticTypes')
+        rows = cursor.fetchall()
+        connection.commit()
+        return jsonify(rows)
+    except:
+        return jsonify({'feched': False})
 
 if __name__ == '__main__':
     APP.debug=True
