@@ -1,185 +1,149 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="css/player_stats.css">
+<html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{
-justify-content: center;
-height: 100vh;
-background-color: #29394b;
+h1 {text-align: center;}
+body {
+  font-family: navigo, sans-serif;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #29394b;
+  color: white;
 }
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #29394b;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.item1 { grid-area: header; }
+.item2 { grid-area: score; }
+.item3 { grid-area: date; }
+.item4 { grid-area: type; }
+.item5 {
+  grid-area: opponent;
+  font-weight: bold;
+}
+.item6 { grid-area: subheader; }
+.item7 { grid-area: category; }
+.item8 { grid-area: value; }
+.item9 { grid-area: category2; }
+.item10 { grid-area: value2; }
+.item11 { grid-area: category3; }
+.item12 { grid-area: value3; }
+.item13 { grid-area: category4; }
+.item14 { grid-area: value4; }
+.item15 { grid-area: category5; }
+.item16 { grid-area: value5; }
+.item17 { grid-area: category6; }
+.item18 { grid-area: value6; }
+
+.item3 h3, .item4 h3 {
+  justify-self: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'score score date type type'
+    'score score opponent opponent opponent'
+    'subheader subheader subheader subheader subheader'
+    'category category category category value'
+    'category2 category2 category2 category2 value2'
+    'category3 category3 category3 category3 value3'
+    'category4 category4 category4 category4 value4'
+    'category5 category5 category5 category5 value5'
+    'category6 category6 category6 category6 value6';
+  gap: 10px;
+  background-color: #29394b;
+  padding: 10px;
+  margin-left: 160px;
+  font-size: 28px;
+  justify-self: center;
+}
+
+.grid-container > div {
+  background-color: #055e8b;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  border-radius: 10px;
+}
+
 </style>
 </head>
-
-<ul>
-  <li><a href="default.asp">AwayTeam</a></li>
-  <li><a href="news.asp">HomeTeam</a></li>
-  <li><a href="contact.asp">Opponents</a></li>
-  <li><a href="about.asp">Past_Games</a></li>
-</ul>
 <body>
 
-
-<div class="container">
-<div class="grid-item item1">
-<h1 style="color:black;"> Score<br>X-X </h1>
+<div class="sidenav">
+  <a href="#sample">3/15/24 Glen Allen High School</a>
+  <a href="#sample">3/8/24 Godwin High School</a>
+  <a href="#sample">3/1/24 Maggie Walker High School</a>
+  <a href="#sample">2/23/24 Tucker High School</a>
 </div>
 
-<div class="dropdown dropdown1">
-  <button class="dropbtn1">Dropdown</button>
-  <div class="dropdown-content1">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+<div class="grid-container">
+  <div class="item1">
+    <h2>Past Games</h2>
   </div>
-</div>
-
-<div class="dropdown dropdown2">
-  <button class="dropbtn2">Dropdown</button>
-  <div class="dropdown-content2">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+  <div class="item2">
+    <h3>Score</h3>
+    <h3>X - X</h3>
   </div>
+  <div class="item3">
+    <h3>2/27/24</h3>
+  </div>  
+  <div class="item4">
+    <h3>Away Game</h3>
+  </div>
+  <div class="item5">Freeman High School</div>
+  <div class="item6">
+    <h3>All Stats</h3>
+  </div>
+  <div class="item7">Corners - Home</div>
+  <div class="item8">0</div>
+  <div class="item9">Corners - Away</div>
+  <div class="item10">0</div>
+  <div class="item11">Goal Kicks - Home</div>
+  <div class="item12">0</div>
+  <div class="item13">Goal Kicks - Away</div>
+  <div class="item14">0</div>
+  <div class="item15">Fouls - Home</div>
+  <div class="item16">0</div>
+  <div class="item17">Fouls - Away</div>
+  <div class="item18">0</div>
 </div>
-
-<div class="grid-item item2">
-<h1 style="color:black;"> Goal <br><br><br> Assist </h1>
-</div>
-
-
-<div class="grid-item item3">
-<h1 style="color:black;"> All Stats<br><br> Corners-Home<br><br>Corners-Away<br><br>Goal Kicks-Home <br><br>Goal Kicks-Away <br><br> Fouls-Home </h1>
-</div>
-
-<div class="grid-item item4">
-<h1 style="color:black;"> Corner Kick<br><br>Goal Kick<br><br> Free Kick<br><br>Fouls</h1>
-</div>
-
-<div class ="quantity quantity-1">
-<span class ="minus">-</span>
-<span class ="num">01</span>
-<span class ="plus">+</span>
-</div>
-<script>
-const plus = document.querySelector(".plus"),
-	minus = document.querySelector(".minus"),
-	num = document.querySelector(".num");
-	
-	let a =1;
-	plus.addEventListener("click", ()=>{
-		a++;
-		a = (a<10)? "0" + a:a;
-		num.innerText = a;
-		console.log("a");
-		//replace the 2nd paramater (1) with a game ID
-		addfinalData(1,1,a);
-	});
-	
-	minus.addEventListener("click", ()=>{
-		if(a>1){
-		a--;
-		a = (a<10)? "0" + a:a;
-		num.innerText = a;
-		}
-	});
-		
-</script>
-
-
-<div class ="quantity quantity-2">
-<span class ="minus2">-</span>
-<span class ="num2">01</span>
-<span class ="plus2">+</span>
-</div>
-<script>
-const plus2 = document.querySelector(".plus2"),
-	minus2 = document.querySelector(".minus2"),
-	num2 = document.querySelector(".num2");
-	
-	let b =1;
-	plus2.addEventListener("click", ()=>{
-		b++;
-		b = (b<10)? "0" + b:b;
-		num2.innerText = b;
-		console.log("b");
-	});
-	
-	minus2.addEventListener("click", ()=>{
-		if(b>1){
-		b--;
-		b = (b<10)? "0" + b:b;
-		num2.innerText = b;
-		}
-	});
-		
-</script>
-
-<div class ="quantity quantity-3">
-<span class ="minus3">-</span>
-<span class ="num3">01</span>
-<span class ="plus3">+</span>
-</div>
-<script>
-const plus3 = document.querySelector(".plus3"),
-	minus3 = document.querySelector(".minus3"),
-	num3 = document.querySelector(".num3");
-	
-	let c =1;
-	plus3.addEventListener("click", ()=>{
-		c++;
-		c = (c<10)? "0" + c:c;
-		num3.innerText = c;
-		console.log("c");
-	});
-	
-	minus3.addEventListener("click", ()=>{
-		if(c>1){
-		c--;
-		c = (c<10)? "0" + c:c;
-		num3.innerText = c;
-		}
-	});
-		
-</script>
-
-<div class ="quantity quantity-4">
-<span class ="minus4">-</span>
-<span class ="num4">01</span>
-<span class ="plus4">+</span>
-</div>
-<script>
-const plus4 = document.querySelector(".plus4"),
-	minus4 = document.querySelector(".minus4"),
-	num4 = document.querySelector(".num4");
-	
-	let d =1;
-	plus4.addEventListener("click", ()=>{
-		d++;
-		d = (d<10)? "0" + d:d;
-		num4.innerText = d;
-		console.log("d");
-	});
-	
-	minus4.addEventListener("click", ()=>{
-		if(d>1){
-		d--;
-		d = (d<10)? "0" + d:d;
-		num4.innerText = d;
-		}
-	});
-		
-</script>
-
-<div class = "textbox textbox-1">
-	<div contenteditable ="true">
-	<h1>Playerstats</h1>
-	</div>
-</div>
-
-
-
-    <script src="js/model.js" type="text/javascript"></script>
-    <script src="js/view.js" type="text/javascript"></script>
-    <script src="js/controller.js" type="text/javascript"></script>
-</div>
+   
 </body>
+</html>
