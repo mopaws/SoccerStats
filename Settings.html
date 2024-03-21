@@ -99,7 +99,7 @@
 <div class="container">
     <div class="header">
         <h1>Settings</h1>
-        <nav id="navbar">
+        <nav>
      		<button> <a href="Opponents.html">Opponents</a> </button>
 		<button> <a href="Past_Games_Page.html">Home Team</a> </button>
 		<button> <a href="PlayerStats.html">New Game</a> </button>
@@ -145,6 +145,7 @@
     });
 
     function addStatToTable(statType, trackWithPlayer) {
+        addStatType(statType);
         var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
         var newRow = table.insertRow(table.rows.length);
         newRow.insertCell(0).textContent = statType;
@@ -159,6 +160,9 @@
     }
 </script>
 
+
+<script src="js/model.js" type="text/javascript"></script>
+<script src="js/view.js" type="text/javascript"></script>
+<script src="js/controller.js" type="text/javascript"></script>
 </body>
 </html>
-
