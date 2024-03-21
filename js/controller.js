@@ -19,6 +19,14 @@ function tryCreateUser(){
   }
 }
 
+function addData(stat,game,num, player){
+  if(player >= 0){
+    addfinalDataPlayer(stat,game,num,player);
+  } else {
+    addfinalData(stat,game,num);
+  }
+}
+
 window.onload = (event) => {
   //access login data fields.
   let pass = document.getElementById("password");
@@ -26,13 +34,13 @@ window.onload = (event) => {
   let keep = document.getElementById("keepLogin");
 
   //if the data exists in local storage, autofill the page
-  if(localStorage.getItem("user")){
+  if(localStorage.getItem("user") && user){
     user.value = localStorage.getItem("user");
   }
-  if(localStorage.getItem("pass")){
+  if(localStorage.getItem("pass") && pass){
     pass.value = localStorage.getItem("pass");
   }
-  if(localStorage.getItem("save")){
+  if(localStorage.getItem("save") && keep){
     keep.checked = localStorage.getItem("save");
   }
 }
