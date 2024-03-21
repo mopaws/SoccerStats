@@ -43,10 +43,27 @@ function createNewUser(name, password){
 }
 
 function fetchAllData(){
-   fetch("http://127.0.0.1:5000/fetchStats");
+   fetch("http://127.0.0.1:5000/fetchStats")
   .then(response => response.json())
   .then(data => {
-    
+    console.log(data);
+    return data;
+  })
+  .catch(error => console.error('Error:', error));
+}
+
+function addStatType(name){
+  fetch("http://127.0.0.1:5000/newStat/" + name)
+  .then(response => response.json())
+  .then(data => {
+    console.log("data type " + name + " added");
+  })
+  .catch(error => console.error('Error:', error));
+}
+function getStatTypes(){
+  fetch("http://127.0.0.1:5000/stats/")
+  .then(response => response.json())
+  .then(data => {
     return data;
   })
   .catch(error => console.error('Error:', error));
