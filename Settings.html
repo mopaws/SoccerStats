@@ -146,7 +146,13 @@
 
     function addStatToTable(statType, trackWithPlayer) {
         addStatType(statType);
-        var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
+        
+	var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
+	let stats = getStatTypes();
+	for(let i = 0; i < stats.length; i++){
+		
+	}    
+	var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
         var newRow = table.insertRow(table.rows.length);
         newRow.insertCell(0).textContent = statType;
         newRow.insertCell(1).textContent = trackWithPlayer ? "Player" : "Generic";
