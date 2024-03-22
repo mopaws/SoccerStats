@@ -155,7 +155,22 @@ def fechAllStats():
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
 
-        cursor.execute('SELECT * FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID')
+        cursor.execute('SELECT *, SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID Group by types.statID')
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
+
+@APP.route('/statByName/<name>')
+def statByName(name):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+        
+        cursor.execute('SELECT SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID WHERE statName =?',(name,))
         rows = cursor.fetchall()
         connection.commit()
         connection.close()

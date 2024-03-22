@@ -42,16 +42,6 @@ function createNewUser(name, password){
   .catch(error => console.error('Error:', error));
 }
 
-function fetchAllData(){
-   fetch("http://127.0.0.1:5000/fetchStats")
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    return data;
-  })
-  .catch(error => console.error('Error:', error));
-}
-
 function addStatType(name,player){
   fetch("http://127.0.0.1:5000/newStat/" + name + "/" + player)
   .then(response => response.json())
