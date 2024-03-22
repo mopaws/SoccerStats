@@ -56,7 +56,7 @@ function addStatType(name,player){
   fetch("http://127.0.0.1:5000/newStat/" + name + "/" + player)
   .then(response => response.json())
   .then(data => {
-    console.log("data type " + name + " added");
+    console.log("added - maybe");
   })
   .catch(error => console.error('Error:', error));
 }
@@ -64,9 +64,16 @@ function getStatTypes(){
   fetch("http://127.0.0.1:5000/stats")
   .then(response => response.json())
   .then(data => {
-    var a = data;
-    console.log(a[0]);
-    return a;
+    return data;
+  })
+  .catch(error => console.error('Error:', error));
+}
+
+function removeFromTracked(id){
+  fetch("http://127.0.0.1:5000/removeStat/"+id)
+  .then(response => response.json())
+  .then(data => {
+    console.log("deleated " + id);
   })
   .catch(error => console.error('Error:', error));
 }
@@ -76,7 +83,7 @@ function addfinalData(stat, game, num){
   .then(response => response.json())
   .then(data => {
       if(data['data'] == true){
-        console.log(num + " added to stat id " + stat );
+        console.log(" added to stat id " + stat );
       }
       else{
         console.log("failed");

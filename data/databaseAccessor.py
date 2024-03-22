@@ -65,7 +65,7 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS statisticTypes (
         statID INTEGER PRIMARY KEY AUTOINCREMENT,
         statName VARCHAR(50) NOT NULL UNIQUE,
-        trackPlayer BOOL
+        tPlayer BOOLEAN
     );
 ''')
 
@@ -169,20 +169,27 @@ def addNewStat(name,player):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
-        cursor.execute('SELECT * FROM statisticTypes')
-        m = cursor.fetchall();
 
+        # Check if the statistic type already exists
+        cursor.execute('SELECT * FROM statisticTypes WHERE statName=? AND tPlayer=?', (name, player))
+        existing_stat = cursor.fetchone()
+
+        if existing_stat:
+            return jsonify({'added': False, 'message': 'Statistic type already exists.'})
+
+        # Insert new statistic type
         cursor.execute('''
             INSERT INTO statisticTypes (statName, tPlayer)
-            VALUES (?,?)
-        ''', (name,player,))
-         
+            VALUES (?, ?)
+        ''', (name, player))
+
         connection.commit()
         connection.close()
-        return jsonify({'added':True})
-    except:
+        return jsonify({'added': True})
+    except sqlite3.Error as e:
+        print("Error:", e)
         connection.close()
-        return jsonify({'added': False})
+        return jsonify({'added': False, 'message': 'Database error.'})
 
 @APP.route('/stats')
 def stats():
@@ -194,11 +201,24 @@ def stats():
         rows = cursor.fetchall()
         connection.commit()
         connection.close()
-        return rows
+        return jsonify(rows)
     except:
         connection.close()
         return jsonify({'feched': False})
     
+@APP.route('/removeStat/<int:id>')
+def remStat(id):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('DELETE FROM statisticTypes WHERE statID=?', (id,))
+        connection.commit()
+        connection.close()
+        return jsonify({'removed': True})
+    except:
+        connection.close()
+        return jsonify({'removed': False})
 
 if __name__ == '__main__':
     APP.debug=True
