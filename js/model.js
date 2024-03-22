@@ -81,6 +81,20 @@ function addfinalData(stat, game, num){
   })
   .catch(error => console.error('Error:', error));
 }
+function subfinalData(stat, game, num){
+  fetch("http://127.0.0.1:5000/subtractStat/" + stat + "/" +game+ "/"+num)
+  .then(response => response.json())
+  .then(data => {
+      if(data['data'] == true){
+        console.log(" subbed from stat id " + stat );
+      }
+      else{
+        console.log("failed");
+      }
+  })
+  .catch(error => console.error('Error:', error));
+}
+
 function addfinalDataPlayer(stat, game, num, player){
 
   fetch("http://127.0.0.1:5000/addPlayerStat/" + stat + "/" +game+ "/"+ num + "/"+player)
@@ -96,3 +110,4 @@ function addfinalDataPlayer(stat, game, num, player){
   })
   .catch(error => console.error('Error:', error));
 }
+

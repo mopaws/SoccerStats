@@ -134,6 +134,22 @@ def addGeneralStat(stat, game, num):
         connection.close()
         return jsonify({'data': False})
 
+@APP.route('/subtractStat/<int:stat>/<int:game>/<int:num>')
+def subGeneralStat(stat, game, num):
+    try: 
+        num = num *-1
+        connection = sqlite3.connect('Soccer.db')
+        # Create a cursor object
+        cursor = connection.cursor()
+
+        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf) VALUES (?, ?, ?)", (stat, game, num))
+        connection.commit()
+        connection.close()
+        return jsonify({'data': True})
+    except:
+        connection.close()
+        return jsonify({'data': False})
+
 @APP.route('/addPlayerStat/<int:stat>/<int:game>/<int:num>/<int:player>')
 def addPlayerStat(stat, game, num, player):
     try:

@@ -1,5 +1,6 @@
 var table = document.getElementById('data');
-fetchAllData(table),100;
+var scores = document.getElementById('scores');
+fetchAllData(table);
 
 function fetchAllData(table){
     fetch("http://127.0.0.1:5000/fetchStats")
@@ -17,7 +18,10 @@ function fetchAllData(table){
             let btn = document.createElement("button");
             btn.textContent = "-";
             btn.onclick = function() {
-                addData(id,gameId,-1);
+                subfinalData(id,gameId,1);
+                fetchAllData(table);
+            };
+            btn.onmousemove = function() {
                 fetchAllData(table);
             };
             newRow.insertCell(0).appendChild(btn);
@@ -30,10 +34,28 @@ function fetchAllData(table){
                 addData(id,gameId,1);
                 fetchAllData(table);
             };
+            btn.onmousemove = function() {
+                fetchAllData(table);
+            };
             newRow.insertCell(2).appendChild(btn);
 
             newRow.insertCell(3).textContent = numOf;
         }
    })
    .catch(error => console.error('Error:', error));
- }
+   
+
+   fetch("http://127.0.0.1:5000/statByName/goals_home")
+    .then(response => response.json())
+    .then(data => {
+        fetch("http://127.0.0.1:5000/statByName/goals_away")
+        .then(response => response.json())
+        .then(data2 => {
+
+            scores.innerHTML = data[0] + " - " + data2[0];
+        })
+        .catch(error => console.error('Error:', error));
+    })
+    .catch(error => console.error('Error:', error));
+}
+
