@@ -45,9 +45,16 @@
         margin-bottom: 10px;
     }
 
-    .form-container input[type="text"],
-    .form-container input[type="checkbox"] {
-        width: calc(100% - 170px); /* Adjust width for the input */
+    .form-container input[type="text"] {
+        width: 80%; /* Adjust width for the input */
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    
+    .form-container input[type="checkbox"]{
+        width: 30px;
+        height: 30px;
         padding: 8px;
         margin-bottom: 10px;
         box-sizing: border-box;
@@ -131,6 +138,7 @@
             <input type="text" id="statType" name="statType"><br>
             <label for="trackWithPlayer">Track with Player:</label>
             <input type="checkbox" id="trackWithPlayer" name="trackWithPlayer">
+            <br/>
             <button type="submit">Add</button>
         </form>
     </div>
@@ -139,7 +147,8 @@
         <table id="trackedStats">
             <thead>
                 <tr>
-                    <th>New Stat Type</th>
+                    <th>ID</th>
+                    <th>Stat Type</th>
                     <th>Track with Player</th>
                     <th>Remove</th>
                 </tr>
@@ -161,20 +170,10 @@
     });
 
     function addStatToTable(statType, trackWithPlayer) {
-        addStatType(statType);
+        addStatType(statType, trackWithPlayer);
 	
-        var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
 	    var table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
-        var newRow = table.insertRow(table.rows.length);
-        newRow.insertCell(0).textContent = statType;
-        newRow.insertCell(1).textContent = trackWithPlayer ? "True" : "False";
-        var removeButton = document.createElement("button");
-        removeButton.textContent = "Remove";
-        removeButton.classList.add("remove-button");
-        removeButton.onclick = function() {
-            newRow.remove();
-        };
-        newRow.insertCell(2).appendChild(removeButton);
+        getStatTypesforTable(table);
     }
 </script>
 

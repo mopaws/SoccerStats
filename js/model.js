@@ -52,8 +52,8 @@ function fetchAllData(){
   .catch(error => console.error('Error:', error));
 }
 
-function addStatType(name){
-  fetch("http://127.0.0.1:5000/newStat/" + name)
+function addStatType(name,player){
+  fetch("http://127.0.0.1:5000/newStat/" + name + "/" + player)
   .then(response => response.json())
   .then(data => {
     console.log("data type " + name + " added");
@@ -61,11 +61,12 @@ function addStatType(name){
   .catch(error => console.error('Error:', error));
 }
 function getStatTypes(){
-  fetch("http://127.0.0.1:5000/stats/")
+  fetch("http://127.0.0.1:5000/stats")
   .then(response => response.json())
   .then(data => {
-    console.log(data);
-    return data;
+    var a = data;
+    console.log(a[0]);
+    return a;
   })
   .catch(error => console.error('Error:', error));
 }

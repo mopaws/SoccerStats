@@ -64,7 +64,8 @@ cursor.execute('''
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS statisticTypes (
         statID INTEGER PRIMARY KEY AUTOINCREMENT,
-        statName VARCHAR(50) NOT NULL UNIQUE
+        statName VARCHAR(50) NOT NULL UNIQUE,
+        trackPlayer BOOL
     );
 ''')
 
@@ -94,7 +95,7 @@ def getUser(name, password):
             #otherwise return false if the input was bad or the user isn't in the directory
         return jsonify({'good': False})
     except:
-        print("faild to retrive data")
+        connection.close()
         return jsonify({'good': False})
 
 #adds a user to the users table in the database
@@ -114,7 +115,7 @@ def addUser(name, password):
         return jsonify({'data': True})
     except:
         # if anything broke, return a false result
-        print("faild to insert data")
+        connection.close()
         return jsonify({'data': False})
 
 
@@ -130,7 +131,7 @@ def addGeneralStat(stat, game, num):
         connection.close()
         return jsonify({'data': True})
     except:
-        print("faild to insert data")
+        connection.close()
         return jsonify({'data': False})
 
 @APP.route('/addPlayerStat/<int:stat>/<int:game>/<int:num>/<int:player>')
@@ -145,7 +146,7 @@ def addPlayerStat(stat, game, num, player):
         connection.close()
         return jsonify({'data': True})
     except:
-        print("faild to insert data")
+        connection.close()
         return jsonify({'data': False})
     
 @APP.route('/fetchStats')
@@ -157,30 +158,30 @@ def fechAllStats():
         cursor.execute('SELECT * FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID')
         rows = cursor.fetchall()
         connection.commit()
+        connection.close()
         return jsonify(rows)
     except:
+        connection.close()
         return jsonify({'feched': False})
 
-@APP.route('/newStat/<name>')
-def addNewStat(name):
+@APP.route('/newStat/<name>/<player>')
+def addNewStat(name,player):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM statisticTypes')
         m = cursor.fetchall();
 
-        for l in m:
-            if l[1] == name:
-                return jsonify({'added': False})
-
         cursor.execute('''
-            INSERT INTO statisticTypes (statName)
-            VALUES (?)
-        ''', (name,))
+            INSERT INTO statisticTypes (statName, tPlayer)
+            VALUES (?,?)
+        ''', (name,player,))
          
         connection.commit()
+        connection.close()
         return jsonify({'added':True})
     except:
+        connection.close()
         return jsonify({'added': False})
 
 @APP.route('/stats')
@@ -192,9 +193,12 @@ def stats():
         cursor.execute('SELECT * FROM statisticTypes')
         rows = cursor.fetchall()
         connection.commit()
-        return jsonify(rows)
+        connection.close()
+        return rows
     except:
+        connection.close()
         return jsonify({'feched': False})
+    
 
 if __name__ == '__main__':
     APP.debug=True
