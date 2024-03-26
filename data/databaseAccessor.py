@@ -57,15 +57,18 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS trackedStatistics (
         statID INT NOT NULL,
         gameID INT NOT NULL,
+        numberOf INT,
         playerID INT,
-        numberOf INT
+        notes VARCHAR(667)
     );
 ''')
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS statisticTypes (
         statID INTEGER PRIMARY KEY AUTOINCREMENT,
         statName VARCHAR(50) NOT NULL UNIQUE,
-        tPlayer BOOLEAN
+        tNumber BOOLEAN,
+        tPlayer BOOLEAN,
+        tNotes BOOLEAN
     );
 ''')
 
@@ -119,14 +122,14 @@ def addUser(name, password):
         return jsonify({'data': False})
 
 
-@APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>')
-def addGeneralStat(stat, game, num):
+@APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>/<int:player>/<note>')
+def addGeneralStat(stat, game, num, player, note):
     try:
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf) VALUES (?, ?, ?)", (stat, game, num))
+        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf, playerID, notes) VALUES (?, ?, ?, ?, ?)", (stat, game, num, player, note))
         connection.commit()
         connection.close()
         return jsonify({'data': True})
@@ -142,22 +145,7 @@ def subGeneralStat(stat, game, num):
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, numberOf) VALUES (?, ?, ?)", (stat, game, num))
-        connection.commit()
-        connection.close()
-        return jsonify({'data': True})
-    except:
-        connection.close()
-        return jsonify({'data': False})
-
-@APP.route('/addPlayerStat/<int:stat>/<int:game>/<int:num>/<int:player>')
-def addPlayerStat(stat, game, num, player):
-    try:
-        connection = sqlite3.connect('Soccer.db')
-        # Create a cursor object
-        cursor = connection.cursor()
-
-        cursor.execute("INSERT INTO trackedStatistics (statID, gameID, playerID, numberOf) VALUES (?, ?, ?, ?)", (stat, game, player, num))
+        cursor.execute("DELETE FROM trackedStatistics WHERE statID=? AND gameID=? AND player=?", (stat, game, num))
         connection.commit()
         connection.close()
         return jsonify({'data': True})
@@ -195,14 +183,14 @@ def statByName(name):
         connection.close()
         return jsonify({'feched': False})
 
-@APP.route('/newStat/<name>/<player>')
-def addNewStat(name,player):
+@APP.route('/newStat/<name>/<tnum>/<tplayer>/<tnote>')
+def addNewStat(name,tnum,tplayer,tnote):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
 
         # Check if the statistic type already exists
-        cursor.execute('SELECT * FROM statisticTypes WHERE statName=? AND tPlayer=?', (name, player))
+        cursor.execute('SELECT * FROM statisticTypes WHERE statName=?', (name))
         existing_stat = cursor.fetchone()
 
         if existing_stat:
@@ -210,9 +198,9 @@ def addNewStat(name,player):
 
         # Insert new statistic type
         cursor.execute('''
-            INSERT INTO statisticTypes (statName, tPlayer)
-            VALUES (?, ?)
-        ''', (name, player))
+            INSERT INTO statisticTypes (statName,tnum, tPlayer, tnote)
+            VALUES (?, ?, ?, ?)
+        ''', (name, tnum, tplayer, tnote))
 
         connection.commit()
         connection.close()
