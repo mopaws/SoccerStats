@@ -42,11 +42,11 @@ function createNewUser(name, password){
   .catch(error => console.error('Error:', error));
 }
 
-function addStatType(name,player){
-  fetch("http://127.0.0.1:5000/newStat/" + name + "/" + player)
+function addStatType(name, tnum, tplayer, tnote){
+  fetch("http://127.0.0.1:5000/newStat/" + name + "/" + tnum + "/" + tplayer + "/" + tnote)
   .then(response => response.json())
   .then(data => {
-    console.log("added - maybe");
+    console.log(data);
   })
   .catch(error => console.error('Error:', error));
 }
@@ -68,25 +68,12 @@ function removeFromTracked(id){
   .catch(error => console.error('Error:', error));
 }
 
-function addfinalData(stat, game, num){
-  fetch("http://127.0.0.1:5000/addGeneralStat/" + stat + "/" +game+ "/"+num)
+function subfinalData(id){
+  fetch("http://127.0.0.1:5000/subtractStat/" + id)
   .then(response => response.json())
   .then(data => {
       if(data['data'] == true){
-        console.log(" added to stat id " + stat );
-      }
-      else{
-        console.log("failed");
-      }
-  })
-  .catch(error => console.error('Error:', error));
-}
-function subfinalData(stat, game, num){
-  fetch("http://127.0.0.1:5000/subtractStat/" + stat + "/" +game+ "/"+num)
-  .then(response => response.json())
-  .then(data => {
-      if(data['data'] == true){
-        console.log(" subbed from stat id " + stat );
+        console.log(" subbed from stat ");
       }
       else{
         console.log("failed");
@@ -95,9 +82,9 @@ function subfinalData(stat, game, num){
   .catch(error => console.error('Error:', error));
 }
 
-function addfinalDataPlayer(stat, game, num, player){
+function addfinalData(stat, game, num, player, note){
 
-  fetch("http://127.0.0.1:5000/addPlayerStat/" + stat + "/" +game+ "/"+ num + "/"+player)
+  fetch("http://127.0.0.1:5000/addGeneralStat/" + stat + "/" +game+ "/"+ num + "/"+player + "/"+note)
   .then(response => response.json())
   .then(data => {
     

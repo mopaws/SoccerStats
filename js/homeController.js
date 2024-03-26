@@ -19,14 +19,6 @@ function tryCreateUser(){
   }
 }
 
-function addData(stat,game,num, player){
-  if(player >= 0){
-    addfinalDataPlayer(stat,game,num,player);
-  } else {
-    addfinalData(stat,game,num);
-  }
-}
-
 window.onload = (event) => {
   //access login data fields.
   let pass = document.getElementById("password");

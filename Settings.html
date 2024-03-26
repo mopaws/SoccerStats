@@ -149,8 +149,16 @@
         <form id="statForm">
             <label for="statType">New Stat Type:</label>
             <input type="text" id="statType" name="statType"><br>
-            <label for="trackWithPlayer">Track with Player:</label>
-            <input type="checkbox" id="trackWithPlayer" name="trackWithPlayer">
+            <br/>
+            <label for="num">Track Numeric Value:</label>
+            <input type="checkbox" id="num" name="trackSettingsA">
+            <br/>
+            <label for="play">Associate With Player:</label>
+            <input type="checkbox" id="play" name="trackSettingsB">
+            <br/>
+            <label for="note">Allow For Notes:</label>
+            <input type="checkbox" id="note" name="trackSettingsC">
+            
             <br/>
             <button type="submit">Add</button>
         </form>
@@ -162,7 +170,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Stat Type</th>
-                    <th>Track with Player</th>
+                    <th>Track numeric value</th>
+                    <th>Associate with Player</th>
+                    <th>Allow for notes</th>
                     <th>Remove</th>
                 </tr>
             </thead>
@@ -177,16 +187,17 @@
     document.getElementById("statForm").addEventListener("submit", function(event) {
         event.preventDefault();
         let statType = document.getElementById("statType").value.trim(); // Trim whitespace
-        let trackWithPlayer = document.getElementById("trackWithPlayer").checked;
-        addStatToTable(statType, trackWithPlayer);
+        let numTrack = document.getElementById("num").checked;
+        let playerTrack = document.getElementById("play").checked;
+        let noteTrack = document.getElementById("note").checked;
+        addStatToTable(statType, numTrack, playerTrack, noteTrack);
         document.getElementById("statForm").reset();
     });
 
-    function addStatToTable(statType, trackWithPlayer) {
-        addStatType(statType, trackWithPlayer);
+    function addStatToTable(statType, nm, p, nt) {
+        addStatType(statType, nm, p, nt);
 	    let table = document.getElementById("trackedStats").getElementsByTagName('tbody')[0];
         getStatTypesforTable(table);
-        addStatType(statType, trackWithPlayer);
     }
 
 </script>
@@ -194,6 +205,5 @@
 
 <script src="js/model.js" type="text/javascript"></script>
 <script src="js/viewSettings.js" type="text/javascript"></script>
-<script src="js/controller.js" type="text/javascript"></script>
 </body>
 </html>

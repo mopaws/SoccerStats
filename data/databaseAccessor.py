@@ -55,6 +55,7 @@ cursor.execute('''
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS trackedStatistics (
+        instanceID INTEGER PRIMARY KEY AUTOINCREMENT,
         statID INT NOT NULL,
         gameID INT NOT NULL,
         numberOf INT,
@@ -122,7 +123,7 @@ def addUser(name, password):
         return jsonify({'data': False})
 
 
-@APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>/<int:player>/<note>')
+@APP.route('/addGeneralStat/<int:stat>/<int:game>/<num>/<player>/<note>')
 def addGeneralStat(stat, game, num, player, note):
     try:
         connection = sqlite3.connect('Soccer.db')
@@ -137,15 +138,14 @@ def addGeneralStat(stat, game, num, player, note):
         connection.close()
         return jsonify({'data': False})
 
-@APP.route('/subtractStat/<int:stat>/<int:game>/<int:num>')
-def subGeneralStat(stat, game, num):
+@APP.route('/subtractStat/<int:id>')
+def subGeneralStat(id):
     try: 
-        num = num *-1
         connection = sqlite3.connect('Soccer.db')
         # Create a cursor object
         cursor = connection.cursor()
 
-        cursor.execute("DELETE FROM trackedStatistics WHERE statID=? AND gameID=? AND player=?", (stat, game, num))
+        cursor.execute("DELETE FROM trackedStatistics WHERE instanceID=?", (id,))
         connection.commit()
         connection.close()
         return jsonify({'data': True})
@@ -190,17 +190,14 @@ def addNewStat(name,tnum,tplayer,tnote):
         cursor = connection.cursor()
 
         # Check if the statistic type already exists
-        cursor.execute('SELECT * FROM statisticTypes WHERE statName=?', (name))
+        cursor.execute('SELECT * FROM statisticTypes WHERE statName=?', (name,))
         existing_stat = cursor.fetchone()
 
         if existing_stat:
             return jsonify({'added': False, 'message': 'Statistic type already exists.'})
 
         # Insert new statistic type
-        cursor.execute('''
-            INSERT INTO statisticTypes (statName,tnum, tPlayer, tnote)
-            VALUES (?, ?, ?, ?)
-        ''', (name, tnum, tplayer, tnote))
+        cursor.execute('INSERT INTO statisticTypes (statName, tNumber, tPlayer, tNotes) VALUES (?, ?, ?, ?)', (name, tnum, tplayer, tnote))
 
         connection.commit()
         connection.close()
@@ -238,6 +235,7 @@ def remStat(id):
     except:
         connection.close()
         return jsonify({'removed': False})
+
 
 if __name__ == '__main__':
     APP.debug=True
