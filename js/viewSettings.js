@@ -15,7 +15,7 @@ function getStatTypesforTable(table){
       newRow.insertCell(3).textContent = data[i][3];
       newRow.insertCell(4).textContent = data[i][4];
   
-      if(0 < 2){
+      if(i < 2){
         newRow.insertCell(5).textContent = "unavalable";
       } else {
         var removeButton = document.createElement("button");
