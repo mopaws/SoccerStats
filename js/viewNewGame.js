@@ -17,6 +17,8 @@ function fetchAllData(table){
             let note = data[i][10];
             let player = data[i][9];
 
+            //num? 2 ,player? 3, note? 4
+
             let newRow = table.insertRow();
             let btn = document.createElement("button");
             btn.textContent = "-";
@@ -41,6 +43,10 @@ function fetchAllData(table){
             newRow.insertCell(2).appendChild(btn);
 
             newRow.insertCell(3).textContent = numOf;
+
+            let notefield = document.createElement("input");
+            notefield.style.width = "200px";
+            notefield.style.height = "100px";
         }
    })
    .catch(error => console.error('Error:', error));
