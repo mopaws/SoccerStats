@@ -20,33 +20,55 @@ function fetchAllData(table){
             //num? 2 ,player? 3, note? 4
 
             let newRow = table.insertRow();
-            let btn = document.createElement("button");
-            btn.textContent = "-";
-            btn.onclick = function() {
-                subfinalData(inctanceID);
-                fetchAllData(table);
-            };
-            btn.style.width = "100px";
-            btn.style.height = "100px";
-            newRow.insertCell(0).appendChild(btn);
+            if(data[i][2]){
+                let btn = document.createElement("button");
+                btn.textContent = "-";
+                btn.onclick = function() {
+                    subfinalData(inctanceID);
+                    fetchAllData(table);
+                };
+                btn.style.width = "100px";
+                btn.style.height = "100px";
+                newRow.insertCell().appendChild(btn);
+            }
 
-            newRow.insertCell(1).textContent = name;
+            newRow.insertCell().textContent = name;
 
-            btn = document.createElement("button");
-            btn.textContent = "+";
-            btn.onclick = function() {
-                addfinalData(id,gameId,1);
-                fetchAllData(table);
-            };
-            btn.style.width = "100px";
-            btn.style.height = "100px";
-            newRow.insertCell(2).appendChild(btn);
+            if(data[i][2]){
+                btn = document.createElement("button");
+                btn.textContent = "+";
+                btn.onclick = function() {
+                    addfinalData(id,gameId,1);
+                    fetchAllData(table);
+                };
+                btn.style.width = "100px";
+                btn.style.height = "100px";
+                newRow.insertCell().appendChild(btn);
+            }
 
-            newRow.insertCell(3).textContent = numOf;
+            newRow.insertCell().textContent = numOf;
 
-            let notefield = document.createElement("input");
-            notefield.style.width = "200px";
-            notefield.style.height = "100px";
+            if(data[i][3]){
+                let playerSelect = document.createElement("select");
+                playerSelect.style.width = "100px";
+                playerSelect.style.height = "100px";
+                for(let p = 0; p < 5; p++){ //TODO MAKE THE % INTO THE PLAYER LIST
+                    var op = new Option();
+                    op.value = 1;
+                    op.text = "First entry";
+                    playerSelect.options.add(op);     
+                } 
+            }
+
+            if(data[i][4]){
+                let notefield = document.createElement("input");
+                notefield.style.width = "200px";
+                notefield.style.height = "100px";
+                notefield.onchange = function() {
+                    //TODO make undate for note API call
+                }
+                newRow.insertCell().appendChild(notefield);
+            }
         }
    })
    .catch(error => console.error('Error:', error));
