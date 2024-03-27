@@ -24,6 +24,8 @@ function fetchAllData(table){
                 subfinalData(inctanceID);
                 fetchAllData(table);
             };
+            btn.style.width = "200px";
+            btn.style.height = "200px";
             newRow.insertCell(0).appendChild(btn);
 
             newRow.insertCell(1).textContent = name;
