@@ -7,6 +7,7 @@ function fetchAllData(table){
    .then(response => response.json())
    .then(data => {
         table.innerHTML = "";
+        console.log(data);
         for(let i = 0; i < data.length; i++){
             let id = data[i][0];
             let name = data[i][1];
@@ -17,10 +18,8 @@ function fetchAllData(table){
             let note = data[i][10];
             let player = data[i][9];
 
-            //num? 2 ,player? 3, note? 4
-
             let newRow = table.insertRow();
-            if(data[i][2]){
+            if(data[i][2] == 'true'){
                 let btn = document.createElement("button");
                 btn.textContent = "-";
                 btn.onclick = function() {
@@ -34,7 +33,7 @@ function fetchAllData(table){
 
             newRow.insertCell().textContent = name;
 
-            if(data[i][2]){
+            if(data[i][2] == 'true'){
                 btn = document.createElement("button");
                 btn.textContent = "+";
                 btn.onclick = function() {
@@ -44,31 +43,33 @@ function fetchAllData(table){
                 btn.style.width = "100px";
                 btn.style.height = "100px";
                 newRow.insertCell().appendChild(btn);
+                newRow.insertCell().textContent = numOf;
             }
 
-            newRow.insertCell().textContent = numOf;
+            if(data[i][3] == 'true'){
 
-            if(data[i][3]){
                 let playerSelect = document.createElement("select");
                 playerSelect.style.width = "100px";
-                playerSelect.style.height = "100px";
-                for(let p = 0; p < 5; p++){ //TODO MAKE THE % INTO THE PLAYER LIST
+                playerSelect.style.height = "25px";
+                for(let p = 1; p <= 5; p++){ //TODO MAKE THE 5 INTO THE PLAYER LIST
                     var op = new Option();
-                    op.value = 1;
-                    op.text = "First entry";
+                    op.value = p;
+                    op.text = "Player " + p;
                     playerSelect.options.add(op);     
                 } 
+                newRow.insertCell().appendChild(playerSelect);
             }
 
-            if(data[i][4]){
+            if(data[i][4] == 'true'){
                 let notefield = document.createElement("input");
                 notefield.style.width = "200px";
-                notefield.style.height = "100px";
+                notefield.style.height = "50px";
                 notefield.onchange = function() {
                     //TODO make undate for note API call
                 }
                 newRow.insertCell().appendChild(notefield);
             }
+            
         }
    })
    .catch(error => console.error('Error:', error));

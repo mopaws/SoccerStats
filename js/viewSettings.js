@@ -32,8 +32,8 @@ function getStatTypesforTable(table){
   //.catch(error => console.error('Error:', error));
 }
 window.onload = (event) => {
-  addStatType("Home Goals", true, true, false);
-  addStatType("Opponent Goals", true, true, false);
+  addStatType("Home Goals", true, true, true);
+  addStatType("Opponent Goals", true, true, true);
   getStatTypesforTable(table);
   
 }
