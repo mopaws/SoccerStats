@@ -1,0 +1,13 @@
+#navbar button{
+	border-radius:10px;
+	border-style:none;
+	padding:10px;
+	background-color:#0091C3;
+	min-width:fit-content;
+}
+
+#navbar a{
+	text-decoration: none;
+	color: white;
+}
+
