@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Player</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100vw;
+        padding: 20px;
+        margin-top: 0; 
+    }
+
+    .header {
+        background-color: #29394b;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .form-container {
+        display: grid;
+        grid-template-columns: 150px 1fr; 
+        gap: 10px;
+        align-items: center; 
+    }
+
+    .form-container h2 {
+        margin-top: 0;
+    }
+
+    .form-container label {
+        justify-self: end;
+    }
+
+    .form-container input[type="text"] {
+        width: calc(100% - 150px); 
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+        justify-self: end; 
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Add New Player</h1>
+    </div>
+    <div class="form-container">
+        <h2>Player Information</h2>
+        <form id="playerForm">
+            <label for="playerName">Player Name:</label>
+            <input type="text" id="playerName" name="playerName">
+            <button type="submit">Add Player</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("playerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var playerName = document.getElementById("playerName").value.trim();         addPlayerToList(playerName);
+        document.getElementById("playerForm").reset();
+    });
+
+    function addPlayerToList(playerName) {
+        var playerList = document.getElementById("playerList");
+        var newPlayer = document.createElement("li");
+        newPlayer.textContent = playerName;
+        playerList.appendChild(newPlayer);
+    }
+</script>
+
+</body>
+</html>
