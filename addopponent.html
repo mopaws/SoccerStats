@@ -16,7 +16,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
-        width: 100vw;
+        width: 100vw; 
         padding: 20px;
         margin-top: 0; 
     }
@@ -30,10 +30,9 @@
     }
 
     .form-container {
-        display: grid;
-        grid-template-columns: 150px 1fr; 
-        gap: 10px;
-        align-items: center; 
+        padding: 20px;
+        width: 100%;
+        margin-top: 0;
     }
 
     .form-container h2 {
@@ -41,17 +40,43 @@
     }
 
     .form-container label {
-        justify-self: end;
+        display: inline-block;
+        width: 150px; /* Set width for the label */
+        margin-bottom: 10px;
     }
 
     .form-container input[type="text"] {
-        width: calc(100% - 150px); 
+        width: calc(100% - 170px); /* Adjust width for the input */
         padding: 8px;
+        margin-bottom: 10px;
         box-sizing: border-box;
     }
 
-    button[type="submit"] {
-        justify-self: end; 
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .remove-button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    .remove-button:hover {
+        background-color: #d32f2f;
     }
 </style>
 </head>
@@ -62,29 +87,57 @@
         <h1>Add New Player</h1>
     </div>
     <div class="form-container">
-        <h2>Player Information</h2>
+        <h2>Add New Player</h2>
         <form id="playerForm">
-            <label for="playerName">Player Name:</label>
-            <input type="text" id="playerName" name="playerName">
-            <button type="submit">Add Player</button>
+            <label for="newPlayer">Player Name:</label>
+            <input type="text" id="newPlayer" name="newPlayer"><br>
+            <button type="submit">Add</button>
         </form>
+    </div>
+    <div>
+        <h2 style="text-align: center;">Players</h2>
+        <table id="trackedPlayers">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
     </div>
 </div>
 
 <script>
     document.getElementById("playerForm").addEventListener("submit", function(event) {
         event.preventDefault();
-        var playerName = document.getElementById("playerName").value.trim();         addPlayerToList(playerName);
+        var playerName = document.getElementById("newPlayer").value.trim(); 
+        addPlayerToTable(playerName);
         document.getElementById("playerForm").reset();
     });
 
-    function addPlayerToList(playerName) {
-        var playerList = document.getElementById("playerList");
-        var newPlayer = document.createElement("li");
-        newPlayer.textContent = playerName;
-        playerList.appendChild(newPlayer);
+    function addPlayerToTable(playerName) {
+        var table = document.getElementById("trackedPlayers").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        cell1.textContent = playerName;
+        var cell2 = newRow.insertCell(1);
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.classList.add("remove-button");
+        removeButton.onclick = function() {
+            var rowToRemove = this.parentNode.parentNode;
+            rowToRemove.parentNode.removeChild(rowToRemove);
+        };
+        cell2.appendChild(removeButton);
     }
 </script>
 
 </body>
 </html>
+
+
+
+ 
