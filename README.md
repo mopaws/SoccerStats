@@ -1,12 +1,11 @@
 # [live page](https://0ddsh33p.github.io/SoccerStats)
 
-## backend documentation
+## User documentation
 
-### Adding data to the database
-adding data to the database has been partially set up, but more methods are to come, se the following for deatils on current methods
+### Signing in and user creation
+Signing is is as simple as typeing in either the provided admin username and password or by entering a created student account into the boxes provided on the sign in page.
 
-> the method tryCreateUser() is used to create a new user. It takes no parameters, but looks for 3 fields whith IDs: newName, newPass, confPass
-> the name is the username, the pass is the password, and confpass is used to confirm the password was typed correcty (re-enter password)
+Creating a new user can only be done through an admin account. To do so, sign in with the adim account and navigate to the "add user" tab on the nav bar, then type in the new users desired name, password, and password double check. Before hitting "add user" ensure any desired limits have been added to the user under the viewable option. Hitting add user will create the account and allow the user and password now access the information allowed. 
 
-> the funtion addData() creates a data entry into the trackedstatistics table. it takes 3 or 4 paramaters: statID, gameID, numberOf, and optionally playerID
-> the statID, gameID, and number of refrance the game and specific stat that was added, the number of is how many of the stat were done **THIS SHOULD BE SET TO 1 IN MOST CASES** as it creates a new entry for each score, it does not update and existing entry, so adding more than 1 means that that number of stat were done at once.
+### Starting a game
+Please note, adding a new game requires first signing in with the admin username and password, also, **THIS PAGE MUST BE LOADED WHILE CONNECTED TO WIFI WITH THE DATABASE** once loaded it can be edited offline and away from the database. Start by signing in and navigating to the "new game" tab. Here a popup will be shown with options for teams (set up in the teams page), location and basic info. Continue with this page open to edit any stats during a game. Once the game has completed **DO NOT HIT PUSH GAME TO DATABASE IMMEDIATLY, THE DATA WILL SAVE AUTOMATICALLY**, once you have returned to wifi and connect to the database, then push the data so that other users can sync to it. 
