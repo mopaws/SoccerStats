@@ -19,36 +19,12 @@ function fetchAllData(table){
             let player = data[i][9];
 
             let newRow = table.insertRow();
-            if(data[i][2] == 'true'){
-                let btn = document.createElement("button");
-                btn.textContent = "-";
-                btn.onclick = function() {
-                    subfinalData(inctanceID);
-                    fetchAllData(table);
-                };
-                btn.style.width = "100px";
-                btn.style.height = "100px";
-                newRow.insertCell().appendChild(btn);
-            }
 
             newRow.insertCell().textContent = name;
 
-            if(data[i][2] == 'true'){
-                btn = document.createElement("button");
-                btn.textContent = "+";
-                btn.onclick = function() {
-                    addfinalData(id,gameId,1);
-                    fetchAllData(table);
-                };
-                btn.style.width = "100px";
-                btn.style.height = "100px";
-                newRow.insertCell().appendChild(btn);
-                newRow.insertCell().textContent = numOf;
-            }
-
             if(data[i][3] == 'true'){
 
-                let playerSelect = document.createElement("select");
+                var playerSelect = document.createElement("select");
                 playerSelect.style.width = "100px";
                 playerSelect.style.height = "25px";
                 for(let p = 1; p <= 5; p++){ //TODO MAKE THE 5 INTO THE PLAYER LIST
@@ -61,13 +37,39 @@ function fetchAllData(table){
             }
 
             if(data[i][4] == 'true'){
-                let notefield = document.createElement("input");
+                var notefield = document.createElement("input");
                 notefield.style.width = "200px";
                 notefield.style.height = "50px";
                 notefield.onchange = function() {
                     //TODO make undate for note API call
                 }
                 newRow.insertCell().appendChild(notefield);
+            }
+
+            if(data[i][2] == 'true'){
+                let btn = document.createElement("button");
+                btn.textContent = "remove";
+                btn.onclick = function() {
+                    subfinalData(inctanceID);
+                    fetchAllData(table);
+                };
+                btn.style.width = "100px";
+                btn.style.height = "100px";
+                newRow.insertCell().appendChild(btn);
+
+                btn = document.createElement("button");
+                btn.textContent = "add";
+                btn.onclick = function() {
+                    addfinalData(id,gameId,1,playerSelect.value, notefield.value);
+                    fetchAllData(table);
+
+                    playerSelect.value = null;
+                    notefield.value = "";
+                };
+                btn.style.width = "100px";
+                btn.style.height = "100px";
+                newRow.insertCell().appendChild(btn);
+                newRow.insertCell().textContent = numOf;
             }
             
         }
