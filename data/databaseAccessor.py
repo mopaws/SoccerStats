@@ -123,7 +123,7 @@ def addUser(name, password):
         return jsonify({'data': False})
 
 
-@APP.route('/addGeneralStat/<int:stat>/<int:game>/<num>/<player>/<note>')
+@APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>/<int:player>/<note>')
 def addGeneralStat(stat, game, num, player, note):
     try:
         connection = sqlite3.connect('Soccer.db')
