@@ -18,13 +18,18 @@ function fetchAllData(table){
             let note = data[i][10];
             let player = data[i][9];
 
+            let playerSelect;
+            let playerval;
+            let notefield;
+            let noteval;
+
             let newRow = table.insertRow();
 
             newRow.insertCell().textContent = name;
 
             if(data[i][3] == 'true'){
 
-                var playerSelect = document.createElement("select");
+                playerSelect = document.createElement("select");
                 playerSelect.style.width = "100px";
                 playerSelect.style.height = "25px";
                 for(let p = 1; p <= 5; p++){ //TODO MAKE THE 5 INTO THE PLAYER LIST
@@ -37,7 +42,7 @@ function fetchAllData(table){
             }
 
             if(data[i][4] == 'true'){
-                var notefield = document.createElement("input");
+                notefield = document.createElement("input");
                 notefield.style.width = "200px";
                 notefield.style.height = "50px";
                 notefield.onchange = function() {
@@ -59,11 +64,14 @@ function fetchAllData(table){
 
                 btn = document.createElement("button");
                 btn.textContent = "add";
+                if(playerSelect){
+                    //playerval = ;
+                }
                 btn.onclick = function() {
                     addfinalData(id,gameId,1,playerSelect.value, notefield.value);
                     fetchAllData(table);
 
-                    playerSelect.value = null;
+                    playerSelect.value = 0;
                     notefield.value = "";
                 };
                 btn.style.width = "100px";
