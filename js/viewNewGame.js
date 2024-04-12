@@ -17,6 +17,8 @@ function fetchAllData(table){
             let numOf = data[i][11];
             let note = data[i][10];
             let player = data[i][9];
+            let playerSelect;
+            let notefield;
 
             let playerSelect;
             let playerval;
@@ -68,7 +70,15 @@ function fetchAllData(table){
                     //playerval = ;
                 }
                 btn.onclick = function() {
-                    addfinalData(id,gameId,1,playerSelect.value, notefield.value);
+                    let pd = -1;
+                    if(playerSelect){
+                        pd = playerSelect.value;
+                    }
+                    let nt = "";
+                    if(notefield){
+                        nt = notefield.value;
+                    }
+                    addfinalData(id,gameId,1, pd,nt);
                     fetchAllData(table);
 
                     playerSelect.value = 0;
