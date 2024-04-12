@@ -17,13 +17,9 @@ function fetchAllData(table){
             let numOf = data[i][11];
             let note = data[i][10];
             let player = data[i][9];
-            let playerSelect;
-            let notefield;
 
             let playerSelect;
-            let playerval;
             let notefield;
-            let noteval;
 
             let newRow = table.insertRow();
 
@@ -66,9 +62,7 @@ function fetchAllData(table){
 
                 btn = document.createElement("button");
                 btn.textContent = "add";
-                if(playerSelect){
-                    //playerval = ;
-                }
+
                 btn.onclick = function() {
                     let pd = -1;
                     if(playerSelect){
