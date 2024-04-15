@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Soccer Stats Entry</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+       
+        #header-box {
+            background-color: #29394b;
+            padding: 20px;
+            text-align: center;
+        }
+
+       
+        #home-header {
+            font-weight: 700;
+  	    font-style: normal;
+	    
+            color: white;
+            margin: 0;
+        }
+
+       
+        #add-team-button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: auto;
+        }
+
+       
+        #table-container {
+            display: none; /* Hide the table container by default */
+        }
+
+       
+        #saved-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .saved-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .saved-item p {
+            margin: 10px 0;
+            font-size: 18px; /* Increase the font size for better visibility */
+        }
+
+        .saved-item small {
+            font-size: 20px; /* Increase the font size for better visibility */
+            margin-bottom: 10px; /* Add some space below the level and year */
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+	#navbar button{
+  		border-radius:10px;
+  		border-style:none;
+  		padding:10px;
+  		background-color:#055e8b;
+  		min-width:fit-content;
+	}
+
+	#navbar a{
+		text-decoration: none;
+    		color: white;
+	}
+    </style>
+</head>
+<body>
+
+
+<div id="container">
+    <!-- Header box -->
+    <div id="header-box">
+        <h1 id="home-header">Manage Teams</h1>
+
+	<nav id="navbar">
+    		<button> <a href="index.html">Home</a> </button>
+    		<button> <a href="Opponents.html">Opponents</a> </button>
+		<button> <a href="Past_Games_Page.html">Home Team</a> </button>
+		<button> <a href="PlayerStats.html">New Game</a> </button>
+        	<button> <a href="addNonAdmin.html">Add User</a> </button>
+		<button> <a href="manageTeams.html">Manage Teams</a> </button>
+	</nav>
+    </div>
+
+  
+    <button id="add-team-button" onclick="toggleTable()">Add New Team</button>
+
+    
+    <div id="table-container">
+        <h2>Soccer Stats Entry</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Level</th>
+                    <th>Number of Players</th>
+                    <th>Number of Goals Scored</th>
+                    <th>Number of Games Played</th>
+                    <th>Number of Games Won</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="number" id="year"></td>
+                    <td>
+                        <select id="level">
+                            <option value="JV">JV</option>
+                            <option value="Varsity">Varsity</option>
+                        </select>
+                    </td>
+                    <td><input type="number" id="num-players"></td>
+                    <td><input type="number" id="num-goals"></td>
+                    <td><input type="number" id="num-games"></td>
+                    <td><input type="number" id="num-games-won"></td>
+                    <td><button onclick="saveData()">Save</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+  
+    <div id="saved-data"></div>
+</div>
+
+<script>
+    
+    function toggleTable() {
+        var tableContainer = document.getElementById('table-container');
+
+        if (tableContainer.style.display === 'none') {
+            tableContainer.style.display = 'block';
+        } else {
+            tableContainer.style.display = 'none';
+        }
+    }
+
+   
+    function saveData() {
+        var year = document.getElementById('year').value;
+        var level = document.getElementById('level').value;
+        var numPlayers = document.getElementById('num-players').value;
+        var numGoals = document.getElementById('num-goals').value;
+        var numGames = document.getElementById('num-games').value;
+        var numGamesWon = document.getElementById('num-games-won').value;
+        var savedData = document.getElementById('saved-data');
+
+        var newData = document.createElement('div');
+        newData.className = 'saved-item';
+
+       
+        var yearLevel = document.createElement('small');
+        yearLevel.textContent = level + '  ' + year;
+        newData.appendChild(yearLevel);
+
+        
+        newData.innerHTML += '<p>Players: ' + numPlayers + '</p>';
+        newData.innerHTML += '<p>Goals Scored: ' + numGoals + '</p>';
+        newData.innerHTML += '<p>Games Played: ' + numGames + '</p>';
+        newData.innerHTML += '<p>Games Won: ' + numGamesWon + '</p>';
+
+        
+        savedData.appendChild(newData);
+
+   
+        document.getElementById('year').value = '';
+        document.getElementById('num-players').value = '';
+        document.getElementById('num-goals').value = '';
+        document.getElementById('num-games').value = '';
+        document.getElementById('num-games-won').value = '';
+
+      
+        document.getElementById('table-container').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
+                   

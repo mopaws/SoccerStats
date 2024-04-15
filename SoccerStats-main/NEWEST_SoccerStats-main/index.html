@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+    		<title>DRHS Soccer Stats</title>
+    		<link rel="stylesheet" type="text/css" href="css/style.css">
+  	</head>
+  
+  
+  <body>
+      
+    <header>
+        <h1>DRHS Soccer</h1>
+        <h5>Stats Tracker</h5>
+        <nav>
+     		<button> <a href="Opponents.html">Opponents</a> </button>
+		<button> <a href="Past_Games_Page.html">Home Team</a> </button>
+		<button onclick=showPopup()> <h7>New Game</h7></button>
+        	<button> <a href="addNonAdmin.html">Add User</a> </button>
+		<button> <a href="Settings.html">Settings</a> </button>
+		<button> <a href="manageTeams.html">Manage Teams</a> </button>
+
+	 	<dialog id="popup">
+			<h2>New Game</h2>
+			<form id="gameDeets" action="PlayerStats.html" onsubmit=getData()>
+				<select id="oppSelect">
+					<option>Team1</option>
+					<option>Team2</option>
+				</select></br>
+				<input id="dateSelect" type="date" name="group1"></br>
+				<input type="radio" name="loc" value="Home">Home
+				<input type="radio" name="loc" value="Away">Away</br>
+				<input type="radio" name="type" value="Game">Game
+				<input type="radio" name="type" value="Scrimmage">Scrimmage</br>
+				<button type="submit">Done</button>
+				<button type="button" onclick=closePopup()>Close</button>
+			</form>
+				
+		</dialog>
+	</nav>
+    </header>
+      
+    <div id="wrapper">
+    <div id="loginBox">
+	
+      <input type="text", id="username"/>
+      <input type="text", id="password"/>
+    
+      <input type="checkbox", id="keepLogin"/>
+
+      <button id="tryLogin", onclick="tryToLogin()">Login</button>
+    </div>
+    </div>
+
+    <script src="js/model.js" type="text/javascript"></script>
+    <script src="js/view.js" type="text/javascript"></script>
+    <script src="js/homeController.js" type="text/javascript"></script>
+  </body>
+
+  <script>
+    const popup = document.getElementById("popup")
+
+    function showPopup(){
+	popup.showModal()
+    }
+
+    function closePopup(){
+	popup.close()
+    }
+
+    function getData(){
+	console.log("IT WORKS")
+
+        var opp = document.getElementById("oppSelect").value;
+	localStorage.setItem("oppVal", opp);
+
+        var dte = document.getElementById("dateSelect").value;
+	localStorage.setItem("dateVal", dte);
+
+	var locs = document.getElementsByName('loc');
+        for (i = 0; i < locs.length; i++) {
+          if (locs[i].checked){
+            var loc = locs[i].value;
+      	    localStorage.setItem("locVal", loc);
+	  }
+        }
+
+    }
+
+    /*
+    function populateSelect(selectId, sList) {
+    let sel = document.getElementById(selectId, sList)
+    for (let s of sList) {
+        let opt = document.createElement("option")
+        opt.value = s
+        opt.innerHTML = s
+        sel.appendChild(opt)
+    }
+    }
+    */
+  </script>
+</html>
+  
