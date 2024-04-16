@@ -152,6 +152,54 @@ body {
 
 <script src="js/model.js" type="text/javascript"></script>
 <script src="js/viewNewGame.js" type="text/javascript"></script>
+<script>
+	document.getElementById("opp").innerHTML=localStorage.getItem("oppVal");
+	document.getElementById("date").innerHTML=localStorage.getItem("dateVal");
+	document.getElementById("loc").innerHTML=(localStorage.getItem("locVal"))+" Game";
+
+</script>
+
+<script>
+function storeGame(){
+
+	var date =localStorage.getItem("dateVal");
+	var opponent =localStorage.getItem("oppVal");
+	
+	if((localStorage.getItem("locVal"))=="Home"){
+		var loc = true;
+	}else if((localStorage.getItem("locVal"))=="Away"){
+		var loc = false;
+	}else{
+		var loc = '???';
+	}
+
+	fetch("http://127.0.0.1:5000/statByName/Home Goals")
+    	.then(response => response.json())
+	.then(stat => {
+               	var hpts = stat[0];
+	})
+        .catch(error => console.error('Error:', error));
+	
+	fetch("http://127.0.0.1:5000/statByName/Opponent Goals")
+    	.then(response => response.json())
+	.then(stat2 => {
+               	var apts = stat2[0];
+	})
+        .catch(error => console.error('Error:', error));
+
+	if(hpts>apts){
+		var res = 1;
+	}else if(hpts<apts){
+		var res = -1;
+	}else if(hpts==apts){
+		var res = 0;
+	}
+
+	fetch("http://127.0.0.1:5000//newGame/date/opponent/loc/hpts/apts/res")
+	//Maybe also clear localStorage?
+
+}
+</script>
    
 </body>
 </html>
