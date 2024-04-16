@@ -72,7 +72,7 @@ input,button,button *{
   
   min-width:fit-content;
 }
-button:hover,button:hover a, input:hover{
+button:hover,button:hover *, input:hover{
   background:#064e72;
 }
 
