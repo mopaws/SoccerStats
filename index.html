@@ -93,6 +93,14 @@
 	  }
         }
 
+	var types = document.getElementsByName('type');
+        for (i = 0; i < types.length; i++) {
+          if (types[i].checked){
+            var type = types[i].value;
+      	    localStorage.setItem("typeVal", type);
+	  }
+        }
+
     }
 
     /* For populating the Opponents (needs to be fixed)
