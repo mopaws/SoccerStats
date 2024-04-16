@@ -46,9 +46,20 @@ cursor.execute('''
         notes VARCHAR(1000)
     );
 ''')
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS opponent (
+        OppID INTEGER PRIMARY KEY AUTOINCREMENT,
+        teamName VARCHAR(50),
+        notes VARCHAR(1000)
+    );
+''')
+
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS team (
+        teamID INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(50) NOT NULL UNIQUE,
+        year VARCHAR(50) NOT NULL UNIQUE,
         notes VARCHAR(1000)
     );
 ''')
