@@ -63,16 +63,15 @@ a{
   
 }
 
-input,button,a{
+input,button,button *{
   border-radius:10px;
   border-style:none;
   padding:10px;
 
-  background-color:#0091C3;
+  background-color:#055e8b;
   
   min-width:fit-content;
 }
-
 button:hover,button:hover a, input:hover{
   background:#064e72;
 }
