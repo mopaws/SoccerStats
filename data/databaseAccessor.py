@@ -121,6 +121,23 @@ def addUser(name, password):
         # if anything broke, return a false result
         connection.close()
         return jsonify({'data': False})
+        
+@APP.route('/newGame/<date>/<opp>/<home>/<hpts>/<apts>/<result>')
+def addNewGame(date,opp,home,hpts,apts,result):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        # Insert new statistic type
+        cursor.execute('INSERT INTO game (dateOfGame,opponent,homeGame,homePoints,opponentPoints,outcome) VALUES (?, ?, ?, ?, ?, ?)', (date,opp,home,hpts,apts,result))
+
+        connection.commit()
+        connection.close()
+        return jsonify({'added': True, 'message': 'ADDED!!'})
+    except sqlite3.Error as e:
+        print("Error:", e)
+        connection.close()
+        return jsonify({'added': False, 'message': 'Database error.'})
 
 
 @APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>/<int:player>/<note>')
