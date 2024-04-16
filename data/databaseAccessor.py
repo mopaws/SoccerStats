@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, url_for, redirect
 from flask_cors import CORS
 
 # Create the application.
@@ -121,23 +121,6 @@ def addUser(name, password):
         # if anything broke, return a false result
         connection.close()
         return jsonify({'data': False})
-        
-@APP.route('/newGame/<date>/<opp>/<home>/<hpts>/<apts>/<result>')
-def addNewGame(date,opp,home,hpts,apts,result):
-    try:
-        connection = sqlite3.connect('Soccer.db')
-        cursor = connection.cursor()
-
-        # Insert new statistic type
-        cursor.execute('INSERT INTO game (dateOfGame,opponent,homeGame,homePoints,opponentPoints,outcome) VALUES (?, ?, ?, ?, ?, ?)', (date,opp,home,hpts,apts,result))
-
-        connection.commit()
-        connection.close()
-        return jsonify({'added': True, 'message': 'ADDED!!'})
-    except sqlite3.Error as e:
-        print("Error:", e)
-        connection.close()
-        return jsonify({'added': False, 'message': 'Database error.'})
 
 
 @APP.route('/addGeneralStat/<int:stat>/<int:game>/<int:num>/<int:player>/<note>')
@@ -253,6 +236,45 @@ def remStat(id):
         connection.close()
         return jsonify({'removed': False})
 
+
+
+
+
+
+
+
+@APP.route("/")
+@APP.route("/index")
+def indexPage():
+    return render_template('index.html')
+
+@APP.route("/NewGame")
+def newGamePage():
+    return render_template('newGame.html')
+
+@APP.route("/addUser")
+def addUserPage():
+    return render_template('addNonAdmin.html')
+
+@APP.route("/addOpponent")
+def addOpponentPage():
+    return render_template('addopponent.html')
+
+@APP.route("/manageteams")
+def manageteamsPage():
+    return render_template('manageTeams.html')
+
+@APP.route("/Opponents")
+def OpponentsPage():
+    return render_template('Opponents.html')
+    
+@APP.route("/Settings")
+def SettingsPage():
+    return render_template('Settings.html')
+
+@APP.route("/home")    
+def home():
+    return render_template('Past_Games_Page.html')
 
 if __name__ == '__main__':
     APP.debug=True
