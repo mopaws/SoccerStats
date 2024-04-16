@@ -155,7 +155,12 @@ body {
 <script>
 	document.getElementById("opp").innerHTML=localStorage.getItem("oppVal");
 	document.getElementById("date").innerHTML=localStorage.getItem("dateVal");
-	document.getElementById("loc").innerHTML=(localStorage.getItem("locVal"))+" Game";
+	
+	if(localStorage.getItem("typeVal")=="Game"){
+		document.getElementById("loc").innerHTML=(localStorage.getItem("locVal"))+" Game";
+	}else if(localStorage.getItem("typeVal")=="Scrimmage"){
+		document.getElementById("loc").innerHTML=(localStorage.getItem("locVal"))+" Game (Scrimmage)";
+	}
 
 </script>
 
