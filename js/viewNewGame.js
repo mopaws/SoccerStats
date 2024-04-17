@@ -1,10 +1,16 @@
 var table = document.getElementById('data');
 var scores = document.getElementById('scores');
 fetchAllData(table);
+var myStats = [];
 
-if(!localStorage.getItem("newStats")){
-    var myStats = [];
-    localStorage.setItem("newStats",myStats);
+if(!localStorage.getItem("gameID")){
+    fetch("http://127.0.0.1:5000/getGames")
+    .then(response => response.json())
+    .then(data => {
+        localStorage.setItem("gameID",data[0][0]+1);
+    })
+    .catch(error => console.error('Error:', error));
+    
 }
 
 function fetchAllData(table){
@@ -17,7 +23,7 @@ function fetchAllData(table){
             let id = data[i][0];
             let name = data[i][1];
             let inctanceID = data[i][5]
-            let gameId = 1; // TODO MAKE THIS AN ACTUAL GAME 
+            let gameId = localStorage.getItem("gameID");
 
             let numOf = data[i][11];
             let note = data[i][10];
@@ -74,10 +80,9 @@ function fetchAllData(table){
                     if(notefield){
                         nt = notefield.value;
                     }
-                    if(!localStorage.getItem("newStats")){
-                        var myStats = [];
-                        localStorage.setItem("newStats",myStats);
-                    }
+
+                    myStats.push([id,gameId,1,pd,nt])
+                    localStorage.setItem("newStats",myStats);
                     addfinalData(id,gameId,1, pd,nt);
                     fetchAllData(table);
 
@@ -109,3 +114,20 @@ function fetchAllData(table){
     .catch(error => console.error('Error:', error));
 }
 
+function pushAll(){
+    for(let i = 0; i< localStorage.getItem("newStats").length; i ++){
+        addfinalData(localStorage.getItem("newStats")[i][0],
+        localStorage.getItem("newStats")[i][1],
+        localStorage.getItem("newStats")[i][2],
+        localStorage.getItem("newStats")[i][3],
+        localStorage.getItem("newStats")[i][4]);
+    }
+
+    localStorage.removeItem("newStats");
+    localStorage.removeItem("oppVal");
+    localStorage.removeItem("dateVal");
+    localStorage.removeItem("locVal");
+    localStorage.removeItem("typeVal");
+    localStorage.removeItem("gameID");
+
+}
