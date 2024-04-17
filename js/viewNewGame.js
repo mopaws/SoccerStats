@@ -2,6 +2,11 @@ var table = document.getElementById('data');
 var scores = document.getElementById('scores');
 fetchAllData(table);
 
+if(!localStorage.getItem("newStats")){
+    var myStats = [];
+    localStorage.setItem("newStats",myStats);
+}
+
 function fetchAllData(table){
     fetch("http://127.0.0.1:5000/fetchStats")
    .then(response => response.json())
@@ -43,9 +48,6 @@ function fetchAllData(table){
                 notefield = document.createElement("input");
                 notefield.style.width = "200px";
                 notefield.style.height = "50px";
-                notefield.onchange = function() {
-                    //TODO make undate for note API call
-                }
                 newRow.insertCell().appendChild(notefield);
             }
 
@@ -71,6 +73,10 @@ function fetchAllData(table){
                     let nt = "";
                     if(notefield){
                         nt = notefield.value;
+                    }
+                    if(!localStorage.getItem("newStats")){
+                        var myStats = [];
+                        localStorage.setItem("newStats",myStats);
                     }
                     addfinalData(id,gameId,1, pd,nt);
                     fetchAllData(table);

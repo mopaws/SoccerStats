@@ -83,7 +83,6 @@ function subfinalData(id){
 }
 
 function addfinalData(stat, game, num, player, note){
-
   fetch("http://127.0.0.1:5000/addGeneralStat/" + stat + "/" +game+ "/"+ num + "/"+player + "/"+note)
   .then(response => response.json())
   .then(data => {
@@ -97,4 +96,3 @@ function addfinalData(stat, game, num, player, note){
   })
   .catch(error => console.error('Error:', error));
 }
-
