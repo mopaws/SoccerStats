@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, jsonify, render_template, url_for, redirect
+from flask import Flask, jsonify
 from flask_cors import CORS
 
 # Create the application.
@@ -193,6 +193,21 @@ def statByName(name):
     except:
         connection.close()
         return jsonify({'feched': False})
+    
+@APP.route('/getGames')
+def getGames():
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+        
+        cursor.execute('SELECT * FROM game ORDER BY gameID')
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
 
 @APP.route('/newStat/<name>/<tnum>/<tplayer>/<tnote>')
 def addNewStat(name,tnum,tplayer,tnote):
@@ -246,46 +261,6 @@ def remStat(id):
     except:
         connection.close()
         return jsonify({'removed': False})
-
-
-
-
-
-
-
-
-@APP.route("/")
-@APP.route("/index")
-def indexPage():
-    return render_template('index.html')
-
-@APP.route("/NewGame")
-def newGamePage():
-    return render_template('newGame.html')
-
-@APP.route("/addUser")
-def addUserPage():
-    return render_template('addNonAdmin.html')
-
-@APP.route("/addOpponent")
-def addOpponentPage():
-    return render_template('addopponent.html')
-
-@APP.route("/manageteams")
-def manageteamsPage():
-    return render_template('manageTeams.html')
-
-@APP.route("/Opponents")
-def OpponentsPage():
-    return render_template('Opponents.html')
-    
-@APP.route("/Settings")
-def SettingsPage():
-    return render_template('Settings.html')
-
-@APP.route("/home")    
-def home():
-    return render_template('Past_Games_Page.html')
 
 if __name__ == '__main__':
     APP.debug=True
