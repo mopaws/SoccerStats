@@ -176,6 +176,21 @@ def fechAllStats(game):
         connection.close()
         return jsonify({'feched': False})
 
+@APP.route('/getEntries/<int:game>')
+def getEntries(game):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM trackedStatistics AS stats JOIN statisticTypes As types ON stats.statID == types.statID WHERE gameID =?', (game,))
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
+
 @APP.route('/statByName/<name>')
 def statByName(name):
     try:
