@@ -237,7 +237,7 @@ def getGames():
         return jsonify({'feched': False})
     
 @APP.route('/newGame/<date>/<opponent>/<location>')
-def addNewStat(date,opponent,location):
+def newGame(date,opponent,location):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
@@ -254,7 +254,7 @@ def addNewStat(date,opponent,location):
         return jsonify({'added': False, 'message': 'Database error.'})
 
 @APP.route('/newStat/<name>/<tnum>/<tplayer>/<tnote>')
-def newGame(name,tnum,tplayer,tnote):
+def addNewStat(name,tnum,tplayer,tnote):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
