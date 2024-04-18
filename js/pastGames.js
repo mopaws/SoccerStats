@@ -12,6 +12,7 @@ function buildPage(){
         }
     })
     .catch(error => console.error('Error:', error));
+    fillData(1);
 }
 function fillData(id){
     gameData.innerHTML = "";
@@ -55,5 +56,4 @@ function fillData(id){
 }
 
 buildPage();
-fillData(1);
 

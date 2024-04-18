@@ -7,7 +7,11 @@ if(!localStorage.getItem("gameID")){
     fetch("http://127.0.0.1:5000/getGames")
     .then(response => response.json())
     .then(data => {
-        localStorage.setItem("gameID",data[0][0]+1);
+        if(data[0]){
+            localStorage.setItem("gameID",data[0][0]+1);
+        } else {
+            localStorage.setItem("gameID",1);
+        }
     })
     .catch(error => console.error('Error:', error));
     
@@ -128,7 +132,7 @@ function fetchAllData(table){
 
 function pushAll(){
     localStorage.setItem("done", true);
-    for(let i = 0; i< localStorage.getItem("newStats").length; i ++){
+    /*for(let i = 0; i< localStorage.getItem("newStats").length; i ++){
         addfinalData(localStorage.getItem("newStats")[i][0],
         localStorage.getItem("newStats")[i][1],
         localStorage.getItem("newStats")[i][2],
@@ -142,5 +146,6 @@ function pushAll(){
     localStorage.removeItem("locVal");
     localStorage.removeItem("typeVal");
     localStorage.removeItem("gameID");
+    */
 
 }
