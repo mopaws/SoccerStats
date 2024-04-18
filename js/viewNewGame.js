@@ -3,19 +3,9 @@ var scores = document.getElementById('scores');
 fetchAllData(table);
 var myStats = [];
 
-if(!localStorage.getItem("gameID")){
-    fetch("http://127.0.0.1:5000/getGames")
-    .then(response => response.json())
-    .then(data => {
-        if(data[0]){
-            localStorage.setItem("gameID",data[0][0]+1);
-        } else {
-            localStorage.setItem("gameID",1);
-        }
-    })
-    .catch(error => console.error('Error:', error));
+
     
-}
+
 
 function fetchAllData(table){
     fetch("http://127.0.0.1:5000/fetchStatsGameless")
@@ -131,6 +121,7 @@ function fetchAllData(table){
 }
 
 function pushAll(){
+    localStorage.removeItem("gameID");
     localStorage.setItem("done", true);
     /*for(let i = 0; i< localStorage.getItem("newStats").length; i ++){
         addfinalData(localStorage.getItem("newStats")[i][0],
@@ -145,7 +136,6 @@ function pushAll(){
     localStorage.removeItem("dateVal");
     localStorage.removeItem("locVal");
     localStorage.removeItem("typeVal");
-    localStorage.removeItem("gameID");
     */
 
 }

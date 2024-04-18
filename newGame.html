@@ -207,6 +207,17 @@ body {
       .catch(error => console.error('Error:', error));
       //Maybe also clear localStorage?
       localStorage.setItem("done", false);
+
+      fetch("http://127.0.0.1:5000/getGames")
+      .then(response => response.json())
+      .then(data => {
+        if(data[0]){
+            localStorage.setItem("gameID",data[0][0]);
+        } else {
+            localStorage.setItem("gameID",1);
+        }
+      })
+      .catch(error => console.error('Error:', error));
     
   }
 
