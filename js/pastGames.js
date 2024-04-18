@@ -18,8 +18,37 @@ function fillData(id){
     fetch("http://127.0.0.1:5000/fetchStats/" + id)
    .then(response => response.json())
    .then(data => {
-        for(let i = 0; i < data.length; i++){
-            let name = data[i][7];
+        for(let j = 0; j < data.length; j++){
+            let row = gameData.insertRow();
+            let cell = row.insertCell();
+            cell.innerHTML = "<b>"+data[j][1]+"</b>";
+            cell = row.insertCell();
+            cell.innerHTML = "<b>"+data[j][11]+"</b>";
+
+            fetch("http://127.0.0.1:5000/getEntries/"+id)
+            .then(response => response.json())
+            .then(data2 => {
+                for(let i = 0; i < data2.length; i++){
+                    if(data2[i][1] == data[j][0]){
+                        row = gameData.insertRow();
+
+                        cell = row.insertCell();
+
+                        if(data2[i][4]){
+                            cell = row.insertCell();
+                            cell.innerHTML = "<p>player: " + data2[i][4] + "</p>";
+                        }
+
+                        cell.innerHTML = "<p>number: " + data2[i][3] + "</p>";
+
+                        if(data2[i][5]){
+                            cell = row.insertCell();
+                            cell.innerHTML = "<p>note: " + data2[i][5] + "</p>";
+                        }
+                    }
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
     })
     .catch(error => console.error('Error:', error));
