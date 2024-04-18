@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/navbar.css">
+<style>
+body {
+  font-family: navigo, sans-serif;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #29394b;
+  color: white;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #29394b;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.item1 { grid-area: header; }
+.item2 { grid-area: score; }
+.item3 { grid-area: date; }
+.item4 { grid-area: type; }
+.item5 {
+  grid-area: opponent;
+  font-weight: bold;
+}
+.item6 { grid-area: subheader; }
+.item7 { grid-area: category; }
+.item8 { grid-area: value; }
+.item9 { grid-area: category2; }
+.item10 { grid-area: value2; }
+.item11 { grid-area: category3; }
+.item12 { grid-area: value3; }
+.item13 { grid-area: category4; }
+.item14 { grid-area: value4; }
+.item15 { grid-area: category5; }
+.item16 { grid-area: value5; }
+.item17 { grid-area: category6; }
+.item18 { grid-area: value6; }
+
+.item3 h3, .item4 h3 {
+  justify-self: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'score score date type type'
+    'score score opponent opponent opponent'
+    'subheader subheader subheader subheader subheader'
+    'category category category category category'
+    'category2 category2 category2 category2 category2'
+    'category3 category3 category3 category3 category3'
+    'category4 category4 category4 category4 category4'
+    'category5 category5 category5 category5 category5'
+    'category6 category6 category6 category6 category6';
+  gap: 10px;
+  background-color: #29394b;
+  padding: 10px;
+  margin: 0 auto; /* Center horizontally */
+  font-size: 28px;
+}
+
+.grid-container > div {
+  background-color: #0091C3;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  border-radius: 10px;
+}
+
+#header-box {
+  background-color: #29394b;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div id="header-box">
+ <nav id="navbar">
+    <button> <a href="index.html">Login</a> </button>
+    <button> <a href="Opponents.html">Opponents</a> </button>
+    <button> <a href="Past_Games_Page.html">Home </a> </button>
+    <button> <a href="newGame.html">New Game</a> </button>
+    <button> <a href="addNonAdmin.html">Add User</a> </button>
+    <button> <a href="manageTeams.html">Manage Teams</a> </button>
+    <button> <a href="Settings.html">Settings</a> </button>
+    <button> <a href="addopponent.html">Add Opponent</a> </button>
+  </nav>
+</div>
+
+<div class="grid-container">
+  <div class="item1">
+    <h2>Team Name</h2>
+  </div>
+  <div class="item2">
+    <h3>Games Won</h3>
+  </div>
+  <div class="item3">
+    <h3>Games Tied</h3>
+  </div>  
+  <div class="item4">
+    <h3>Games Lost</h3>
+  </div>
+  <div class="item6">
+    <h3>Total Games Played</h3>
+  </div>
+  <div class="item7">
+<h3> Notes</h3></div>
+</div>
+   
+</body>
+</html>
