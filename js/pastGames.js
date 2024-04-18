@@ -14,8 +14,8 @@ function buildPage(){
     .catch(error => console.error('Error:', error));
 }
 function fillData(id){
-
-    fetch("http://127.0.0.1:5000/getEntries/"+id)
+    gameData.innerHTML = "";
+    fetch("http://127.0.0.1:5000/fetchStats/" + id)
    .then(response => response.json())
    .then(data => {
         for(let i = 0; i < data.length; i++){
@@ -26,4 +26,5 @@ function fillData(id){
 }
 
 buildPage();
+fillData(1);
 

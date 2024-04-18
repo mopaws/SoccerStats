@@ -14,18 +14,18 @@ if(!localStorage.getItem("gameID")){
 }
 
 function fetchAllData(table){
-    fetch("http://127.0.0.1:5000/fetchStats/" + localStorage.getItem("gameID"))
+    fetch("http://127.0.0.1:5000/fetchStatsGameless")
    .then(response => response.json())
    .then(data => {
         table.innerHTML = "";
         console.log(data);
         for(let i = 0; i < data.length; i++){
             let id = data[i][0];
-            let name = data[i][1];
+            var name = data[i][1];
             let inctanceID = data[i][5]
-            let gameId = localStorage.getItem("gameID");
+            var gameId = localStorage.getItem("gameID");
+          
 
-            let numOf = data[i][11];
             let note = data[i][10];
             let player = data[i][9];
 
@@ -41,7 +41,7 @@ function fetchAllData(table){
                 playerSelect = document.createElement("select");
                 playerSelect.style.width = "100px";
                 playerSelect.style.height = "25px";
-                for(let p = 1; p <= 5; p++){ //TODO MAKE THE 5 INTO THE PLAYER LIST
+                for(let p = 1; p <= 30; p++){ //TODO MAKE THE 5 INTO THE PLAYER LIST
                     var op = new Option();
                     op.value = p;
                     op.text = "Player " + p;
@@ -54,6 +54,7 @@ function fetchAllData(table){
                 notefield = document.createElement("input");
                 notefield.style.width = "200px";
                 notefield.style.height = "50px";
+                notefield.value = "";
                 newRow.insertCell().appendChild(notefield);
             }
 
@@ -76,7 +77,7 @@ function fetchAllData(table){
                     if(playerSelect){
                         pd = playerSelect.value;
                     }
-                    let nt = "";
+                    let nt = "-";
                     if(notefield){
                         nt = notefield.value;
                     }
@@ -86,13 +87,24 @@ function fetchAllData(table){
                     addfinalData(id,gameId,1, pd,nt);
                     fetchAllData(table);
 
-                    playerSelect.value = 0;
-                    notefield.value = "";
+                    if(playerSelect){
+                        playerSelect.value = 0;
+                    } 
+                    if (notefield){
+                        notefield.value = "";
+                    }
                 };
                 btn.style.width = "100px";
                 btn.style.height = "100px";
                 newRow.insertCell().appendChild(btn);
-                newRow.insertCell().textContent = numOf;
+                if(data[i][2] == 'true'){
+                    fetch("http://127.0.0.1:5000/statByName/"+name+"/"+gameId)
+                    .then(response => response.json())
+                    .then(data => {
+                        newRow.insertCell().textContent = data[0];
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
             }
             
         }
@@ -100,10 +112,10 @@ function fetchAllData(table){
    .catch(error => console.error('Error:', error));
    
 
-   fetch("http://127.0.0.1:5000/statByName/Home Goals")
+   fetch("http://127.0.0.1:5000/statByName/Home Goals/"+localStorage.getItem("gameID"))
     .then(response => response.json())
     .then(data => {
-        fetch("http://127.0.0.1:5000/statByName/Opponent Goals")
+        fetch("http://127.0.0.1:5000/statByName/Opponent Goals/"+localStorage.getItem("gameID"))
         .then(response => response.json())
         .then(data2 => {
 

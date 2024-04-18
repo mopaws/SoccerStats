@@ -175,6 +175,21 @@ def fechAllStats(game):
     except:
         connection.close()
         return jsonify({'feched': False})
+    
+@APP.route('/fetchStatsGameless')
+def fechStats():
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT *, SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID Group by types.statID')
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
 
 @APP.route('/getEntries/<int:game>')
 def getEntries(game):
@@ -191,13 +206,13 @@ def getEntries(game):
         connection.close()
         return jsonify({'feched': False})
 
-@APP.route('/statByName/<name>')
-def statByName(name):
+@APP.route('/statByName/<name>/<game>')
+def statByName(name, game):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
         
-        cursor.execute('SELECT SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID WHERE statName =?',(name,))
+        cursor.execute('SELECT SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID WHERE statName =? AND gameID =?',(name,game,))
         rows = cursor.fetchall()
         connection.commit()
         connection.close()
