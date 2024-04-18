@@ -1,161 +1,163 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/navbar.css">
-<style>
-h1 {text-align: center;}
-body {
-  font-family: navigo, sans-serif;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #29394b;
-  color: white;
-}
-
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #29394b;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
-  display: block;
-}
-
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.item1 { grid-area: header; }
-.item2 { grid-area: score; }
-.item3 { grid-area: date; }
-.item4 { grid-area: type; }
-.item5 {
-  grid-area: opponent;
-  font-weight: bold;
-}
-.item6 { grid-area: subheader; }
-.item7 { grid-area: category; }
-.item8 { grid-area: value; }
-.item9 { grid-area: category2; }
-.item10 { grid-area: value2; }
-.item11 { grid-area: category3; }
-.item12 { grid-area: value3; }
-.item13 { grid-area: category4; }
-.item14 { grid-area: value4; }
-.item15 { grid-area: category5; }
-.item16 { grid-area: value5; }
-.item17 { grid-area: category6; }
-.item18 { grid-area: value6; }
-
-.item3 h3, .item4 h3 {
-  justify-self: center;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'header header header header header'
-    'score score date type type'
-    'score score opponent opponent opponent'
-    'subheader subheader subheader subheader subheader'
-    'category category category category value'
-    'category2 category2 category2 category2 value2'
-    'category3 category3 category3 category3 value3'
-    'category4 category4 category4 category4 value4'
-    'category5 category5 category5 category5 value5'
-    'category6 category6 category6 category6 value6';
-  gap: 10px;
-  background-color: #29394b;
-  padding: 10px;
-  margin-left: 160px;
-  font-size: 28px;
-  justify-self: center;
-}
-
-.grid-container > div {
-  background-color: #0091C3;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-  border-radius: 10px;
-}
-#header-box {
-            background-color: #29394b;
-            padding: 20px;
-            text-align: center;
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+    h1 {text-align: center;}
+    body {
+      font-family: navigo, sans-serif;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #29394b;
+      color: white;
     }
-</style>
-</head>
-<body>
-<div id="header-box">
- <nav id="navbar">
-    		<button> <a href="index.html">Login</a> </button>
-    		<button> <a href="Opponents.html">Opponents</a> </button>
-		<button> <a href="Past_Games_Page.html">Home </a> </button>
-		<button> <a href="newGame.html">New Game</a> </button>
-        	<button> <a href="addNonAdmin.html">Add User</a> </button>
-		<button> <a href="manageTeams.html">Manage Teams</a> </button>
-		<button> <a href="Settings.html">Settings</a> </button>
-		<button> <a href="addopponent.html">Add Opponent</a> </button>
-	</nav>
-</div>
-<div class="sidenav">
-  <a href="#sample">3/15/24 Glen Allen High School</a>
-  <a href="#sample">3/8/24 Godwin High School</a>
-  <a href="#sample">3/1/24 Maggie Walker High School</a>
-  <a href="#sample">2/23/24 Tucker High School</a>
-</div>
 
-<div class="grid-container">
-  <div class="item1">
-    <h2>Past Games</h2>
-  </div>
-  <div class="item2">
-    <h3>Score</h3>
-    <h3>X - X</h3>
-  </div>
-  <div class="item3">
-    <h3>2/27/24</h3>
-  </div>  
-  <div class="item4">
-    <h3>Away Game</h3>
-  </div>
-  <div class="item5">Freeman High School</div>
-  <div class="item6">
-    <h3>All Stats</h3>
-  </div>
-  <div class="item7">Corners - Home</div>
-  <div class="item8">0</div>
-  <div class="item9">Corners - Away</div>
-  <div class="item10">0</div>
-  <div class="item11">Goal Kicks - Home</div>
-  <div class="item12">0</div>
-  <div class="item13">Goal Kicks - Away</div>
-  <div class="item14">0</div>
-  <div class="item15">Fouls - Home</div>
-  <div class="item16">0</div>
-  <div class="item17">Fouls - Away</div>
-  <div class="item18">0</div>
-</div>
-   
-</body>
+    .sidenav {
+      height: 100%;
+      width: 160px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #29394b;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+    }
+
+    .main {
+      margin-left: 160px; /* Same as the width of the sidenav */
+      font-size: 28px; /* Increased text to enable scrolling */
+      padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+    .item1 { grid-area: header; }
+    .item2 { grid-area: score; }
+    .item3 { grid-area: date; }
+    .item4 { grid-area: type; }
+    .item5 {
+      grid-area: opponent;
+      font-weight: bold;
+    }
+    .item6 { grid-area: subheader; }
+    .item7 { grid-area: category; }
+    .item8 { grid-area: value; }
+    .item9 { grid-area: category2; }
+    .item10 { grid-area: value2; }
+    .item11 { grid-area: category3; }
+    .item12 { grid-area: value3; }
+    .item13 { grid-area: category4; }
+    .item14 { grid-area: value4; }
+    .item15 { grid-area: category5; }
+    .item16 { grid-area: value5; }
+    .item17 { grid-area: category6; }
+    .item18 { grid-area: value6; }
+
+    .item3 h3, .item4 h3 {
+      justify-self: center;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        'header header header header header'
+        'score score date type type'
+        'score score opponent opponent opponent'
+        'subheader subheader subheader subheader subheader'
+        'category category category category value'
+        'category2 category2 category2 category2 value2'
+        'category3 category3 category3 category3 value3'
+        'category4 category4 category4 category4 value4'
+        'category5 category5 category5 category5 value5'
+        'category6 category6 category6 category6 value6';
+      gap: 10px;
+      background-color: #29394b;
+      padding: 10px;
+      margin-left: 160px;
+      font-size: 28px;
+      justify-self: center;
+    }
+
+    .grid-container > div {
+      background-color: #0091C3;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+      border-radius: 10px;
+    }
+    #header-box {
+                background-color: #29394b;
+                padding: 20px;
+                text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="header-box">
+    <nav id="navbar">
+            <button> <a href="index.html">Login</a> </button>
+            <button> <a href="Opponents.html">Opponents</a> </button>
+        <button> <a href="Past_Games_Page.html">Home </a> </button>
+        <button> <a href="newGame.html">New Game</a> </button>
+              <button> <a href="addNonAdmin.html">Add User</a> </button>
+        <button> <a href="manageTeams.html">Manage Teams</a> </button>
+        <button> <a href="Settings.html">Settings</a> </button>
+        <button> <a href="addopponent.html">Add Opponent</a> </button>
+      </nav>
+    </div>
+    <div class="sidenav", id = "side">
+      <a href="#sample">3/15/24 Glen Allen High School</a>
+      <a href="#sample">3/8/24 Godwin High School</a>
+      <a href="#sample">3/1/24 Maggie Walker High School</a>
+      <a href="#sample">2/23/24 Tucker High School</a>
+    </div>
+
+    <div class="grid-container", id = "data">
+      <div class="item1">
+        <h2>Past Games</h2>
+      </div>
+      <div class="item2">
+        <h3>Score</h3>
+        <h3>X - X</h3>
+      </div>
+      <div class="item3">
+        <h3>2/27/24</h3>
+      </div>  
+      <div class="item4">
+        <h3>Away Game</h3>
+      </div>
+      <div class="item5">Freeman High School</div>
+      <div class="item6">
+        <h3>All Stats</h3>
+      </div>
+      <div class="item7">Corners - Home</div>
+      <div class="item8">0</div>
+      <div class="item9">Corners - Away</div>
+      <div class="item10">0</div>
+      <div class="item11">Goal Kicks - Home</div>
+      <div class="item12">0</div>
+      <div class="item13">Goal Kicks - Away</div>
+      <div class="item14">0</div>
+      <div class="item15">Fouls - Home</div>
+      <div class="item16">0</div>
+      <div class="item17">Fouls - Away</div>
+      <div class="item18">0</div>
+    </div>
+      
+    <script src="js/model.js" type="text/javascript"></script>
+    <script src="js/pastGames.js" type="text/javascript"></script>
+  </body>
 </html>

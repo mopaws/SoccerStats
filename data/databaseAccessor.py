@@ -200,7 +200,7 @@ def getGames():
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
         
-        cursor.execute('SELECT * FROM game ORDER BY gameID')
+        cursor.execute('SELECT * FROM game ORDER BY gameID DESC')
         rows = cursor.fetchall()
         connection.commit()
         connection.close()
