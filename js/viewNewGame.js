@@ -127,6 +127,7 @@ function fetchAllData(table){
 }
 
 function pushAll(){
+    localStorage.setItem("done", true);
     for(let i = 0; i< localStorage.getItem("newStats").length; i ++){
         addfinalData(localStorage.getItem("newStats")[i][0],
         localStorage.getItem("newStats")[i][1],

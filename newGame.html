@@ -167,28 +167,29 @@ body {
 <script>
 function storeGame(){
 
-	var date =localStorage.getItem("dateVal");
-	var opponent =localStorage.getItem("oppVal");
-	
-	if((localStorage.getItem("locVal"))=="Home"){
-		var loc = true;
-	}else if((localStorage.getItem("locVal"))=="Away"){
-		var loc = false;
-	}else{
-		var loc = '???';
-	}
+  if(localStorage.getItem("done") && localStorage.getItem("done") == true){
+    var date =localStorage.getItem("dateVal");
+    var opponent =localStorage.getItem("oppVal");
+    
+    if((localStorage.getItem("locVal"))=="Home"){
+      var loc = true;
+    }else if((localStorage.getItem("locVal"))=="Away"){
+      var loc = false;
+    }else{
+      var loc = '???';
+    }
 
-	fetch("http://127.0.0.1:5000/newGame/"+date+"/"+opponent+"/"+loc)
-  .then(response => response.json())
-	.then(data => {
-    console.log("added");
-  })
-  .catch(error => console.error('Error:', error));
-	//Maybe also clear localStorage?
-
+    fetch("http://127.0.0.1:5000/newGame/"+date+"/"+opponent+"/"+loc)
+    .then(response => response.json())
+    .then(data => {
+      console.log("added");
+    })
+    .catch(error => console.error('Error:', error));
+    //Maybe also clear localStorage?
+    localStorage.setItem("done", false);
+  }
 }
-
-storeGame();
+storeGame()
 </script>
    
 </body>
