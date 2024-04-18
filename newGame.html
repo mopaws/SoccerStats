@@ -135,13 +135,13 @@ body {
     <h3>Score</h3>
     <h3 id = 'scores'>X - X</h3>
   </div>
-  <div class="item3">
+  <div class="item3", id = "date">
     <h3>2/27/24</h3>
   </div>  
-  <div class="item4">
+  <div class="item4", id = "loc">
     <h3>Away Game</h3>
   </div>
-  <div class="item5">Freeman High School</div>
+  <div class="item5", id = "opp">Freeman High School</div>
   <div class="item6">
     <h3>All Stats</h3>
   </div>
@@ -178,32 +178,17 @@ function storeGame(){
 		var loc = '???';
 	}
 
-	fetch("http://127.0.0.1:5000/statByName/Home Goals")
-    	.then(response => response.json())
-	.then(stat => {
-               	var hpts = stat[0];
-	})
-        .catch(error => console.error('Error:', error));
-	
-	fetch("http://127.0.0.1:5000/statByName/Opponent Goals")
-    	.then(response => response.json())
-	.then(stat2 => {
-               	var apts = stat2[0];
-	})
-        .catch(error => console.error('Error:', error));
-
-	if(hpts>apts){
-		var res = 1;
-	}else if(hpts<apts){
-		var res = -1;
-	}else if(hpts==apts){
-		var res = 0;
-	}
-
-	fetch("http://127.0.0.1:5000//newGame/date/opponent/loc/hpts/apts/res")
+	fetch("http://127.0.0.1:5000/newGame/"+date+"/"+opponent+"/"+loc)
+  .then(response => response.json())
+	.then(data => {
+    console.log("added");
+  })
+  .catch(error => console.error('Error:', error));
 	//Maybe also clear localStorage?
 
 }
+
+storeGame();
 </script>
    
 </body>

@@ -82,8 +82,8 @@
         var opp = document.getElementById("oppSelect").value;
 	localStorage.setItem("oppVal", opp);
 
-        var dte = document.getElementById("dateSelect").value;
-	localStorage.setItem("dateVal", dte);
+        let dte = document.getElementById("dateSelect");
+	localStorage.setItem("dateVal", dte.value);
 
 	var locs = document.getElementsByName('loc');
         for (i = 0; i < locs.length; i++) {

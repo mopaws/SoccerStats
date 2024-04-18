@@ -27,10 +27,7 @@ cursor.execute('''
         dateOfGame DATE NOT NULL,
         opponent VARCHAR(50) NOT NULL,
         homeGame BOOL NOT NULL,
-        varsity BOOL NOT NULL,
-        homePoints INT,
-        opponentPoints INT,
-        outcome INT NOT NULL,
+        varsity BOOL,
         gameConditions VARCHAR(500),
         notes VARCHAR(1000)
     );
@@ -164,13 +161,13 @@ def subGeneralStat(id):
         connection.close()
         return jsonify({'data': False})
     
-@APP.route('/fetchStats')
-def fechAllStats():
+@APP.route('/fetchStats/<int:game>')
+def fechAllStats(game):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
 
-        cursor.execute('SELECT *, SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID Group by types.statID')
+        cursor.execute('SELECT *, SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID WHERE gameID =? Group by types.statID', (game,))
         rows = cursor.fetchall()
         connection.commit()
         connection.close()
@@ -208,9 +205,26 @@ def getGames():
     except:
         connection.close()
         return jsonify({'feched': False})
+    
+@APP.route('/newGame/<date>/<opponent>/<location>')
+def addNewStat(date,opponent,location):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        # Insert new game
+        cursor.execute('INSERT INTO game (dateOfGame, opponent, homeGame) VALUES (?, ?, ?)', (date, opponent, location,))
+
+        connection.commit()
+        connection.close()
+        return jsonify({'added': True})
+    except sqlite3.Error as e:
+        print("Error:", e)
+        connection.close()
+        return jsonify({'added': False, 'message': 'Database error.'})
 
 @APP.route('/newStat/<name>/<tnum>/<tplayer>/<tnote>')
-def addNewStat(name,tnum,tplayer,tnote):
+def newGame(name,tnum,tplayer,tnote):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
