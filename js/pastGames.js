@@ -33,18 +33,16 @@ function fillData(id){
                     if(data2[i][1] == data[j][0]){
                         row = gameData.insertRow();
 
-                        cell = row.insertCell();
-
                         if(data2[i][4]){
                             cell = row.insertCell();
-                            cell.innerHTML = "<p>player: " + data2[i][4] + "</p>";
+                            cell.innerHTML = "<p> player: " + data2[i][4] + "</p>";
                         }
 
-                        cell.innerHTML = "<p>number: " + data2[i][3] + "</p>";
+                        cell.innerHTML = "<p> number: " + data2[i][3] + "</p>";
 
                         if(data2[i][5]){
                             cell = row.insertCell();
-                            cell.innerHTML = "<p>note: " + data2[i][5] + "</p>";
+                            cell.innerHTML = "<p> note: " + data2[i][5] + "</p>";
                         }
                     }
                 }
