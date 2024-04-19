@@ -7,6 +7,9 @@ Signing is is as simple as typeing in either the provided admin username and pas
 
 Creating a new user can only be done through an admin account. To do so, sign in with the adim account and navigate to the "add user" tab on the nav bar, then type in the new users desired name, password, and password double check. Before hitting "add user" ensure any desired limits have been added to the user under the viewable option. Hitting add user will create the account and allow the user and password now access the information allowed. 
 
+### Loading the database
+to launch the database, pleasse downlod python and install the flask and cors libraries. They download the database accesor.py from the data folder, and launch it. there should be a terminal that says spmthing like localhost running on port..., This means everything worked. To re open the database, just launch the pythin file, all updates are saved automatically, note, right now only the computer this the database file has the information about the games and other devixes won't be able to access it. 
+
 ### Starting a game
 Please note,  **THIS PAGE MUST BE LOADED WHILE CONNECTED TO WIFI WITH THE DATABASE** once loaded it can be edited offline. Start by signing in and navigating to the "new game" tab. Here a popup will be shown with options for teams (set up in the teams page), location and basic info. Continue with this page open to edit any stats during a game. Once the game has completed **DO NOT HIT PUSH GAME TO DATABASE WITHOUT BEING CONNECTED TO WIFI AND THE DATABASE**, once you have returned to wifi and connect to the database, then push the data so that other users can sync to it. 
 
