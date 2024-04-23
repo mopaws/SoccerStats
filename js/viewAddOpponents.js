@@ -26,6 +26,7 @@ function getOpps(table){
   //.catch(error => console.error('Error:', error));
 }
 window.onload = (event) => {
+  const pSelect = document.getElementById("oppSelect");
+  popOppSelect(pSelect);
   getOpps(table);
-  
 }
