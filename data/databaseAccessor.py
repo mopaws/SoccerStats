@@ -12,12 +12,6 @@ connection = sqlite3.connect('Soccer.db')
 # Create a cursor object
 cursor = connection.cursor()
 
-
-#delete evrything so its the most current? (THIS WORKED!!)
-cursor.execute('''
-    DROP table game;
-''')
-
 # Create all the tables if the database doesn't already contain them
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
