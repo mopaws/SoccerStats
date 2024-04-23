@@ -44,12 +44,24 @@ function createNewUser(name, password){
 
 function addStatType(name, tnum, tplayer, tnote){
   fetch("http://127.0.0.1:5000/newStat/" + name + "/" + tnum + "/" + tplayer + "/" + tnote)
+   .then(response => response.json())
+   .then(data => {
+     console.log(data);
+   })
+   .catch(error => console.error('Error:', error));
+ }
+
+function addOpp(name){
+  fetch("http://127.0.0.1:5000/addOpp/"+name)
   .then(response => response.json())
   .then(data => {
     console.log(data);
   })
   .catch(error => console.error('Error:', error));
+  let table = document.getElementById("trackedOpponents").getElementsByTagName('tbody')[0];
+  getOpps(table);
 }
+
 function getStatTypes(){
   fetch("http://127.0.0.1:5000/stats")
   .then(response => response.json())
@@ -64,6 +76,15 @@ function removeFromTracked(id){
   .then(response => response.json())
   .then(data => {
     console.log("deleated " + id);
+  })
+  .catch(error => console.error('Error:', error));
+}
+
+function removeOppFromData(id){
+  fetch("http://127.0.0.1:5000/removeOpp/"+id)
+  .then(response => response.json())
+  .then(data => {
+    console.log("deleted " + id);
   })
   .catch(error => console.error('Error:', error));
 }
@@ -95,4 +116,19 @@ function addfinalData(stat, game, num, player, note){
       }
   })
   .catch(error => console.error('Error:', error));
+}
+
+//For populating the Opponents in the NewGame popup
+function popOppSelect(selectId) {
+  fetch("http://127.0.0.1:5000/opponents")
+  .then(response => response.json())
+  .then(data => {
+    selectId.innerHTML = "";
+    for(let i = 0; i < data.length; i++){
+      let opt = document.createElement("option")
+      opt.value = data[i][1]; //name
+      opt.innerHTML = data[i][1];
+      selectId.appendChild(opt)
+    }
+  })
 }
