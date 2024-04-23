@@ -12,6 +12,12 @@ connection = sqlite3.connect('Soccer.db')
 # Create a cursor object
 cursor = connection.cursor()
 
+
+#delete evrything so its the most current? (THIS WORKED!!)
+cursor.execute('''
+    DROP table game;
+''')
+
 # Create all the tables if the database doesn't already contain them
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
@@ -28,6 +34,7 @@ cursor.execute('''
         opponent VARCHAR(50) NOT NULL,
         homeGame BOOL NOT NULL,
         varsity BOOL,
+	    outcome INT,
         gameConditions VARCHAR(500),
         notes VARCHAR(1000)
     );
@@ -75,7 +82,6 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS statisticTypes (
         statID INTEGER PRIMARY KEY AUTOINCREMENT,
         statName VARCHAR(50) NOT NULL UNIQUE,
-        tNumber BOOLEAN,
         tPlayer BOOLEAN,
         tNotes BOOLEAN
     );
@@ -191,6 +197,8 @@ def fechStats():
         connection.close()
         return jsonify({'feched': False})
 
+
+
 @APP.route('/getEntries/<int:game>')
 def getEntries(game):
     try:
@@ -213,6 +221,21 @@ def statByName(name, game):
         cursor = connection.cursor()
         
         cursor.execute('SELECT SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID WHERE statName =? AND gameID =?',(name,game,))
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
+
+@APP.route('/statByOpp/<name>/<opp>')
+def statByOpp(name, opp):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+        
+        cursor.execute('SELECT SUM(numberOf) FROM statisticTypes As types LEFT JOIN trackedStatistics As stats ON stats.statID == types.statID AND statName ==? LEFT JOIN game As games ON games.gameID == stats.gameID WHERE opponent=?',(name,opp,))
         rows = cursor.fetchall()
         connection.commit()
         connection.close()
@@ -244,17 +267,37 @@ def newGame(date,opponent,location):
 
         # Insert new game
         cursor.execute('INSERT INTO game (dateOfGame, opponent, homeGame) VALUES (?, ?, ?)', (date, opponent, location,))
-
         connection.commit()
+	
+        cursor.execute('SELECT * FROM game WHERE ID = (SELECT MAX(ID) FROM game)')
+        id = cursor.fetchall()
+
         connection.close()
-        return jsonify({'added': True})
+        return jsonify(id)
+        #return jsonify({'added': True})
     except sqlite3.Error as e:
         print("Error:", e)
         connection.close()
         return jsonify({'added': False, 'message': 'Database error.'})
 
-@APP.route('/newStat/<name>/<tnum>/<tplayer>/<tnote>')
-def addNewStat(name,tnum,tplayer,tnote):
+@APP.route('/storeGame/<id>/<outcome>/<cond>/<notes>')
+def storeGame(id,outcome,cond,notes):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('UPDATE game SET outcome=?, gameConditions=?, notes=? WHERE gameID=?', (outcome, cond, notes, id))
+
+        connection.commit()
+        connection.close()
+        return jsonify({'updated': True})
+    except sqlite3.Error as e:
+        print("Error:", e)
+        connection.close()
+        return jsonify({'added': False, 'message': 'Database error.'})
+
+@APP.route('/newStat/<name>/<tplayer>/<tnote>')
+def newGame(name,tplayer,tnote):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
@@ -267,7 +310,24 @@ def addNewStat(name,tnum,tplayer,tnote):
             return jsonify({'added': False, 'message': 'Statistic type already exists.'})
 
         # Insert new statistic type
-        cursor.execute('INSERT INTO statisticTypes (statName, tNumber, tPlayer, tNotes) VALUES (?, ?, ?, ?)', (name, tnum, tplayer, tnote))
+        cursor.execute('INSERT INTO statisticTypes (statName, tPlayer, tNotes) VALUES (?, ?, ?)', (name, tplayer, tnote))
+
+        connection.commit()
+        connection.close()
+        return jsonify({'added': True})
+    except sqlite3.Error as e:
+        print("Error:", e)
+        connection.close()
+        return jsonify({'added': False, 'message': 'Database error.'})
+
+@APP.route('/addOpp/<oName>')
+def addNewOpp(oName):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        # Insert new game
+        cursor.execute('INSERT INTO opponent (teamName) VALUES (?)', (oName,))
 
         connection.commit()
         connection.close()
@@ -291,7 +351,37 @@ def stats():
     except:
         connection.close()
         return jsonify({'feched': False})
+
+@APP.route('/opponents')
+def opps():
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM opponent')
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
     
+@APP.route('/removeOpp/<int:id>')
+def remOpp(id):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('DELETE FROM opponent WHERE OppID=?', (id,))
+        connection.commit()
+        connection.close()
+        return jsonify({'removed': True})
+    except:
+        connection.close()
+        return jsonify({'removed': False})
+
+
 @APP.route('/removeStat/<int:id>')
 def remStat(id):
     try:
@@ -305,6 +395,21 @@ def remStat(id):
     except:
         connection.close()
         return jsonify({'removed': False})
+
+@APP.route('/getWTL/<WTL>/<name>')
+def getWTL(WTL,name):
+    try:
+        connection = sqlite3.connect('Soccer.db')
+        cursor = connection.cursor()
+
+        cursor.execute('SELECT * FROM game WHERE opponent=? AND outcome=', (name,))
+        rows = cursor.fetchall()
+        connection.commit()
+        connection.close()
+        return jsonify(rows)
+    except:
+        connection.close()
+        return jsonify({'feched': False})
 
 if __name__ == '__main__':
     APP.debug=True
