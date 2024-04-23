@@ -10,3 +10,18 @@
 	text-decoration: none;
 	color: white;
 }
+
+dialog{
+  width: 45%;
+  height: 40%;
+  padding:10px;
+  align-items: center;
+  align-content: center;
+  border: none;
+  border-radius: 10px;
+}
+
+dialog *{
+  text-align: center;
+  margin: 5px;
+}
