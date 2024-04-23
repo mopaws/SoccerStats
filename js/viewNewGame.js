@@ -3,9 +3,19 @@ var scores = document.getElementById('scores');
 fetchAllData(table);
 var myStats = [];
 
-
+if(!localStorage.getItem("gameID")){
+    fetch("http://127.0.0.1:5000/getGames")
+    .then(response => response.json())
+    .then(data => {
+        if(data[0]){
+            localStorage.setItem("gameID",data[0][0]+1);
+        } else {
+            localStorage.setItem("gameID",1);
+        }
+    })
+    .catch(error => console.error('Error:', error));
     
-
+}
 
 function fetchAllData(table){
     fetch("http://127.0.0.1:5000/fetchStatsGameless")
@@ -78,7 +88,7 @@ function fetchAllData(table){
 
                     myStats.push([id,gameId,1,pd,nt])
                     localStorage.setItem("newStats",myStats);
-                    addfinalData(id,gameId,1, pd,nt);
+                    addfinalData(id,localStorage.getItem("gameID"),1, pd,nt);
                     fetchAllData(table);
 
                     if(playerSelect){
@@ -119,23 +129,15 @@ function fetchAllData(table){
     })
     .catch(error => console.error('Error:', error));
 }
-
+/*
 function pushAll(){
-    localStorage.removeItem("gameID");
-    localStorage.setItem("done", true);
-    /*for(let i = 0; i< localStorage.getItem("newStats").length; i ++){
-        addfinalData(localStorage.getItem("newStats")[i][0],
-        localStorage.getItem("newStats")[i][1],
-        localStorage.getItem("newStats")[i][2],
-        localStorage.getItem("newStats")[i][3],
-        localStorage.getItem("newStats")[i][4]);
-    }
+var scores = document.getElementById('scores'); //HOW WERE WE GETTING SOCRES BEFORE? WHERE TO GET HOME AND OPP SOCRE SEPARATELY?
+//if statement comparing home and opp score to store "outcome" for the route
 
-    localStorage.removeItem("newStats");
-    localStorage.removeItem("oppVal");
-    localStorage.removeItem("dateVal");
-    localStorage.removeItem("locVal");
-    localStorage.removeItem("typeVal");
-    */
-
+    fetch("http://127.0.0.1:5000/storeGame/storeGame+"/"+localStorage.getItem("ID")+"/"+outcome+"/"+<cond>+"/"+<notes>)
+      .then(response => response.json())
+      .then(data => {
+        console.log("FINAL GAME STORED");
+      })
 }
+*/
