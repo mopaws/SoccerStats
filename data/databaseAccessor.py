@@ -291,7 +291,7 @@ def storeGame(id,outcome,cond,notes):
         return jsonify({'added': False, 'message': 'Database error.'})
 
 @APP.route('/newStat/<name>/<tplayer>/<tnote>')
-def newGame(name,tplayer,tnote):
+def newStat(name,tplayer,tnote):
     try:
         connection = sqlite3.connect('Soccer.db')
         cursor = connection.cursor()
