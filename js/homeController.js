@@ -20,6 +20,9 @@ function tryCreateUser(){
 }
 
 window.onload = (event) => {
+  const pSelect = document.getElementById("oppSelect");
+  popOppSelect(pSelect);
+  
   //access login data fields.
   let pass = document.getElementById("password");
   let user = document.getElementById("username");
