@@ -11,6 +11,10 @@
 	color: white;
 }
 
+#navbar {
+	left: 0px;
+}
+
 dialog{
   width: 45%;
   height: 40%;
