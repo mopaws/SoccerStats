@@ -3,18 +3,25 @@
   transition: all 0.5s cubic-bezier(0, 0, 0.05, 1);
   font-family: navigo, sans-serif;
 }
-
+#header-box {
+  background-color: #0E0C60;
+  padding: 20px;
+  text-align: center;
+  left: 0px;
+  right: 0px;
+  position: fixed;
+}
 body{
-  background-color:#f9f2f7;
-
+  background-color:#ffffff;
   margin:0px;
   padding:0px;
-  
-  overflow-y:hidden;
-  
+  /* overflow-y:hidden; */
 }
 
-
+#intro{
+  color: #000000;
+  text-align: center;
+}
 header{
   position: fixed;
   padding:10px;
@@ -24,18 +31,21 @@ header{
   z-index: 10;
   top: 0px;
   left: 0px;
-  height: 150px;
+  height: 100px;
   width: 100%;
-  background-color: #29394b;
+  background-color: #06048f;
 }
 
+#heading{
+  text-align: center;
+}
 
 h1{
-  font-family: navigo, sans-serif;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 700;
   font-style: normal;
 
-  color:#f9f2f7;
+  color:#ffffff;
 }
 
 h5{
@@ -47,7 +57,7 @@ h5{
   position: relative;
   width:100%;
   height:100%;
-  top: 200px;
+  top: 180px;
   justify-content: center;
 }
 
@@ -63,28 +73,43 @@ a{
   
 }
 
-input,button,button *{
-  border-radius:10px;
+button,button *{
+  /* border-radius:10px; */
   border-style:none;
   padding:10px;
 
-  background-color:#055e8b;
+  background-color:#06048f;
+  
+  min-width:fit-content;
+}
+input *{
+  /* border-radius:10px; */
+  border-style:none;
+  padding:10px;
+
+  background-color:#d9d9d9;
   
   min-width:fit-content;
 }
 button:hover,button:hover *, input:hover{
-  background:#064e72;
+  background:#223f8f;
+}
+input:hover{
+  background:#ffffff;
+  /* background:#223f8f; */
 }
 
 
 #loginBox{
+  font-size:15pt;
   display: grid;
   
   width:100%;
   height:100%;
   max-height:fit-content;
   
-  background-color: #29394b;
+  background-color: #0E0C60;
+  color: #ffffff;
   
   padding:10px;
   margin:20px;
@@ -95,12 +120,15 @@ button:hover,button:hover *, input:hover{
 #loginBox *{
   align-items: center;
   margin:5px;
-  font-size: 20pt;
+  font-size: 15pt;
 }
 
 input[type="checkbox"] {
   width: 65px;
   justify-self: center;
+}
+input[type="text"]{
+  color: #000000;
 }
 
 dialog{
