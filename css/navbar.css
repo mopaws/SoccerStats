@@ -1,9 +1,9 @@
 #navbar button{
-	border-radius:10px;
 	border-style:none;
 	padding:10px;
-	background-color:#0091C3;
+	background-color:#06048f;
 	min-width:fit-content;
+  	color: white;
 }
 
 #navbar a{
