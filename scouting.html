@@ -5,6 +5,99 @@
     <script src = "./scouting.js" defer></script>
     <link href="./scouting.css" rel="stylesheet">
 	<link rel = "stylesheet" type="text/css" href="css/style.css">
+
+<style>
+h1 {text-align: center;}
+body {
+  font-family: navigo, sans-serif;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #29394b;
+  color: white;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #29394b;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.item1 { grid-area: header; }
+.item2 { grid-area: score; }
+.item3 { grid-area: date; }
+.item4 { grid-area: type; }
+.item5 {
+  grid-area: opponent;
+  font-weight: bold;
+}
+.item6 { grid-area: subheader; }
+.item7 { grid-area: score2; }
+.item8 { grid-area: date2; }
+.item9 { grid-area: type2; }
+.item10 { grid-area: opponent2;
+font-weight: bold }
+
+.item3 h3, .item4 h3 {
+  justify-self: center;
+}
+
+.item8 h4, .item9 h4 {
+  justify-self: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'score score date type type'
+    'score score opponent opponent opponent'
+    'subheader subheader subheader subheader subheader'
+    'score2 score2 date2 type2 type2'
+    'score2 score2 opponent2 opponent2 opponent2';
+  gap: 10px;
+  background-color: #29394b;
+  padding: 10px;
+  margin-left: 160px;
+  font-size: 28px;
+  justify-self: center;
+}
+
+.grid-container > div {
+  background-color: #0091C3;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  border-radius: 10px;
+}
+
+</style>
+
+	
 </head>
 <body>
     <div id="top">
