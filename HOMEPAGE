@@ -102,6 +102,7 @@ font-weight: bold }
 		<button> <a href="PlayerStats.html">New Game</a> </button>
         	<button> <a href="addNonAdmin.html">Add User</a> </button>
 		<button> <a href="manageTeams.html">Manage Teams</a> </button>
+                <button class="box" id="scout"><a href="./scouting.html">Scouting Report</a></button>
 	</nav>
 
 <div class="sidenav">
