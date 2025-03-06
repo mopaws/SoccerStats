@@ -75,7 +75,7 @@ a{
     text-align: center;
     font-size: 24px;
     animation: move 3s infinite alternate, changeColor 8s infinite alternate;
-}
+}/*
 @keyframes move{
     0% {transform: translateX(0) rotate(0deg);}
     100% {transform: translateX(1000px) rotate(720deg);}
@@ -87,3 +87,4 @@ a{
     100% {background-color: rgb(214, 157, 214)}
 
 }
+*/
