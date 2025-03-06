@@ -1,0 +1,129 @@
+/* Base styles for all devices */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Navbar responsiveness */
+#navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+#navbar button {
+    min-width: auto;
+    white-space: nowrap;
+}
+
+/* Header responsiveness */
+header {
+    position: relative;
+    height: auto;
+    min-height: 100px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Grid container responsiveness */
+.grid-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Form responsiveness */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+input, button, select {
+    max-width: 100%;
+}
+
+/* Table responsiveness */
+table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+
+/* Small devices (phones) */
+@media screen and (max-width: 480px) {
+    body {
+        margin: 0;
+    }
+
+    header {
+        padding: 5px;
+    }
+
+    #navbar {
+        flex-direction: column;
+    }
+
+    #navbar button {
+        width: 100%;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .form-container input[type="text"] {
+        width: 100%;
+    }
+}
+
+/* Medium devices (tablets) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+        margin: 0;
+    }
+
+    #navbar button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (laptops/desktops) */
+@media screen and (min-width: 769px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* Orientation specific styles */
+@media screen and (orientation: portrait) {
+    #navbar {
+        flex-direction: column;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    #navbar {
+        flex-direction: row;
+    }
+}
