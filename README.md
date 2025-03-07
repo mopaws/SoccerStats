@@ -1,4 +1,4 @@
-# [Live Page]([https://mopaws.github.io/SoccerSatst/)](https://mopaws.github.io/SoccerStats/)
+# [Live Page]([https://mopaws.github.io/SoccerSatst/)]
 ## User documentation
 
 ### Signing in and user creation
