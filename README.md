@@ -1,4 +1,5 @@
 # [Live Page]([[https://mopaws.github.io/SoccerStats/](https://mopaws.github.io/SoccerStats/)])
+https://mopaws.github.io/SoccerStats/
 ## User documentation
 
 ### Signing in and user creation
