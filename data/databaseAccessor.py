@@ -4,14 +4,30 @@ from psycopg2 import sql
 from flask import Flask, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
+from cryptography.fernet import Fernet
+import os
 
 # Load environment variables from .env
 load_dotenv()
 
-# Retrieve database credentials
+# Get the encryption key from .env (now using 'KEY')
+encryption_key = os.getenv("KEY")
+# Check if encryption_key is loaded correctly
+if encryption_key is None:
+    raise ValueError("Encryption key not found in .env file.")
+
+cipher_suite = Fernet(encryption_key.encode())
+
+# Decrypt the password (as an example)
+encrypted_password = os.getenv("PG_PASSWORD")
+if encrypted_password is None:
+    raise ValueError("Encrypted password not found in .env file.")
+
+DB_PASSWORD = cipher_suite.decrypt(encrypted_password.encode()).decode()
+
+# Retrieve other database credentials
 DB_NAME = os.getenv("PG_DBNAME")
 DB_USER = os.getenv("PG_USER")
-DB_PASSWORD = os.getenv("PG_PASSWORD")
 DB_HOST = os.getenv("PG_HOST")
 DB_PORT = os.getenv("PG_PORT")
 
@@ -24,7 +40,7 @@ def get_db_connection():
     return psycopg2.connect(
         dbname=DB_NAME,
         user=DB_USER,
-        password=DB_PASSWORD,
+        password=DB_PASSWORD,  # Use the decrypted password
         host=DB_HOST,
         port=DB_PORT
     )
@@ -33,7 +49,7 @@ def get_db_connection():
 def init_db():
     with get_db_connection() as conn:
         with conn.cursor() as cursor:
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS users (
                     name TEXT PRIMARY KEY,
                     password TEXT NOT NULL,
@@ -41,7 +57,7 @@ def init_db():
                 );
             ''')
 
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS game (
                     gameID SERIAL PRIMARY KEY,
                     dateOfGame DATE NOT NULL,
@@ -54,7 +70,7 @@ def init_db():
                 );
             ''')
 
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS player (
                     playerID SERIAL PRIMARY KEY,
                     name VARCHAR(25) NOT NULL,
@@ -66,7 +82,7 @@ def init_db():
                 );
             ''')
 
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS opponent (
                     OppID SERIAL PRIMARY KEY,
                     teamName VARCHAR(50),
@@ -74,7 +90,7 @@ def init_db():
                 );
             ''')
 
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS team (
                     teamID SERIAL PRIMARY KEY,
                     name VARCHAR(50) NOT NULL UNIQUE,
@@ -83,7 +99,7 @@ def init_db():
                 );
             ''')
 
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS trackedStatistics (
                     instanceID SERIAL PRIMARY KEY,
                     statID INT NOT NULL,
@@ -94,7 +110,7 @@ def init_db():
                 );
             ''')
 
-            cursor.execute('''
+            cursor.execute(''' 
                 CREATE TABLE IF NOT EXISTS statisticTypes (
                     statID SERIAL PRIMARY KEY,
                     statName VARCHAR(50) NOT NULL UNIQUE,
@@ -153,7 +169,7 @@ def fetchAllStats(game):
     try:
         with get_db_connection() as conn:
             with conn.cursor() as cursor:
-                cursor.execute('''
+                cursor.execute(''' 
                     SELECT *, SUM(numberOf)
                     FROM statisticTypes AS types
                     LEFT JOIN trackedStatistics AS stats ON stats.statID = types.statID
