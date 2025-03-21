@@ -223,36 +223,7 @@ body {
 </script>
 
 <script>
-  function storeGame(){
-    console.log("gg");
-    
-      console.log("gb");
-      var date =localStorage.getItem("dateVal");
-      var opponent =localStorage.getItem("oppVal");
-      
-      if((localStorage.getItem("locVal"))=="Home"){
-        var loc = true;
-      }else if((localStorage.getItem("locVal"))=="Away"){
-        var loc = false;
-      }else{
-        var loc = '???';
-      }
 
-      fetch("http://127.0.0.1:5000/newGame/"+date+"/"+opponent+"/"+loc)
-      .then(response => response.json())
-      .then(data => {
-        console.log("added");
-	var ID = data;
-	localStorage.setItem("ID", ID);
-	console.log(localStorage.getItem("ID"));
-      })
-      .catch(error => console.error('Error:', error));
-      //Maybe also clear localStorage?
-      localStorage.setItem("done", false);
-    
-  }
-
-  storeGame()
 </script>
 <script>
     const pSelect = document.getElementById("oppSelect")
