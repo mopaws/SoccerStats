@@ -15,60 +15,52 @@ const homeGoalKicks = document.getElementById('homeGoalKicks');
 const opponentGoalKicks = document.getElementById('opponentGoalKicks');
 const storeData = document.getElementById('storeData');
 
-let homeGoals = 0;
-let opponentGoals = 0;
-let homeAssistCount = 0;
-let opponentAssistCount = 0;
+let homeGoals = {};
+let opponentGoals = {};
+let homeAssistCount = {};
+let opponentAssistCount = {};
 let homeCornerCount = 0;
 let opponentCornerCount = 0;
 let homeGoalKickCount = 0;
 let opponentGoalKickCount = 0;
 
-let homeScorers = {}; 
-let opponentScorers = {}; 
-let homeAssisters = {};
-let opponentAssisters = {};
-
-function updateDisplay(scorers, elementId) {
-    let displayText = Object.entries(scorers)
-        .map(([player, count]) => `${count} for ${player}`)
-        .join(", ");
-    document.getElementById(elementId).innerText = displayText;
+function updateDisplay(id, data) {
+    let displayText = "";
+    for (let key in data) {
+        displayText += `#${key}: ${data[key]}<br>`;
+    }
+    document.getElementById(id).innerHTML = displayText;
 }
 
 homeGoal.addEventListener('click', function () {
-    if (homeNum.value.trim() !== "") {
-        homeGoals++;
-        homeScorers[homeNum.value] = (homeScorers[homeNum.value] || 0) + 1;
-        document.getElementById('hGoal').innerText = homeGoals;
-        updateDisplay(homeScorers, 'hScorers');
+    const scorer = homeNum.value.trim();
+    if (scorer) {
+        homeGoals[scorer] = (homeGoals[scorer] || 0) + 1;
+        updateDisplay('hScorers', homeGoals);
     }
 });
 
 opponentGoal.addEventListener('click', function () {
-    if (opponentNum.value.trim() !== "") {
-        opponentGoals++;
-        opponentScorers[opponentNum.value] = (opponentScorers[opponentNum.value] || 0) + 1;
-        document.getElementById('oGoal').innerText = opponentGoals;
-        updateDisplay(opponentScorers, 'oScorers');
+    const scorer = opponentNum.value.trim();
+    if (scorer) {
+        opponentGoals[scorer] = (opponentGoals[scorer] || 0) + 1;
+        updateDisplay('oScorers', opponentGoals);
     }
 });
 
 homeAssists.addEventListener('click', function () {
-    if (homeAssistNum.value.trim() !== "") {
-        homeAssistCount++;
-        homeAssisters[homeAssistNum.value] = (homeAssisters[homeAssistNum.value] || 0) + 1;
-        document.getElementById('hAssists').innerText = homeAssistCount;
-        updateDisplay(homeAssisters, 'hAssister');
+    const assister = homeAssistNum.value.trim();
+    if (assister) {
+        homeAssistCount[assister] = (homeAssistCount[assister] || 0) + 1;
+        updateDisplay('hAssister', homeAssistCount);
     }
 });
 
 opponentAssists.addEventListener('click', function () {
-    if (opponentAssistNum.value.trim() !== "") {
-        opponentAssistCount++;
-        opponentAssisters[opponentAssistNum.value] = (opponentAssisters[opponentAssistNum.value] || 0) + 1;
-        document.getElementById('oAssists').innerText = opponentAssistCount;
-        updateDisplay(opponentAssisters, 'oAssister');
+    const assister = opponentAssistNum.value.trim();
+    if (assister) {
+        opponentAssistCount[assister] = (opponentAssistCount[assister] || 0) + 1;
+        updateDisplay('oAssister', opponentAssistCount);
     }
 });
 
@@ -82,4 +74,47 @@ opponentCorners.addEventListener('click', function () {
     document.getElementById('oCorners').innerText = opponentCornerCount;
 });
 
-homeGoalKicks.addEventListener('click', function ()
+homeGoalKicks.addEventListener('click', function () {
+    homeGoalKickCount++;
+    document.getElementById('hGoalKicks').innerText = homeGoalKickCount;
+});
+
+opponentGoalKicks.addEventListener('click', function () {
+    opponentGoalKickCount++;
+    document.getElementById('oGoalKicks').innerText = opponentGoalKickCount;
+});
+
+updateConditions.addEventListener('click', function () {
+    let fieldCondition = conditions.value;
+    let weatherCondition = weather.value;
+
+    if (fieldCondition === 'Other') {
+        fieldCondition = document.getElementById('fieldOther').value;
+    }
+    if (weatherCondition === 'Other') {
+        weatherCondition = document.getElementById('weatherOther').value;
+    }
+
+    localStorage.setItem('fieldCondition', fieldCondition);
+    localStorage.setItem('weatherCondition', weatherCondition);
+});
+
+storeData.addEventListener('click', function () {
+    localStorage.setItem('homeGoals', JSON.stringify(homeGoals));
+    localStorage.setItem('opponentGoals', JSON.stringify(opponentGoals));
+    localStorage.setItem('homeAssists', JSON.stringify(homeAssistCount));
+    localStorage.setItem('opponentAssists', JSON.stringify(opponentAssistCount));
+    localStorage.setItem('homeCorners', homeCornerCount);
+    localStorage.setItem('opponentCorners', opponentCornerCount);
+    localStorage.setItem('homeGoalKicks', homeGoalKickCount);
+    localStorage.setItem('opponentGoalKicks', opponentGoalKickCount);
+    alert('Game data saved!');
+});
+
+conditions.addEventListener('change', function () {
+    document.getElementById('fieldOther').style.display = conditions.value === 'Other' ? 'block' : 'none';
+});
+
+weather.addEventListener('change', function () {
+    document.getElementById('weatherOther').style.display = weather.value === 'Other' ? 'block' : 'none';
+});
