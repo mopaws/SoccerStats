@@ -80,12 +80,13 @@ a{
     padding: 100px;
 }
 .notes{
-    padding: 100px;
-    font-size: 40px;
-    display: flex;
-   justify-content: space-evenly;
-    text-decoration: none;
-    color:black;
+    display: flex;/*This allows flexbox to display*/
+    justify-content: space-evenly;/*This names the different links spread out on a single line*/
+    border: 3px solid black;/*This creates a black boarder around the words*/
+    padding: 100px;/*This adds space between the words and the box*/
+    list-style-type: none;/*This causes the list to not have bullets*/
+    color: black;
+}
 }
 
 /*
