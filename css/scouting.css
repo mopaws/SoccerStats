@@ -84,17 +84,9 @@ a{
     font-size: 40px;
     display: flex;
    justify-content: space-evenly;
-}
-.split{
-    display:flex;
-    justify-content: space-evenly;
     text-decoration: none;
 }
-.splitOpp{
-    display:flex;
-    justify-content: space-evenly;
-    text-decoration: none;
-}
+
 /*
 @keyframes move{
     0% {transform: translateX(0) rotate(0deg);}
