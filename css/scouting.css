@@ -79,6 +79,12 @@ a{
 .big{
     padding: 100px;
 }
+.notes{
+    padding: 100px;
+    font-size: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
 /*
 @keyframes move{
     0% {transform: translateX(0) rotate(0deg);}
