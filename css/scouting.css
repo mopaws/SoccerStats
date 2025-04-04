@@ -17,15 +17,17 @@
 }
 
 .team{
-    padding: 20px;
+    padding: 60px;
     background-color: #06048f;
     margin-right: 10px;
     flex-basis: 50%;
+    font-size: 30px;
 }
 .opp{
-    padding: 20px;
+    padding: 60px;
     background-color: #06048f;
     flex-basis: 50%;
+    font-size: 30px;
 }
 
 
