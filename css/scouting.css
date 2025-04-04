@@ -10,6 +10,11 @@
   /*list-style-type: none;/*This causes the list to not have bullets*/
   /*background-color: #06048f;
 }*/
+.options{
+  padding:20px;
+  display: flex;
+}
+
 .team{
     padding: 20px;
     background-color: #06048f;
