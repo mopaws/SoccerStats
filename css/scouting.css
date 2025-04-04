@@ -4,5 +4,8 @@
 li{
   display: flex;
   justify-content: space-evenly;
-  background-color: blue;
+  padding: 5px;/*This adds space between the words and the box*/
+  margin: 4px;/*This adds space outsides of the border*/
+  list-style-type: none;/*This causes the list to not have bullets*/
+  background-color: #06048f;
 }
