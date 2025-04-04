@@ -4,6 +4,7 @@
 li{
   display: flex;
   justify-content: space-evenly;
+  border: 3px solid black;/*This creates a black boarder around the words*/
   padding: 5px;/*This adds space between the words and the box*/
   margin: 4px;/*This adds space outsides of the border*/
   list-style-type: none;/*This causes the list to not have bullets*/
