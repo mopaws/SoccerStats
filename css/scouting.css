@@ -22,12 +22,14 @@
     margin-right: 10px;
     flex-basis: 50%;
     font-size: 30px;
+    text-align: center;
 }
 .opp{
     padding: 60px;
     background-color: #06048f;
     flex-basis: 50%;
     font-size: 30px;
+  text-align: center;
 }
 
 
