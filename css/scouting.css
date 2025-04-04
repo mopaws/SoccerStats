@@ -26,3 +26,159 @@
     background-color: #06048f;
     flex-basis: 50%;
 }
+
+
+
+
+*{
+  outline:none;
+  transition: all 0.5s cubic-bezier(0, 0, 0.05, 1);
+  font-family: navigo, sans-serif;
+}
+#header-box {
+  background-color: #0E0C60;
+  padding: 20px;
+  text-align: center;
+  left: 0px;
+  right: 0px;
+}
+body{
+  background-color:#ffffff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  /* overflow-y:hidden; */
+}
+
+#intro{
+  color: #000000;
+  text-align: center;
+}
+header{
+  padding: 10px;
+  padding-left: 20px;
+  padding-bottom: 25px;
+  
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: #06048f;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#heading{
+  text-align: center;
+}
+
+h1{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+  color:#ffffff;
+}
+
+h5{
+  font-size:10pt;
+}
+
+#wrapper{
+  display: grid;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height:100%;
+  top: 180px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+h5,a,button,input{
+  font-family: navigo, sans-serif;
+  font-weight: 500;
+  color:#f9f2f7;
+}
+
+a{
+  text-decoration:none;
+  color:white
+  
+}
+
+button,button *{
+  /* border-radius:10px; */
+  border-style:none;
+  padding:10px;
+
+  background-color:#06048f;
+  
+  min-width:fit-content;
+}
+input *{
+  /* border-radius:10px; */
+  border-style:none;
+  padding:10px;
+
+  background-color:#d9d9d9;
+  
+  min-width:fit-content;
+}
+button:hover,button:hover *, input:hover{
+  background:#223f8f;
+}
+input:hover{
+  background:#ffffff;
+  /* background:#223f8f; */
+}
+
+
+#loginBox{
+  font-size:15pt;
+  display: grid;
+  
+  width:100%;
+  height:100%;
+  max-height:fit-content;
+  
+  background-color: #0E0C60;
+  color: #ffffff;
+  
+  padding:10px;
+  margin:20px;
+  
+  border-radius:10px;
+}
+
+#loginBox *{
+  align-items: center;
+  margin:5px;
+  font-size: 15pt;
+}
+
+input[type="checkbox"] {
+  width: 65px;
+  justify-self: center;
+}
+input[type="text"]{
+  color: #000000;
+}
+
+dialog{
+  width: 45%;
+  height: 40%;
+  padding:10px;
+  align-items: center;
+  align-content: center;
+  border: none;
+  border-radius: 10px;
+}
+
+dialog *{
+  text-align: center;
+  margin: 5px;
+}
