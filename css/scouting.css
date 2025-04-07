@@ -15,14 +15,14 @@
   margin-top: 200px;
   display: flex;
 }
-#currentNote{
+.blackFont, #currentNote{
   margin-top: 200px;
   color: black;
 }
-.blackFont{
-  margin-top: 200px;
+.blackColor{
   color: black;
-}
+ }
+
 
 .team{
     padding: 60px;
