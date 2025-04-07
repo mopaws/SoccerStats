@@ -10,7 +10,7 @@
   /*list-style-type: none;/*This causes the list to not have bullets*/
   /*background-color: #06048f;
 }*/
-.teamOptions,.blackFont, .currentNote{
+.teamOptions,.blackFont, #currentNote{
   padding:20px;
   margin-top: 200px;
   display: flex;
