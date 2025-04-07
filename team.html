@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Scouting Report</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    	<title>DRHS Girls' Soccer Statistics</title>
-	<link rel="stylesheet" href="./css/scouting.css">
-        <script src = "./scouting.js" defer></script>
-	<link rel="stylesheet" href="./navbar.css">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    		<title>DRHS Girls' Soccer Statistics: Scouting Report</title>
+		<link rel="stylesheet" href = "css/style.css">		
+    		<link rel="stylesheet" href="css/responsive.css">
+		<link rel="stylesheet" href = "css/navbar.css">
+		<link rel="stylesheet" href = "css/scouting.css">
+  	</head>
+  
+  
+  <body>
+      
+    <header>
+      <h1 id="heading">
+	      <img id="logo" src="soccerCrest.png" height=50> 
+	      <span> DRHS Girls' Soccer Statistics</span> 
+	      <img id="logo" src="soccerCrest.png" height=50>
+      </h1>  
 
-   
-	
-</head>
-<body>
-      <header>
-      <h1 id="heading"><img id="logo" src="wildcat.png" height=30> <span> DRHS Girls' Soccer Statistics</span> <img id="logo" src="wildcat.png" height=30></h1>  
 	<div id="header-box">
           <nav id="navbar">
-	  <ul class="box">
-            <li id="log"><a href="index.html">Log in</a></li>
-            <li id="op"><a href="Opponents.html">Opponents</a></li>
-            <li id="past"><a href="Past_Games_Page.html">Home</a></li>
-	    <li id="new" onclick=showPopup()> <h7>New Game</h7></li>
-            <li id="add"> <a href="addNonAdmin.html">Add User</a> </li>
-	    <li id="man"> <a href="manageTeams.html">Manage Teams</a> </li>
-	    <li id="set"> <a href="Settings.html">Settings</a> </li>
-	    <li id="addOpp"> <a href="addopponent.html">Add Opponent</a> </li>
-            <li id="scout"><a href="./scouting.html">Scouting Report</a></li>
-       	    <li> <a href= "https://www.instagram.com/deeprunwsoccer/">Instagram</a> </li>
-	  </ul>
+    		<button> <span id = "alreadyHere">Login</span> </button>
+		<button> <a href="Past_Games_Page.html">Home </a> </button>
+		<button onclick=showPopup()> <h7>New Game</h7></button>
+		<button> <a href="Settings.html">Settings</a> </button>
+		<button> <a href= "./https://www.instagram.com/deeprunwsoccer/">Instagram</a> </button>
+		<button class="current"><a href="./scouting.html">Scouting Report</a></button>
+
+		<dialog id="popup">
+			<h2>New Game</h2>
+			<form id="gameDeets" action="newGame.html" onsubmit=getData()>
+				<select id="oppSelect">
+					<option>Varsity</option>
+					<option>JV</option>
+				</select></br>
+				<input id="dateSelect" type="date" name="group1"></br>
+				<input type="radio" name="loc" value="Home">Home
+				<input type="radio" name="loc" value="Away">Away</br>
+				<input type="radio" name="type" value="Game">Game
+				<input type="radio" name="type" value="Scrimmage">Scrimmage</br>
+				<button type="submit">Done</button>
+				<button type="button" onclick=closePopup()>Close</button>
+			</form>
+				
+		</dialog>
+
 	</nav>
 	</div>
-    </header>
-    
+    </header>    
 <h1 class="blackFont">Team Notes</h1>
 <div id="notes">
 <h2>Notes</h2>
