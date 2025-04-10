@@ -28,4 +28,5 @@ dialog{
 dialog *{
   text-align: center;
   margin: 5px;
+  color: black;
 }
