@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Scouting Reports {% endblock %}</h1>
+    {% for report in scouting_report %}
+       <br>
+        <div class='report'>
+            <br>
+            <h3>Team: {{ report[1] }}</h3>
+            <p class="italics">Players To Watch: {{ report[2] }}</p>
+            <p class="italics">Team Notes: {{ report[3] }}</p>
+            <p class = "italics">Added {{ report[4] }}</p>
+            <a  class = "box" href="{{ url_for('delete', id=report[0]) }}">Delete a Report</a>
+            <a  class = "box" href="{{ url_for('edit', id=report[0]) }}">Edit a Report</a>
+        </div>
+    {% endfor %}
+{% endblock %}
