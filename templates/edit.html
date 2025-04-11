@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Edit Your Report {% endblock %}</h1>
+    <br><br>
+    <form method="post">
+        <p>
+            <label for="team">Team</label>
+            <input type="text" name="team"
+                   value="{{scouting_report[1]}}">
+            </input>
+        </p>
+        <p>
+        <label for="players_to_watch">Players To Watch</label>
+        <br>
+        <textarea name="players_to_watch" value="{{scouting_report[2]}}" placeholder="Players To Watch" rows="15" cols="60"> 
+            
+        </textarea>
+        </p>
+        <p>
+            <label for="team_notes">Team Notes</label>
+            <br>
+            <textarea name="team_notes" value="{{scouting_report[3]}}" placeholder="Team Notes" rows="15" cols="60"> 
+                
+            </textarea>
+            </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}
