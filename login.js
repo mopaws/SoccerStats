@@ -4,7 +4,7 @@ const password‎ = document.getElementById('password‎');
 
 function goToHome(){
   if(username.value == 'admin' && password.value == 'SoccerStats2025'){
-    window.location.href = "https://https://en.wikipedia.org/wiki/Aqueduct_(water_supply)?scrlybrkr=4ce004b0";
+    window.location.href = "Past_Games_Page.html";
   }
   
 }
