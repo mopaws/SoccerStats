@@ -14,14 +14,14 @@ def get_db_connection():
     return conn
 
 @app.route('/')
-def index():
+def main():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM scouting_report ORDER BY team,date_added DESC;')
     data = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('index.html', scouting_report=data)
+    return render_template('main.html', scouting_report=data)
 
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
@@ -38,7 +38,7 @@ def create():
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('main'))
 
     return render_template('create.html')
 
@@ -52,7 +52,7 @@ def delete(id):
     cur.close()
     conn.close()
     #Note - no need to change the code below - this will redirect the user back to the reviews page once they've deleted a review.
-    return redirect(url_for('index'))
+    return redirect(url_for('main'))
 
 @app.route('/edit/<int:id>', methods = ('GET', 'POST'))
 def edit(id):
@@ -87,10 +87,10 @@ def edit(id):
         conn.commit()
         cur.close()
         conn.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('main'))
 
         #Note - no need to change the code below - this will redirect the user back to the reviews page once they've submitted their edited review. 
-        return redirect(url_for('index'))
+        return redirect(url_for('main'))
         
 
 
