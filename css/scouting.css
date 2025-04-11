@@ -1,34 +1,42 @@
 .current{
-  background: blue;
-}
-.teamOptions{
-  padding:20px;
-  margin-top: 200px;
-  display: flex;
-}
-.blackFont, #currentNote{
-  margin-top: 200px;
-  color: black;
-}
-.blackColor{
-  color: black;
- }
+    background: blue;
+  }
+  .teamOptions{
+    padding:20px;
+    margin-top: 200px;
+    display: flex;
+  }
+  .blackFont, #currentNote{
+    margin-top: 200px;
+    color: black;
+  }
+  .blackColor{
+    color: black;
+   }
+  .report{
+    background-color:aliceblue;
+  }
+  .box{
+    background-color:mediumpurple;
+    color: white;
+    padding: 8px;
+  }
 
-
-.team{
-    padding: 60px;
-    background-color: #06048f;
-    margin-right: 10px;
-    flex-basis: 50%;
-    font-size: 30px;
+  
+  .team{
+      padding: 60px;
+      background-color: #06048f;
+      margin-right: 10px;
+      flex-basis: 50%;
+      font-size: 30px;
+      text-align: center;
+  }
+  .opp{
+      padding: 60px;
+      background-color: #06048f;
+      flex-basis: 50%;
+      font-size: 30px;
     text-align: center;
-}
-.opp{
-    padding: 60px;
-    background-color: #06048f;
-    flex-basis: 50%;
-    font-size: 30px;
-  text-align: center;
-}
+  }
 
 
