@@ -1,7 +1,7 @@
 var tryLogin‎ = document.getElementById('tryLogin‎');
-const username‎ = document.getElementById('username‎').value;
-const password‎ = document.getElementById('password‎').value;
-const tester‎ = document.getElementById('tester‎');
+var username‎ = document.getElementById('username‎').value;
+var password‎ = document.getElementById('password‎').value;
+var tester‎ = document.getElementById('tester‎');
 
 tryLogin.addEventListener('click', function() {
   if(username == 'a' && password == '2025'){
