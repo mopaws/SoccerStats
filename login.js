@@ -1,7 +1,7 @@
 function goToHome(){
-var TryLogin‎ = document.getElementById('tryLogin‎');
+var tryLogin‎ = document.getElementById('tryLogin‎');
 var tester‎ = document.getElementById('tester‎');
-tryLogin.addEventListener('click', function() {
+//tryLogin.addEventListener('click', function() {
   var username‎ = document.getElementById('username‎').value; 
   var password‎ = document.getElementById('password‎').value;
   if(username == 'a' && password == '2025'){
