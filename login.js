@@ -3,12 +3,12 @@ const username‎ = document.getElementById('username‎');
 const password‎ = document.getElementById('password‎');
 const tester‎ = document.getElementById('tester‎');
 
-function goToHome(){
-  if(username.value == 'admin' && password.value == 'SoccerStats2025'){
+tryLogin.addEventListener('click', function() {
+  if(username.value == 'a' && password.value == '2025'){
     tester.innerText = 'it works!!!'
     window.location.href = "Past_Games_Page.html";
   }
   
-}
+});
 
 tryLogin.addEventListener('click',goToHome);
