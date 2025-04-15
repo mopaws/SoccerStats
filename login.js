@@ -1,6 +1,6 @@
-var tryLogin‎ = document.getElementById('tryLogin‎');
+function goToHome(){
+var TryLogin‎ = document.getElementById('tryLogin‎');
 var tester‎ = document.getElementById('tester‎');
-
 tryLogin.addEventListener('click', function() {
   var username‎ = document.getElementById('username‎').value; 
   var password‎ = document.getElementById('password‎').value;
@@ -11,7 +11,7 @@ tryLogin.addEventListener('click', function() {
   else{
     tester.innerText = 'Invalid username or password';
   }
-  
+}
 });
 
 tryLogin.addEventListener('click',goToHome);
