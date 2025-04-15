@@ -1,5 +1,5 @@
 function goToHome(){
-const tryLogin‎ = document.getElementById('tryLogin‎');
+const tryLogin‎ = document.getElementById('tryLogin‎'); 
 const tester‎ = document.getElementById('tester‎');
 //tryLogin.addEventListener('click', function() {
   const username‎ = document.getElementById('username‎').value; 
