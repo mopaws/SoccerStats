@@ -12,7 +12,6 @@ const tester‎ = document.getElementById('tester‎');
     tester.innerText = 'Invalid username or password';
   }
 }
-});
 
 tryLogin.addEventListener('click',goToHome);
 /*
