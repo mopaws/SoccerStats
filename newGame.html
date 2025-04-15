@@ -7,7 +7,7 @@
     <style>
         h1 { text-align: center; }
         body {
-            font-family: navigo, sans-serif;
+            font-family: sans-serif;
             background-attachment: fixed;
             background-size: cover;
             background-color: #29394b;
@@ -17,7 +17,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            background-color: #29394b;
             padding: 15px;
             font-size: 20px;
         }
@@ -41,6 +40,7 @@
         select, input {
             font-size: 16px;
             padding: 5px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -138,7 +138,9 @@
     </div>
 
     <div>
-        <button id="updateConditions">Update Conditions</button>
+        <h3>Lineup</h3>
+        <div id="lineupContainer"></div>
+        <button id="addLineup">Add Player</button>
     </div>
 
     <div>
