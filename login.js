@@ -1,7 +1,6 @@
+const tryLogin = document.getElementById('tryLogin');
+const tester = document.getElementById('tester');
 function goToHome(){
-    const tryLogin = document.getElementById('tryLogin');
-    const tester = document.getElementById('tester');
-    //tryLogin.addEventListener('click', function() {
       const username = document.getElementById('username').value; 
       const password = document.getElementById('password').value;
       if(username == 'a' && password == '2025'){
@@ -15,6 +14,7 @@ function goToHome(){
     
     tryLogin.addEventListener('click',goToHome);
 /*
+    //tryLogin.addEventListener('click', function() {
 var tryLogin‎ = document.getElementById('tryLogin‎');
 var tester‎ = document.getElementById('tester‎');
   var username‎ = document.getElementById('username‎').value; 
