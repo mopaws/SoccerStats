@@ -1,0 +1,122 @@
+{% extends 'game.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New Game {% endblock %}</h1>
+    <br><br>
+    <form method="post">
+        <p>
+            <label for="team_game">Team: </label>
+            <input type="text" name="team_game"
+                   placeholder="Team Name">
+            </input>
+        </p>
+
+        <p>
+            <label for="home_goals">Home Goals: </label>
+            <input type="number" name="home_goals"
+                   placeholder="Home Goals">
+            </input>
+        </p>
+
+        <p>
+            <label for="opponent_goals">Opponent Goals: </label>
+            <input type="number" name="opponent_goals"
+                   placeholder="Opponent Goals">
+            </input>
+        </p>
+
+        <p>
+            <label for="field_conditions">Field Conditions: </label>
+            <input type="text" name="field_conditions"
+                   placeholder="Field Conditions">
+            </input>
+        </p>
+
+        <p>
+            <label for="weather_conditions">Weather Conditions: </label>
+            <input type="text" name="weather_conditions"
+                   placeholder="Weather Conditions">
+            </input>
+        </p>
+
+        <p>
+            <label for="home_assists">Home Assists: </label>
+            <input type="number" name="home_assists"
+                   placeholder="Home Assists">
+            </input>
+        </p>
+
+        <p>
+            <label for="opponent_assists">Opponent Assists: </label>
+            <input type="number" name="opponent_assists"
+                   placeholder="Opponent Assists">
+            </input>
+        </p>
+
+        <p>
+            <label for="home_corner_kicks">Home Corner Kicks: </label>
+            <input type="number" name="home_corner_kicks"
+                   placeholder="Home Corner Kicks">
+            </input>
+        </p>
+
+        <p>
+            <label for="opponent_corner_kicks">Opponent Corner Kicks: </label>
+            <input type="number" name="opponent_corner_kicks"
+                   placeholder="Opponent Corner Kicks">
+            </input>
+        </p>
+
+        <p>
+            <label for="home_goal_kicks">Home Goal Kicks: </label>
+            <input type="number" name="home_goal_kicks"
+                   placeholder="Home Goal Kicks">
+            </input>
+        </p>
+
+        <p>
+            <label for="opponent_goal_kicks">Opponent Goal Kicks: </label>
+            <input type="number" name="opponent_goal_kicks"
+                   placeholder="Opponent Goal Kicks">
+            </input>
+        </p>
+
+        <p>
+            <label for="lineup">Lineup: </label>
+            <br>
+            <textarea name="lineup"
+                      placeholder="Lineup"
+                      rows="15"
+                      cols="60"
+                      ></textarea>
+            </p>
+
+        <p>
+            <label for="goal_description">Goal Description: </label>
+            <br>
+            <textarea name="goal_description"
+                      placeholder="Goal Description"
+                      rows="15"
+                      cols="60"
+                      ></textarea>
+            </p>
+        
+        <p>
+            <label for="fouls">Fouls: </label>
+            <input type="number" name="fouls"
+                   placeholder="Fouls">
+            </input>
+        </p>
+
+        <p>
+            <label for="goalie_saves">Goalie Saves: </label>
+            <input type="number" name="goalie_saves"
+                   placeholder="Goalie Saves">
+            </input>
+        </p>
+    
+        <p>
+            <button type="submit">End Game</button>
+        </p>
+    </form>
+{% endblock %}
