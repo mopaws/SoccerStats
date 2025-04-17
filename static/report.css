@@ -1,0 +1,17 @@
+body{
+    background-color:#ADD8E6;
+}
+.game{
+background-color:#5dadc8;
+
+}
+#heading{
+    background-color:#0E0C60;
+    margin-block-start: 0px;
+    margin-block-end:0px;
+    background-color: #0E0C60 !important;
+
+}
+#space{
+    background-color:#0E0C60;
+}
