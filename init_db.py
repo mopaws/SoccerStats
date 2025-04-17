@@ -13,8 +13,12 @@ cur.execute('DROP TABLE IF EXISTS scouting_report;')
 
 cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
                                  'team TEXT NOT NULL,'
+                                 'playstyle TEXT,'
+                                 'corners TEXT,'
                                  'players_to_watch TEXT,'
+                                 'goalkeeper TEXT,'                                 
                                  'team_notes TEXT,'
+                                 'roster TEXT,'
                                  'date_added DATE DEFAULT CURRENT_DATE);'
                                  )
 conn.commit()
