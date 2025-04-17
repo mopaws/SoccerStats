@@ -7,11 +7,15 @@
         <div class='report'>
             <br>
             <h3>Team: {{ report[1] }}</h3>
-            <p class="italics">Players To Watch: {{ report[2] }}</p>
-            <p class="italics">Team Notes: {{ report[3] }}</p>
-            <p class = "italics">Added {{ report[4] }}</p>
-            <a  class = "box" href="{{ url_for('delete', id=report[0]) }}">Delete a Report</a>
-            <a  class = "box" href="{{ url_for('edit', id=report[0]) }}">Edit a Report</a>
+            <p class="italics">Style of Play: {{ report[2] }}</p>
+            <p class="italics">Corners/Set Pieces: {{ report[3] }}</p>
+            <p class="italics">Players To Watch: {{ report[4] }}</p>
+            <p class="italics">Goalkeeper: {{ report[5] }}</p>
+            <p class="italics">Team Notes: {{ report[6] }}</p>
+            <p class="italics">Roster: {{ report[7] }}</p>
+            <p class = "italics">Added: {{ report[8] }}</p>
+            <button><a  class = "box" href="{{ url_for('delete', id=report[0]) }}">Delete a Report</a></button>
+            <button><a  class = "box" href="{{ url_for('edit', id=report[0]) }}">Edit a Report</a></button>
         </div>
     {% endfor %}
 {% endblock %}
