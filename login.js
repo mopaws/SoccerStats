@@ -5,7 +5,7 @@ function goToHome(){
       const password = document.getElementById('password').value;
       if(username == 'statsAdmin' && password == 'drhs2025'){
         
-        window.location.href = "createReport.html";
+        window.location.href = "Past_Games_Page.html";
       }
       else{
         tester.innerText = 'Invalid username or password';
