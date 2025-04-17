@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- Scouting Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='response.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+</head>
+<body>
+    <h1 id="heading">
+        <img id="logo" src="/templates/soccerCrest.png" height=50> 
+        <span> DRHS Girls' Soccer Statistics</span> 
+        <img id="logo" src="/templates/soccerCrest.png" height=50>
+    </h1>  
+
+  <div id="header-box">
+        <nav id="navbar">
+      <button><a href="{{ url_for('gameReport') }}">View Game Reports</a></button>
+      <button><a href="{{ url_for('createReport') }}">Create a Game</a></button>
+      <button><a href="https://drhscit.org/drss/SoccerStats/">Back to the HomePage</a></button>
+
+            
+      <dialog id="popup">
+          <h2>New Game</h2>
+          <form id="gameDeets" action="newGame.html" onsubmit=getData()>
+              <select id="oppSelect">
+                  <option>Varsity</option>
+                  <option>JV</option>
+              </select></br>
+              <input id="dateSelect" type="date" name="group1"></br>
+              <input type="radio" name="loc" value="Home">Home
+              <input type="radio" name="loc" value="Away">Away</br>
+              <input type="radio" name="type" value="Game">Game
+              <input type="radio" name="type" value="Scrimmage">Scrimmage</br>
+              <button type="submit">Done</button>
+              <button type="button" onclick=closePopup()>Close</button>
+          </form>
+              
+      </dialog>
+
+  </nav>
+  </div>
+  </header>
+
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
