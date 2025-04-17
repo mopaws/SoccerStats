@@ -5,13 +5,31 @@
     <br><br>
     <form method="post">
         <p>
-            <label for="team">Team</label>
+            <label for="team">Team: </label>
             <input type="text" name="team"
                    placeholder="Team Name">
             </input>
         </p>
         <p>
-        <label for="players_to_watch">Players To Watch</label>
+            <label for="playstyle">Style of Play: </label>
+            <br>
+            <textarea name="playstyle"
+                      placeholder="Style of Play"
+                      rows="15"
+                      cols="60"
+                      ></textarea>
+            </p>
+            <p>
+                <label for="corners">Corners/Set Pieces: </label>
+                <br>
+                <textarea name="corners"
+                          placeholder="Corners/Set Pieces"
+                          rows="15"
+                          cols="60"
+                          ></textarea>
+                </p>
+        <p>
+        <label for="players_to_watch">Players To Watch: </label>
         <br>
         <textarea name="players_to_watch"
                   placeholder="Players To Watch"
@@ -20,7 +38,16 @@
                   ></textarea>
         </p>
         <p>
-            <label for="team_notes">Team Notes</label>
+            <label for="goalkeeper">Goalkeeper:</label>
+            <br>
+            <textarea name="goalkeeper"
+                      placeholder="Goalkeeper"
+                      rows="15"
+                      cols="60"
+                      ></textarea>
+            </p>
+        <p>
+            <label for="team_notes">Team Notes: </label>
             <br>
             <textarea name="team_notes"
                       placeholder="Team Notes"
@@ -28,6 +55,15 @@
                       cols="60"
                       ></textarea>
             </p>
+            <p>
+                <label for="roster">Roster: </label>
+                <br>
+                <textarea name="roster"
+                          placeholder="Roster"
+                          rows="15"
+                          cols="60"
+                          ></textarea>
+                </p>
         <p>
             <button type="submit">Submit</button>
         </p>
