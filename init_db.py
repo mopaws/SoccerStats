@@ -10,6 +10,7 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 cur.execute('DROP TABLE IF EXISTS scouting_report;')
+cur.execute('DROP TABLE IF EXISTS game_report;')
 
 cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
                                  'team TEXT NOT NULL,'
@@ -19,6 +20,24 @@ cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTI
                                  'goalkeeper TEXT,'                                 
                                  'team_notes TEXT,'
                                  'roster TEXT,'
+                                 'date_added DATE DEFAULT CURRENT_DATE);'
+                                 )
+cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
+                                 'team_game TEXT NOT NULL,'
+                                 'home_goals Integer,'
+                                 'opponent_goals Integer,'
+                                 'field_conditions TEXT,'
+                                 'weather_conditions TEXT,'                                 
+                                 'home_assists Integer,'
+                                 'opponent_assists Integer,'
+                                 'home_corner_kicks Integer,'
+                                 'opponent_corner_kicks Integer,'
+                                 'home_goal_kicks Integer,'
+                                 'opponent_goal_kicks Integer,'
+                                 'lineup TEXT,'
+                                 'goal_description TEXT,'
+                                 'fouls Integer,'
+                                 'goalie_saves Integer,'
                                  'date_added DATE DEFAULT CURRENT_DATE);'
                                  )
 conn.commit()
