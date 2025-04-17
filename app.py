@@ -27,14 +27,18 @@ def main():
 def create():
     if request.method == 'POST':
         team = request.form['team']
+        playstyle = request.form['playstyle']
+        corners = request.form['corners']
         players_to_watch = request.form['players_to_watch']
+        goalkeeper = request.form['goalkeeper']
         team_notes = request.form['team_notes']
+        roster = request.form['roster']
 
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('INSERT INTO scouting_report (team, players_to_watch, team_notes)'
-                    'VALUES (%s, %s, %s)',
-                    (team, players_to_watch, team_notes))
+        cur.execute('INSERT INTO scouting_report (team, playstyle, corners, players_to_watch, goalkeeper, team_notes, roster)'
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s)',
+                    (team, playstyle, corners, players_to_watch, goalkeeper, team_notes, roster))
         conn.commit()
         cur.close()
         conn.close()
@@ -75,14 +79,18 @@ def edit(id):
     elif request.method == 'POST':
         #Your code here - what should happen when the user submits their edited review (for the review with the given id)?
         team = request.form['team']
+        playstyle = request.form['playstyle']
+        corners = request.form['corners']
         players_to_watch = request.form['players_to_watch']
+        goalkeeper = request.form['goalkeeper']
         team_notes = request.form['team_notes']
+        roster = request.form['roster']
 
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('INSERT INTO scouting_report (team, players_to_watch, team_notes)'
-                    'VALUES (%s, %s, %s)',
-                    (team, players_to_watch, team_notes))
+        cur.execute('INSERT INTO scouting_report (team, playstyle, corners, players_to_watch, goalkeeper, team_notes, roster)'
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s)',
+                    (team, playstyle, corners, players_to_watch, goalkeeper, team_notes, roster))
         cur.execute('DELETE FROM scouting_report WHERE id=%s',(id,))
         conn.commit()
         cur.close()
