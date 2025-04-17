@@ -27,7 +27,7 @@ def main():
 def gameReport():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM game_report ORDER BY team_game,date_added DESC;')
+    cur.execute('SELECT * FROM game_report ORDER BY date_added DESC, team_game;')
     data = cur.fetchall()
     cur.close()
     conn.close()
