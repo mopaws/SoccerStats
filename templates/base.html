@@ -6,10 +6,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='response.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
 </head>
 <body>
+    <div id="space">&nbsp;</div>
     <h1 id="heading">
         <img id="logo" src="/templates/soccerCrest.png" height=50> 
+    
         <span> DRHS Girls' Soccer Statistics</span> 
         <img id="logo" src="/templates/soccerCrest.png" height=50>
     </h1>  
@@ -25,6 +28,7 @@
       <button><a href="{{ url_for('main') }}">View Reports</a></button>
       <button><a href="{{ url_for('create') }}">Write a Report</a></button>
       <button><a href="https://drhscit.org/drss/SoccerStats/">Back to the HomePage</a></button>
+
 
             
       <dialog id="popup">
