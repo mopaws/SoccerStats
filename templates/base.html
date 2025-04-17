@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}- Scouting Report</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='responsive.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='scouting.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='response.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
 </head>
 <body>
     <h1 id="heading">
@@ -18,12 +16,12 @@
 
   <div id="header-box">
         <nav id="navbar">
-          <button> <span id = "alreadyHere">Login</span> </button>
+        <!--  <button> <span id = "alreadyHere">Login</span> </button>
       <button> <a href="Past_Games_Page.html">Home </a> </button>
       <button onclick=showPopup()> <h7>New Game</h7></button>
       <button> <a href="Settings.html">Settings</a> </button>
       <button> <a href= "./https://www.instagram.com/deeprunwsoccer/">Instagram</a> </button>
-      <button class="current"><a href="./scouting.html">Scouting Report</a></button>
+      <button class="current"><a href="./scouting.html">Scouting Report</a></button>-->
       <button><a href="{{ url_for('main') }}">View Reports</a></button>
       <button><a href="{{ url_for('create') }}">Write a Report</a></button>
         
