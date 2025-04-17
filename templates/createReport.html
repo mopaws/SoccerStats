@@ -24,21 +24,79 @@
                    placeholder="Add Goal">
             </input>
         </p>
-<!--
+
         <p>
-           
-            <label for="field_conditions">Field Conditions: </label>
-            <input type="text" name="field_conditions"
-                   placeholder="Field Conditions">
+            <label for="goal_scorer">Goal Scorer #: </label>
+            <input type="text" name="goal_scorer"
+                   placeholder="Write the number of the goal scorer">
             </input>
         </p>
 
         <p>
-            <label for="weather_conditions">Weather Conditions: </label>
-            <input type="text" name="weather_conditions"
-                   placeholder="Weather Conditions">
+            <label for="assister">Assister #: </label>
+            <input type="text" name="assister"
+                   placeholder="Write the number of the assister">
             </input>
-        </p>-->
+        </p>
+
+        <p>
+            <label for="goal_description">Goal Description (Assist # - Scorer # - Description): </label>
+            <br>
+            <textarea name="goal_description"
+                      placeholder="Goal Description"
+                      rows="3"
+                      cols="70"
+                      ></textarea>
+            </p>
+            <p>
+                <label for="goalie_saves">Goalie Saves: </label>
+                <input type="number" name="goalie_saves"
+                       placeholder="Add Saves">
+                </input>
+            </p>
+            <p>
+                <label for="home_corner_kicks">Home Corner Kicks: </label>
+                <input type="number" name="home_corner_kicks"
+                       placeholder="Add Corner Kick">
+                </input>
+            </p>
+    
+            <p>
+                <label for="opponent_corner_kicks">Opponent Corner Kicks: </label>
+                <input type="number" name="opponent_corner_kicks"
+                       placeholder="Add Corner Kick">
+                </input>
+            </p>
+            <p>
+                <label for="fouls">Fouls: </label>
+                <input type="number" name="fouls"
+                       placeholder="Add Foul">
+                </input>
+            </p>
+            
+        <p>
+            <label for="home_goal_kicks">Home Goal Kicks: </label>
+            <input type="number" name="home_goal_kicks"
+                   placeholder="Add Goal Kick">
+            </input>
+        </p>
+
+        <p>
+            <label for="opponent_goal_kicks">Opponent Goal Kicks: </label>
+            <input type="number" name="opponent_goal_kicks"
+                   placeholder="Add Goal Kick">
+            </input>
+        </p>
+        <p>
+            
+            <label for="lineup">Lineup (Player # : Position): </label>
+            <br>
+            <textarea name="lineup"
+                      placeholder="Lineup"
+                      rows="3"
+                      cols="70"
+                      ></textarea>
+            </p>
             <label for="field_conditions">Field Conditions (Grass, Turf, Bumpy, Smooth, Dimensions off, Narrow sidelines, Other): </label>
             <br>
             <textarea name="field_conditions"
@@ -55,84 +113,22 @@
                       cols="70"
                       ></textarea>
             </p>
-        
+<!--
         <p>
-            <label for="home_assists">Home Assists: </label>
-            <input type="number" name="home_assists"
-                   placeholder="Add Assist">
+           
+            <label for="field_conditions">Field Conditions: </label>
+            <input type="text" name="field_conditions"
+                   placeholder="Field Conditions">
             </input>
         </p>
 
         <p>
-            <label for="opponent_assists">Opponent Assists: </label>
-            <input type="number" name="opponent_assists"
-                   placeholder="Add Assist">
+            <label for="weather_conditions">Weather Conditions: </label>
+            <input type="text" name="weather_conditions"
+                   placeholder="Weather Conditions">
             </input>
-        </p>
+        </p>-->
 
-        <p>
-            <label for="home_corner_kicks">Home Corner Kicks: </label>
-            <input type="number" name="home_corner_kicks"
-                   placeholder="Add Corner Kick">
-            </input>
-        </p>
-
-        <p>
-            <label for="opponent_corner_kicks">Opponent Corner Kicks: </label>
-            <input type="number" name="opponent_corner_kicks"
-                   placeholder="Add Corner Kick">
-            </input>
-        </p>
-
-        <p>
-            <label for="home_goal_kicks">Home Goal Kicks: </label>
-            <input type="number" name="home_goal_kicks"
-                   placeholder="Add Goal Kick">
-            </input>
-        </p>
-
-        <p>
-            <label for="opponent_goal_kicks">Opponent Goal Kicks: </label>
-            <input type="number" name="opponent_goal_kicks"
-                   placeholder="Add Goal Kick">
-            </input>
-        </p>
-
-        <p>
-            
-            <label for="lineup">Lineup (Player # : Position): </label>
-            <br>
-            <textarea name="lineup"
-                      placeholder="Lineup"
-                      rows="3"
-                      cols="70"
-                      ></textarea>
-            </p>
-
-        <p>
-            <label for="goal_description">Goal Description (Assist # - Scorer # - Description): </label>
-            <br>
-            <textarea name="goal_description"
-                      placeholder="Goal Description"
-                      rows="3"
-                      cols="70"
-                      ></textarea>
-            </p>
-        
-        <p>
-            <label for="fouls">Fouls: </label>
-            <input type="number" name="fouls"
-                   placeholder="Add Foul">
-            </input>
-        </p>
-
-        <p>
-            <label for="goalie_saves">Goalie Saves: </label>
-            <input type="number" name="goalie_saves"
-                   placeholder="Add Saves">
-            </input>
-        </p>
-    
         <p>
             <button type="submit">End Game</button>
         </p>
