@@ -3,9 +3,10 @@
 {% block content %}
     <h1>{% block title %} Scouting Reports {% endblock %}</h1>
     {% for report in scouting_report %}
-       <br>
+        <br>
+        <hr>
         <div class='report'>
-            <br>
+            
             <h3>Team: {{ report[1] }}</h3>
             <p class="italics">Style of Play: {{ report[2] }}</p>
             <p class="italics">Corners/Set Pieces: {{ report[3] }}</p>
