@@ -3,7 +3,7 @@
 {% block content %}
     <h1>{% block title %} Game Reports {% endblock %}</h1>
     {% for game in game_report %}
-       <br>
+
         <div class='game'>
             <br>
             <h3>Team: {{ game[1] }}</h3>
@@ -25,5 +25,6 @@
             <p class = "italics">Added: {{ game[16] }}</p>
             <button><a  class = "box" href="{{ url_for('deleteGame', id=game[0]) }}">Delete a Game</a></button>
         </div>
+        <br>
     {% endfor %}
 {% endblock %}
