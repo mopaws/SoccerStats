@@ -23,6 +23,17 @@ def main():
     conn.close()
     return render_template('main.html', scouting_report=data)
 
+@app.route('/gameReport')
+def gameReport():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM game_report ORDER BY team_game,date_added DESC;')
+    data = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('gameReport.html', game_report=data)
+
+
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
@@ -97,9 +108,52 @@ def edit(id):
         conn.close()
         return redirect(url_for('main'))
 
-        #Note - no need to change the code below - this will redirect the user back to the reviews page once they've submitted their edited review. 
-        return redirect(url_for('main'))
-        
+
+
+
+
+@app.route('/createGame/', methods=('GET', 'POST'))
+def createReport():
+    if request.method == 'POST':
+        team_game = request.form['team_game']
+        home_goals = int(request.form['home_goals'])
+        opponent_goals = int(request.form['opponent_goals'])
+        field_conditions = request.form['field_conditions']
+        weather_conditions = request.form['weather_conditions']
+        home_assists = int(request.form['home_assists'])
+        opponent_assists = int(request.form['opponent_assists'])
+        home_corner_kicks = int(request.form['home_corner_kicks'])
+        opponent_corner_kicks = int(request.form['opponent_corner_kicks'])
+        home_goal_kicks = int(request.form['home_goal_kicks'])
+        opponent_goal_kicks = int(request.form['opponent_goal_kicks'])
+        lineup = request.form['lineup']
+        goal_description = request.form['goal_description']
+        fouls = int(request.form['fouls'])
+        goalie_saves = int(request.form['goalie_saves'])
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('INSERT INTO game_report (team_game, home_goals, opponent_goals, field_conditions, weather_conditions, home_assists, opponent_assists, home_corner_kicks, opponent_corner_kicks, home_goal_kicks, opponent_goal_kicks, lineup, goal_description, fouls, goalie_saves)'
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+                    (team_game, home_goals, opponent_goals, field_conditions, weather_conditions, home_assists, opponent_assists, home_corner_kicks, opponent_corner_kicks, home_goal_kicks, opponent_goal_kicks, lineup, goal_description, fouls, goalie_saves))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('gameReport'))
+
+    return render_template('createReport.html')
+
+@app.route('/deleteGame/<int:id>/')
+def deleteGame(id):
+    #Your code here - what should happen when a user clicks "Delete Review" on a particular review (with the specified id)? 
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('DELETE FROM game_report WHERE %s=id',(id,))
+    conn.commit()
+    cur.close()
+    conn.close()
+    #Note - no need to change the code below - this will redirect the user back to the reviews page once they've deleted a review.
+    return redirect(url_for('gameReport'))
 
 
 if __name__ == '__main__':
