@@ -118,24 +118,24 @@ def createReport():
         team_game = request.form['team_game']
         home_goals = int(request.form['home_goals'])
         opponent_goals = int(request.form['opponent_goals'])
-        field_conditions = request.form['field_conditions']
-        weather_conditions = request.form['weather_conditions']
-        home_assists = int(request.form['home_assists'])
-        opponent_assists = int(request.form['opponent_assists'])
+        goal_scorer = request.form['goal_scorer']
+        assister = request.form['assister']
+        goal_description = request.form['goal_description']
+        goalie_saves = int(request.form['goalie_saves'])
         home_corner_kicks = int(request.form['home_corner_kicks'])
         opponent_corner_kicks = int(request.form['opponent_corner_kicks'])
+        fouls = int(request.form['fouls'])
         home_goal_kicks = int(request.form['home_goal_kicks'])
         opponent_goal_kicks = int(request.form['opponent_goal_kicks'])
         lineup = request.form['lineup']
-        goal_description = request.form['goal_description']
-        fouls = int(request.form['fouls'])
-        goalie_saves = int(request.form['goalie_saves'])
+        field_conditions = request.form['field_conditions']
+        weather_conditions = request.form['weather_conditions']
 
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('INSERT INTO game_report (team_game, home_goals, opponent_goals, field_conditions, weather_conditions, home_assists, opponent_assists, home_corner_kicks, opponent_corner_kicks, home_goal_kicks, opponent_goal_kicks, lineup, goal_description, fouls, goalie_saves)'
+        cur.execute('INSERT INTO game_report (team_game, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions)'
                     'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
-                    (team_game, home_goals, opponent_goals, field_conditions, weather_conditions, home_assists, opponent_assists, home_corner_kicks, opponent_corner_kicks, home_goal_kicks, opponent_goal_kicks, lineup, goal_description, fouls, goalie_saves))
+                    (team_game, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions))
         conn.commit()
         cur.close()
         conn.close()
