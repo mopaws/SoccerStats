@@ -1,11 +1,10 @@
-// === Score Tracking ===
-let homeGoals = {};
-let opponentGoals = {};
-let homeGoalCount = 0;
+const homeGoals = {};
+const opponentGoals = {};
+const homeGoalCount = 0;
 let opponentGoalCount = 0;
 
-let homeAssists = {};
-let opponentAssists = {};
+const homeAssists = {};
+const opponentAssists = {};
 let homeAssistCount = 0;
 let opponentAssistCount = 0;
 
@@ -14,7 +13,6 @@ let opponentCorners = 0;
 let homeGoalKicks = 0;
 let opponentGoalKicks = 0;
 
-// === UI Update Functions ===
 function updateScorersDisplay(map, elementId) {
     const names = Object.entries(map).map(([num, count]) => `#${num}: ${count}`).join(', ');
     document.getElementById(elementId).textContent = names;
@@ -34,7 +32,6 @@ function updateSimpleStat(stat, displayId) {
     return stat;
 }
 
-// === Event Listeners ===
 document.getElementById('homeGoal').addEventListener('click', () => {
     homeGoalCount++;
     incrementStat(homeGoals, 'homeNum', 'hGoal', 'hScorers');
@@ -71,7 +68,6 @@ document.getElementById('opponentGoalKicks').addEventListener('click', () => {
     opponentGoalKicks = updateSimpleStat(opponentGoalKicks, 'oGoalKicks');
 });
 
-// === Lineup Management ===
 const lineup = [];
 document.getElementById('addLineup').addEventListener('click', () => {
     const number = prompt('Player Number:');
@@ -84,7 +80,6 @@ document.getElementById('addLineup').addEventListener('click', () => {
     }
 });
 
-// === Conditional Inputs ===
 document.getElementById('other').addEventListener('change', (e) => {
     document.getElementById('fieldOther').style.display = e.target.checked ? 'inline-block' : 'none';
 });
@@ -93,7 +88,6 @@ document.getElementById('Other').addEventListener('change', (e) => {
     document.getElementById('weatherOther').style.display = e.target.checked ? 'inline-block' : 'none';
 });
 
-// === Store Data to localStorage ===
 document.getElementById('storeData').addEventListener('click', () => {
     const getCheckedValues = (ids) => ids.filter(id => document.getElementById(id).checked).map(id => {
         if (id.toLowerCase() === 'other') {
@@ -120,7 +114,6 @@ document.getElementById('storeData').addEventListener('click', () => {
     alert('Game data stored!');
 });
 
-// === Download CSV ===
 document.getElementById('downloadCSV').addEventListener('click', () => {
     const data = {
         homeGoals: JSON.parse(localStorage.getItem('homeGoals') || '{}'),
@@ -133,37 +126,33 @@ document.getElementById('downloadCSV').addEventListener('click', () => {
         opponentGoalKicks: localStorage.getItem('opponentGoalKicks') || 0,
         fieldConditions: JSON.parse(localStorage.getItem('fieldConditions') || '[]'),
         weatherConditions: JSON.parse(localStorage.getItem('weatherConditions') || '[]'),
-        lineup: JSON.parse(localStorage.getItem('lineup') || '[]'),
+        lineup: JSON.parse(localStorage.getItem('lineup') || '[]')
     };
 
     let csv = "Category,Data\n";
 
-    const flatten = (obj, label) => {
-        if (typeof obj === 'object' && !Array.isArray(obj)) {
-            for (let key in obj) {
-                csv += `${label} - Player #${key},${obj[key]}\n`;
-            }
-        } else if (Array.isArray(obj)) {
-            csv += `${label},"${obj.join(', ')}"\n`;
-        } else {
-            csv += `${label},${obj}\n`;
-        }
+    const formatStats = (map) => {
+        return Object.entries(map)
+            .map(([num, count]) => `#${num} - ${count}`)
+            .join(', ');
     };
 
-    flatten(data.homeGoals, "Home Goal");
-    flatten(data.opponentGoals, "Opponent Goal");
-    flatten(data.homeAssists, "Home Assist");
-    flatten(data.opponentAssists, "Opponent Assist");
-    flatten(data.homeCorners, "Home Corners");
-    flatten(data.opponentCorners, "Opponent Corners");
-    flatten(data.homeGoalKicks, "Home Goal Kicks");
-    flatten(data.opponentGoalKicks, "Opponent Goal Kicks");
-    flatten(data.fieldConditions, "Field Conditions");
-    flatten(data.weatherConditions, "Weather Conditions");
+    csv += `Home Goals: ${formatStats(data.homeGoals)}\n`;
+    csv += `Opponent Goals: ${formatStats(data.opponentGoals)}\n`;
+    csv += `Home Assists: ${formatStats(data.homeAssists)}\n`;
+    csv += `Opponent Assists: ${formatStats(data.opponentAssists)}\n`;
 
-    csv += `Lineup,\n`;
+    csv += `Home Corners: ${data.homeCorners}\n`;
+    csv += `Opponent Corners: ${data.opponentCorners}\n`;
+    csv += `Home Goal Kicks: ${data.homeGoalKicks}\n`;
+    csv += `Opponent Goal Kicks: ${data.opponentGoalKicks}\n`;
+
+    csv += `Field Conditions: ${data.fieldConditions.join(', ')}\n`;
+    csv += `Weather Conditions: ${data.weatherConditions.join(', ')}\n`;
+
+    csv += "Lineup:\n";
     data.lineup.forEach(player => {
-        csv += `,${player.position} - #${player.number}\n`;
+        csv += `#${player.number} - ${player.position}\n`;
     });
 
     const blob = new Blob([csv], { type: 'text/csv' });
