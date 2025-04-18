@@ -4,13 +4,14 @@
     <h1>{% block title %} Edit Your Game Report {% endblock %}</h1>
     <br><br>
     <form method="post">
-        <div class="wrapper">;
+        <div class="wrapper">
         <div class="fieldWrapper">
             <label for="team_game">Team: </label>
             <input type="text" name="team_game"
                    value="{{game_report[1]}}">
             </input>
         </div>
+        <div></div>
         <div class="fieldWrapper">
             <label for="home_goals">Home Goals: </label>
             <input type="number" name="home_goals"
@@ -59,12 +60,7 @@
                    value="{{game_report[9]}}">
             </input>
         </div>
-         <div class="fieldWrapper">
-            <label for="fouls">Fouls: </label>
-            <input type="number" name="fouls"
-                   value="{{game_report[10]}}">
-            </input>
-        </div>
+
         <div class="fieldWrapper">
             <label for="home_goal_kicks">Home Goal Kicks: </label>
             <input type="number" name="home_goal_kicks"
@@ -75,6 +71,12 @@
             <label for="opponent_goal_kicks">Opponent Goal Kicks: </label>
             <input type="number" name="opponent_goal_kicks"
                    value="{{game_report[12]}}">
+            </input>
+        </div>
+        <div class="fieldWrapper">
+            <label for="fouls">Fouls: </label>
+            <input type="number" name="fouls"
+                   value="{{game_report[10]}}">
             </input>
         </div>
         <div class="fieldWrapper">
