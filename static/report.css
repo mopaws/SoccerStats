@@ -19,3 +19,21 @@ background-color:white;
     background-color:#06048f;
     margin: 0;
 }
+.wrapper {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 10px;
+    color:black;
+  }
+  .fieldWrapper {
+    display: grid;
+    grid-template-columns: 25% 70%;
+    grid-gap: 10px;
+    color:black;
+  }
+  .fieldWrapper input{
+    color:black !important;
+  }
+  span{
+    color:white;
+  }
