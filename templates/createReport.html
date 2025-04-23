@@ -11,7 +11,12 @@
                    placeholder="Team Name">
             </input>
         </div>
-        <div></div>
+        <div class="fieldWrapper" class="textBox">
+                <label for="level">Level (JV/Varisty): </label>
+                <input type="text" name="level"
+                       placeholder="JV/Varsity">
+                </input>
+        </div>
         <div class="fieldWrapper" class="textBox">
             <label for="home_goals">Home Goals: </label>
             <input type="number" name="home_goals"
@@ -55,6 +60,20 @@
                        placeholder="Add Saves" value="0">
                 </input>
             </div>
+            <div class="fieldWrapper"class="textBox">
+                <label for="shots_on_goal">Shots On Goal: </label>
+                <input type="number" name="shots_on_goal"
+                       placeholder="Add a shot" value="0">
+                </input>
+            </div>
+            <div class="fieldWrapper">
+                <label for="player_shots">Player Shots (Player - shot): </label>
+        <textarea name="player_shots"
+                  placeholder="Player # - Shot #"
+                  rows="2"
+                  cols="70"
+                  ></textarea>
+    </div>  
             <div class="fieldWrapper" class="textBox">
                 <label for="home_corner_kicks">Home Corner Kicks: </label>
                 <input type="number" name="home_corner_kicks"
@@ -68,7 +87,18 @@
                        placeholder="Add Corner Kick" value="0">
                 </input>
             </div>
-            
+            <div class="fieldWrapper"class="textBox">
+                <label for="direct_kicks">Direct Kicks: </label>
+                <input type="number" name="direct_kicks"
+                    placeholder="Add a kick" value="0">
+                </input>
+            </div>
+            <div class="fieldWrapper"class="textBox">
+                <label for="indirect_kicks">Indirect Kicks: </label>
+                <input type="number" name="indirect_kicks"
+                    placeholder="Add a kick" value="0">
+                </input>
+            </div>
         <div class="fieldWrapper"class="textBox">
             <label for="home_goal_kicks">Home Goal Kicks: </label>
             <input type="number" name="home_goal_kicks"
@@ -113,6 +143,17 @@
                       cols="70"
                       ></textarea>
         </div>
+      
+
+        <div class="notes">
+            <label for="notes">Notes: </label>
+    <textarea name="notes"
+              placeholder="Any Extra Notes"
+              rows="2"
+              cols="70"
+              ></textarea>
+        </div><br>
+
 <!--
         <p>
            
