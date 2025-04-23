@@ -24,6 +24,7 @@ cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTI
                                  )
 cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
                                  'team_game TEXT NOT NULL,'
+                                 'level TEXT NOT NULL,'
                                  'home_goals Integer,'
                                  'opponent_goals Integer,'
                                  'goal_scorer text,'
@@ -38,7 +39,12 @@ cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY P
                                  'lineup TEXT,'
                                  'field_conditions TEXT,'
                                  'weather_conditions TEXT,'                                 
-                                 'date_added DATE DEFAULT CURRENT_DATE);'
+                                 'date_added DATE DEFAULT CURRENT_DATE,'
+                                'shots_on_goal Integer,'
+                                'player_shots TEXT,'
+                                'direct_kicks integer,'
+                                'indirect_kicks integer,'
+                                 'notes TEXT);'
                                  )
 conn.commit()
 
