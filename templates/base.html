@@ -7,6 +7,47 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='response.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+    <script>
+    function printDiv(button) {
+        var divToPrint = button.closest('.report'); // Find the closest div with class 'report'
+        var printContent = divToPrint.innerHTML; // Get the HTML content of the div
+    
+        // Save the original page content to restore it later
+        var originalContent = document.body.innerHTML;
+    
+        // Replace the body content with the div content
+        document.body.innerHTML = printContent;
+    
+        // Trigger the print dialog
+        window.print();
+    
+        // Restore the original body content after printing
+        document.body.innerHTML = originalContent;
+    }
+    </script>
+    <script>
+        function printAllReports() {
+            // Get all divs with the class 'report'
+            var printContent = '';
+            var reports = document.querySelectorAll('.report');
+
+            // Loop through each report and append its HTML to the printContent string
+            reports.forEach(function(report) {
+                printContent += report.innerHTML + '<hr>'; // Adding a horizontal line between reports
+            });
+
+            var originalContent = document.body.innerHTML; // Save the original page content
+
+            // Replace body content with the content to be printed
+            document.body.innerHTML = printContent;
+
+            // Trigger the print dialog
+            window.print();
+
+            // Restore the original content after printing
+            document.body.innerHTML = originalContent;
+        }
+    </script>
 </head>
 <body>
     <h1 id="heading">
@@ -18,35 +59,13 @@
 
   <div id="header-box">
         <nav id="navbar">
-        <!--  <button> <span id = "alreadyHere">Login</span> </button>
-      <button> <a href="Past_Games_Page.html">Home </a> </button>
-      <button onclick=showPopup()> <h7>New Game</h7></button>
-      <button> <a href="Settings.html">Settings</a> </button>
-      <button> <a href= "./https://www.instagram.com/deeprunwsoccer/">Instagram</a> </button>
-      <button class="current"><a href="./scouting.html">Scouting Report</a></button>-->
+
       <button><a href="{{ url_for('main') }}">View Reports</a></button>
       <button><a href="{{ url_for('create') }}">Write a Report</a></button>
       <button><a href="https://drhscit.org/drss/SoccerStats/">Back to the Home Page</a></button>
 
 
             
-      <!-- <dialog id="popup">
-          <h2>New Game</h2>
-          <form id="gameDeets" action="newGame.html" onsubmit=getData()>
-              <select id="oppSelect">
-                  <option>Varsity</option>
-                  <option>JV</option>
-              </select></br>
-              <input id="dateSelect" type="date" name="group1"></br>
-              <input type="radio" name="loc" value="Home">Home
-              <input type="radio" name="loc" value="Away">Away</br>
-              <input type="radio" name="type" value="Game">Game
-              <input type="radio" name="type" value="Scrimmage">Scrimmage</br>
-              <button type="submit">Done</button>
-              <button type="button" onclick=closePopup()>Close</button>
-          </form>
-              
-      </dialog> -->
 
   </nav>
   </div>
