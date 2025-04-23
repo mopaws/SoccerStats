@@ -11,93 +11,129 @@
                    value="{{game_report[1]}}">
             </input>
         </div>
-        <div></div>
+        <div class="fieldWrapper">
+                <label for="level">Level (JV/Varisty): </label>
+                <input type="text" name="level"
+                       value="{{game_report[2]}}">
+                </input>
+        </div>
         <div class="fieldWrapper">
             <label for="home_goals">Home Goals: </label>
             <input type="number" name="home_goals"
-                   value="{{game_report[2]}}">
+                   value="{{game_report[3]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="opponent_goals">Opponent Goals: </label>
             <input type="number" name="opponent_goals"
-                   value="{{game_report[3]}}">
+                   value="{{game_report[4]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="goal_scorer">Goal Scorer #: </label>
             <input type="text" name="goal_scorer"
-                   value="{{game_report[4]}}">
+                   value="{{game_report[5]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="assister">Assister #: </label>
             <input type="text" name="assister"
-                   value="{{game_report[5]}}">
+                   value="{{game_report[6]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="goal_description">Goal Description (Assist # - Scorer # - Description): </label>
-            <textarea name="goal_description" placeholder="" value="{{game_report[6]}}" rows="15" cols="60"> 
-                {{game_report[6]}}
+            <textarea name="goal_description" placeholder="" value="{{game_report[7]}}" rows="15" cols="60"> 
+                {{game_report[7]}}
             </textarea>
         </div>
         <div class="fieldWrapper">
             <label for="goalie_saves">Goalie Saves: </label>
             <input type="number" name="goalie_saves"
-                   value="{{game_report[7]}}">
+                   value="{{game_report[8]}}">
             </input>
         </div>
+        
+
+    <div class="fieldWrapper">
+        <label for="shots_on_goal">Shots On Goal: </label>
+        <input type="number" name="shots_on_goal"
+               value="{{game_report[18]}}">
+        </input>
+    </div>
+    <div class="fieldWrapper">
+        <label for="player_shots">Player Shots (Player - shot): </label>
+        <textarea name="player_shots" value="{{game_report[19]}}" placeholder="{{game_report[19]}}" rows="15" cols="60"> 
+            {{game_report[19]}}
+        </textarea>
+    </div>
         <div class="fieldWrapper">
             <label for="home_corner_kicks">Home Corner Kicks: </label>
             <input type="number" name="home_corner_kicks"
-                   value="{{game_report[8]}}">
+                   value="{{game_report[9]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="opponent_corner_kicks">Opponent Corner Kicks: </label>
             <input type="number" name="opponent_corner_kicks"
-                   value="{{game_report[9]}}">
+                   value="{{game_report[10]}}">
             </input>
         </div>
-
+        <div class="fieldWrapper">
+            <label for="direct_kicks">Direct Kicks: </label>
+            <input type="number" name="direct_kicks"
+                   value="{{game_report[20]}}">
+            </input>
+        </div>
+        <div class="fieldWrapper">
+            <label for="indirect_kicks">Indirect Kicks: </label>
+            <input type="number" name="indirect_kicks"
+                   value="{{game_report[21]}}">
+            </input>
+        </div>
         <div class="fieldWrapper">
             <label for="home_goal_kicks">Home Goal Kicks: </label>
             <input type="number" name="home_goal_kicks"
-                   value="{{game_report[11]}}">
+                   value="{{game_report[12]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="opponent_goal_kicks">Opponent Goal Kicks: </label>
             <input type="number" name="opponent_goal_kicks"
-                   value="{{game_report[12]}}">
+                   value="{{game_report[13]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="fouls">Fouls: </label>
             <input type="number" name="fouls"
-                   value="{{game_report[10]}}">
+                   value="{{game_report[11]}}">
             </input>
         </div>
         <div class="fieldWrapper">
             <label for="lineup">Lineup (Player # : Position): </label>
-            <textarea name="lineup" value="" placeholder="{{game_report[13]}}" rows="15" cols="60"> 
+            <textarea name="lineup" value="{{game_report[14]}}" placeholder="{{game_report[14]}}" rows="15" cols="60"> 
                 {{game_report[13]}}
             </textarea>
         </div>        
         <div class="fieldWrapper">
         <label for="field_conditions">Field Conditions (Grass, Turf, Bumpy, Smooth, Dimensions off, Narrow sidelines, Other): </label>
-        <textarea name="field_conditions" value="{{game_report[14]}}" placeholder="{{game_report[14]}}" rows="15" cols="60"> 
-            {{game_report[14]}}
+        <textarea name="field_conditions" value="{{game_report[15]}}" placeholder="{{game_report[15]}}" rows="15" cols="60"> 
+            {{game_report[15]}}
         </textarea>
     </div>
             <div class="fieldWrapper">
             <label for="weather_conditions">Weather Conditions (Sunny, Windy, Rainy, Light Mist, Cloudy, Below 40, Above 75, Other): </label>
-            <textarea name="weather_conditions" value="" placeholder="{{game_report[15]}}" rows="15" cols="60"> 
-                {{game_report[15]}}
+            <textarea name="weather_conditions" value="{{game_report[16]}}" placeholder="{{game_report[16]}}" rows="15" cols="60"> 
+                {{game_report[16]}}
             </textarea>   
-        </textarea>
     </div>  
+    <div class="fieldWrapper">
+        <label for="notes">Notes: </label>
+        <textarea name="notes" value="{{game_report[22]}}" placeholder="{{game_report[22]}}" rows="15" cols="60"> 
+            {{game_report[22]}}
+        </textarea>
+    </div><br>
+
         <p>
             <button type="submit">Submit</button>
         </p>
