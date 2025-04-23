@@ -1,10 +1,10 @@
 body{
     background-color:white;
 }
-.game{
+/*.game{
 background-color:white;
 
-}
+}*/
 #heading{
     background-color:#06048f;
     margin-block-start: 0px;
@@ -37,3 +37,24 @@ background-color:white;
   span{
     color:white;
   }
+  body{
+    background: linear-gradient(181deg, rgba(199, 245, 255, 1) 20%, rgba(240, 179, 255, 1) 100%);
+  }
+  .fieldWrap{
+    display: grid;
+    grid-template-columns: 100% 100%;
+    grid-gap: 10px;
+    color:black;
+  }
+  .wrap{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    color:black;
+  }
+  input{
+    line-height:200% !important;
+  }
+.line{
+  white-space: pre-wrap;
+}
