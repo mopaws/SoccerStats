@@ -5,7 +5,7 @@
     {% for report in scouting_report %}
         <br>
         <hr>
-        <div class='report'> 
+        <div class='report' id="printableDiv">
             
             <h3>Team: {{ report[1] }}</h3>
             <p class="italics">Style of Play: {{ report[2] }}</p>
@@ -17,6 +17,9 @@
             <p class = "italics">Added: {{ report[8] }}</p>
             <button><a  class = "box" href="{{ url_for('delete', id=report[0]) }}">Delete a Report</a></button>
             <button><a  class = "box" href="{{ url_for('edit', id=report[0]) }}">Edit a Report</a></button>
+            <button onclick="printDiv(this)">Print this section</button>
+
         </div>
-    {% endfor %}
+    {% endfor %}<hr>
+    <button onclick="printAllReports()">Print all reports</button>
 {% endblock %}
