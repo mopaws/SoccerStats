@@ -1,129 +1,161 @@
-/* Base styles for all devices */
-body {
+body *{
+    margin: 5px;
+}
+
+*{
+    outline:none;
+    transition: all 0.5s cubic-bezier(0, 0, 0.05, 1);
+    font-family: navigo, sans-serif;
+  }
+  #header-box {
+    margin: 0;
+    background-color: #0E0C60;
+    padding: 10px;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+  }
+  body{
+    background-color:#ffffff;
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
-}
-
-/* Navbar responsiveness */
-#navbar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    /* padding: 10px; */
-}
-
-#navbar button {
-    min-width: auto;
-    white-space: nowrap;
-}
-
-/* Header responsiveness */
-header {
-    position: relative;
-    height: auto;
-    min-height: 100px;
-    width: 100%;
-    padding: 10px;
     box-sizing: border-box;
-}
-
-/* Grid container responsiveness */
-.grid-container {
-    width: 100%;
+    /* overflow-y:hidden; */
+  }
+  
+  #intro{
+    color: #000000;
+    text-align: center;
+  }
+  header{
+    position: fixed;
     padding: 10px;
-    box-sizing: border-box;
+    padding-left: 20px;
+    padding-bottom: 25px;
+    
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width: 100%;
+    background-color: #06048f;
     margin: 0;
-}
-
-/* Form responsiveness */
-.form-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
     box-sizing: border-box;
-}
+  }
+  
+  #heading{
+    margin: 0;
+    text-align: center;
+  }
+  
+  h1{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  
+    color:black;
+  }
+  
+  h5{
+    font-size:10pt;
+  }
+  #title{
+    color: white;
+  }
 
-input, button, select {
-    max-width: 100%;
-}
-
-/* Table responsiveness */
-table {
-    width: 100%;
-    overflow-x: auto;
-    display: block;
-}
-
-
-/* Small devices (phones) */
-@media screen and (max-width: 480px) {
-    body {
-        margin: 0;
-    }
-
-    header {
-        padding: 5px;
-    }
-
-    #navbar {
-        flex-direction: column;
-    }
-
-    #navbar button {
-        width: 100%;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-        gap: 5px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    .form-container input[type="text"] {
-        width: 100%;
-    }
-}
-
-/* Medium devices (tablets) */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    body {
-        margin: 0;
-    }
-
-    #navbar button {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Large devices (laptops/desktops) */
-@media screen and (min-width: 769px) {
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-}
-
-/* Orientation specific styles */
-@media screen and (orientation: portrait) {
-    #navbar {
-        flex-direction: column;
-    }
-}
-
-@media screen and (orientation: landscape) {
-    #navbar {
-        flex-direction: row;
-    }
-} 
+  #wrapper{
+    display: grid;
+    position: relative;
+    max-width: 1200px;
+    top: -20px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  h5,a,button,input{
+    font-family: navigo, sans-serif;
+    font-weight: 500;
+    color:#f9f2f7;
+  }
+  
+  a{
+    text-decoration:none;
+    color:white
+    
+  }
+  
+  button,button *{
+    /* border-radius:10px; */
+    border-style:none;
+    padding:10px;
+  
+    background-color:#06048f;
+    
+    min-width:fit-content;
+  }
+  input *{
+    /* border-radius:10px; */
+    border-style:none;
+    padding:10px;
+  
+    background-color:#d9d9d9;
+    
+    min-width:fit-content;
+  }
+  button:hover,button:hover *, input:hover{
+    background:#223f8f;
+  }
+  input:hover{
+    background:#ffffff;
+    /* background:#223f8f; */
+  }
+  
+  
+  #loginBox{
+    font-size:15pt;
+    display: grid;
+    
+    width:100%;
+    height:100%;
+    max-height:fit-content;
+    
+    background-color: #0E0C60;
+    color: #ffffff;
+    
+    padding:10px;
+    margin:20px;
+    
+    border-radius:10px;
+  }
+  
+  #loginBox *{
+    align-items: center;
+    margin:5px;
+    font-size: 15pt;
+  }
+  
+  input[type="checkbox"] {
+    width: 65px;
+    justify-self: center;
+  }
+  input[type="text"]{
+    color: #000000;
+  }
+  
+  dialog{
+    width: 45%;
+    height: 40%;
+    padding:10px;
+    align-items: center;
+    align-content: center;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  dialog *{
+    text-align: center;
+    margin: 5px;
+  } 
