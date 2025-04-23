@@ -27,7 +27,7 @@ def main():
 def gameReport():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM game_report ORDER BY date_added DESC, team_game;')
+    cur.execute('SELECT * FROM game_report ORDER BY date_added DESC, team_game, level;')
     data = cur.fetchall()
     cur.close()
     conn.close()
@@ -116,6 +116,7 @@ def edit(id):
 def createReport():
     if request.method == 'POST':
         team_game = request.form['team_game']
+        level = request.form['level']
         home_goals = int(request.form['home_goals'])
         opponent_goals = int(request.form['opponent_goals'])
         goal_scorer = request.form['goal_scorer']
@@ -130,12 +131,17 @@ def createReport():
         lineup = request.form['lineup']
         field_conditions = request.form['field_conditions']
         weather_conditions = request.form['weather_conditions']
+        shots_on_goal = int(request.form['shots_on_goal'])
+        player_shots = request.form['player_shots']
+        direct_kicks = int(request.form['direct_kicks'])
+        indirect_kicks = int(request.form['indirect_kicks'])
+        notes = request.form['notes']
 
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('INSERT INTO game_report (team_game, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions)'
-                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
-                    (team_game, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions))
+        cur.execute('INSERT INTO game_report (team_game, level, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions, shots_on_goal, player_shots, direct_kicks, indirect_kicks, notes)'
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+                    (team_game, level, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions, shots_on_goal, player_shots, direct_kicks, indirect_kicks, notes))
         conn.commit()
         cur.close()
         conn.close()
@@ -176,6 +182,7 @@ def editGames(id):
     elif request.method == 'POST':
         #Your code here - what should happen when the user submits their edited review (for the review with the given id)?
         team_game = request.form['team_game']
+        level = request.form['level']
         home_goals = int(request.form['home_goals'])
         opponent_goals = int(request.form['opponent_goals'])
         goal_scorer = request.form['goal_scorer']
@@ -190,13 +197,18 @@ def editGames(id):
         lineup = request.form['lineup']
         field_conditions = request.form['field_conditions']
         weather_conditions = request.form['weather_conditions']
+        shots_on_goal = int(request.form['shots_on_goal'])
+        player_shots = request.form['player_shots']
+        direct_kicks = int(request.form['direct_kicks'])
+        indirect_kicks = int(request.form['indirect_kicks'])
+        notes = request.form['notes']
 
 
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('INSERT INTO game_report (team_game, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions)'
-                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
-                    (team_game, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions))
+        cur.execute('INSERT INTO game_report (team_game, level, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions, shots_on_goal, player_shots, direct_kicks, indirect_kicks, notes)'
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+                    (team_game, level, home_goals, opponent_goals, goal_scorer, assister, goal_description, goalie_saves, home_corner_kicks, opponent_corner_kicks, fouls, home_goal_kicks, opponent_goal_kicks, lineup, field_conditions, weather_conditions, shots_on_goal, player_shots, direct_kicks, indirect_kicks, notes))
         cur.execute('DELETE FROM game_report WHERE id=%s',(id,))
         conn.commit()
         cur.close()
