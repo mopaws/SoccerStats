@@ -1,8 +1,9 @@
 import os
 import psycopg2
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, url_for, redirect
 
-
+load_dotenv()
 app = Flask(__name__)
 
 def get_db_connection():
@@ -14,6 +15,14 @@ def get_db_connection():
     return conn
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/Past_Games_Page.html')
+def home():
+    return render_template('Past_Games_Page.html')
+
+@app.route('/main.html')
 def main():
     conn = get_db_connection()
     cur = conn.cursor()
