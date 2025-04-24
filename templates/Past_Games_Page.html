@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <html>
+	  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    	<title>DRHS Girls' Soccer Statistics</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/pics.css') }}">
+	
+</head>
+<body>
+      <header>
+      <h1 id="heading">
+        
+        <img id="logo" src="{{ url_for('static', filename='images/wildcat.png') }}" height="50">
+	      <span> DRHS Girls' Soccer Statistics</span> 
+        <img id="logo" src="{{ url_for('static', filename='images/wildcat.png') }}" height="50">
+      </h1>  
+        <div id="header-box">
+          <nav id="navbar">
+            <button class="box"><a href="{{ url_for('index') }}">Log In</a></button>
+            <button class="box"><a href="Past_Games_Page.html">Home</a></button>
+            <button><a href="{{ url_for('createReport') }}">New Game</a></button>
+            <button class="box"><a href="{{ url_for('main') }}">Scouting Report</a></button>
+       	    <button> <a href= "https://www.instagram.com/deeprunwsoccer/">Instagram</a> </button>
+	    <button><a href="https://youtube.com/@caryhall7yt?si=7oYAXpf_yfneXzWB">Soccer Videos</a></button>
+	</nav>
+	</div>
+    </header>
+    <img class="pics" src="{{ url_for('static', filename='images/DSC07592.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC00046.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC00877.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC01114.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC06715.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC07599.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC08471.JPG') }}">
+    <img class="pics" src="{{ url_for('static', filename='images/DSC09261.JPG') }}">
+  </body>
+</html>
