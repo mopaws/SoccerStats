@@ -20,7 +20,9 @@
         <nav id="navbar">
       <button><a href="{{ url_for('gameReport') }}">View Game Reports</a></button>
       <button><a href="{{ url_for('createReport') }}">Create a Game</a></button>
-      <button><a href="https://drhscit.org/drss/SoccerStats/">Back to the HomePage</a></button>
+      <button><a href="{{ url_for('main') }}">Scouting Report</a></button>
+
+      <button><a href="{{ url_for('index') }}">Back to the Home Page</a></button>
 
             
       <dialog id="popup">
