@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    		<title>DRHS Girls' Soccer Statistics</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+        <script src="{{ url_for('static', filename='login.js') }}" defer></script>    
+  	</head>
+  
+  
+  <body>
+      
+    <header>
+      <h1 id="heading">
+        <img id="logo" src="{{ url_for('static', filename='images/soccerCrest.png') }}" height="50">
+	      <span> DRHS Girls' Soccer Statistics</span> 
+        <img id="logo" src="{{ url_for('static', filename='images/soccerCrest.png') }}" height="50">
+      </h1>  
+    </header>
+
+    
+
+    <div id="wrapper">
+      <div id="intro">
+        <h2>Welcome to the DRHS Soccer Stats Website! </h2>
+        <p>Log in by entering the details provided to you.</p>
+      </div>
+	<p id = "tester"></p>
+    <div id="loginBox">
+      <label for="username">Username:</label>
+      <input type="text" id="username">
+      <label for="password">Password:</label>
+      <input type="text" id="password">
+
+      <button id="tryLogin">Login</button>
+    </div>
+    </div>
+
+    <!-- <script src="js/model.js" type="text/javascript"></script>
+    <script src="js/view.js" type="text/javascript"></script>
+    <script src="js/homeController.js" type="text/javascript"></script> -->
+    
+  <br>
+  </body>
+</html>
