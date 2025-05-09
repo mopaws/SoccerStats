@@ -159,3 +159,7 @@ body *{
     text-align: center;
     margin: 5px;
   }
+  .resized-image {
+    max-width: 100%;  
+    height: auto;     
+}
