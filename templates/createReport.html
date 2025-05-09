@@ -6,7 +6,7 @@
     <form method="post">
         <div class="wrapper">
         <div class="fieldWrapper" class="textBox">
-            <label for="team_game">Team: </label>
+            <label for="team_game">Opponent: </label>
             <input type="text" name="team_game"
                    placeholder="Team Name">
             </input>
@@ -54,12 +54,12 @@
                       cols="70"
                       ></textarea>
         </div>
-            <div class="fieldWrapper" class="textBox">
-                <label for="goalie_saves">Goalie Saves: </label>
-                <input type="number" name="goalie_saves"
-                       placeholder="Add Saves" value="0">
-                </input>
-            </div>
+        <div class="fieldWrapper"class="textBox">
+            <label for="opponent_shots_on_goal">Opponent Shots On Goal: </label>
+            <input type="number" name="opponent_shots_on_goal"
+                   placeholder="Add a shot" value="0">
+            </input>
+        </div>
             <div class="fieldWrapper"class="textBox">
                 <label for="shots_on_goal">Shots On Goal: </label>
                 <input type="number" name="shots_on_goal"
@@ -74,6 +74,18 @@
                   cols="70"
                   ></textarea>
     </div>  
+    <div class="fieldWrapper" class="textBox">
+        <label for="goalie_saves">Goalie Saves: </label>
+        <input type="number" name="goalie_saves"
+               placeholder="Add Saves" value="0">
+        </input>
+    </div>
+    <div class="fieldWrapper" class="textBox">
+        <label for="opponent_goalie_saves">Opponent Goalie Saves: </label>
+        <input type="number" name="opponent_goalie_saves"
+               placeholder="Add Saves" value="0">
+        </input>
+    </div>
             <div class="fieldWrapper" class="textBox">
                 <label for="home_corner_kicks">Home Corner Kicks: </label>
                 <input type="number" name="home_corner_kicks"
@@ -93,12 +105,28 @@
                     placeholder="Add a kick" value="0">
                 </input>
             </div>
+
+            <div class="fieldWrapper"class="textBox">
+                <label for="opponent_direct_kicks">Opponent Direct Kicks: </label>
+                <input type="number" name="opponent_direct_kicks"
+                    placeholder="Add a kick" value="0">
+                </input>
+            </div>
+
             <div class="fieldWrapper"class="textBox">
                 <label for="indirect_kicks">Indirect Kicks: </label>
                 <input type="number" name="indirect_kicks"
                     placeholder="Add a kick" value="0">
                 </input>
             </div>
+            
+        <div class="fieldWrapper"class="textBox">
+            <label for="opponent_indirect_kicks">Opponent Indirect Kicks: </label>
+            <input type="number" name="opponent_indirect_kicks"
+                placeholder="Add a kick" value="0">
+            </input>
+        </div>
+
         <div class="fieldWrapper"class="textBox">
             <label for="home_goal_kicks">Home Goal Kicks: </label>
             <input type="number" name="home_goal_kicks"
@@ -153,22 +181,6 @@
               cols="70"
               ></textarea>
         </div><br>
-
-<!--
-        <p>
-           
-            <label for="field_conditions">Field Conditions: </label>
-            <input type="text" name="field_conditions"
-                   placeholder="Field Conditions">
-            </input>
-        </p>
-
-        <p>
-            <label for="weather_conditions">Weather Conditions: </label>
-            <input type="text" name="weather_conditions"
-                   placeholder="Weather Conditions">
-            </input>
-        </p>-->
 
         <p>
             <button type="submit">End Game</button>
