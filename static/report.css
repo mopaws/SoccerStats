@@ -58,3 +58,13 @@ background-color:white;
 .line{
   white-space: pre-wrap;
 }
+.thumb.resized-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Prevents huge images */
+  display: block;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  object-fit: contain; /* Ensures the image stays within bounds */
+}
