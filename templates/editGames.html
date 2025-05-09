@@ -6,7 +6,7 @@
     <form method="post">
         <div class="wrapper">
         <div class="fieldWrapper">
-            <label for="team_game">Team: </label>
+            <label for="team_game">Opponent: </label>
             <input type="text" name="team_game"
                    value="{{game_report[1]}}">
             </input>
@@ -48,12 +48,11 @@
             </textarea>
         </div>
         <div class="fieldWrapper">
-            <label for="goalie_saves">Goalie Saves: </label>
-            <input type="number" name="goalie_saves"
-                   value="{{game_report[8]}}">
+            <label for="opponent_shots_on_goal">Opponent Shots On Goal: </label>
+            <input type="number" name="opponent_shots_on_goal"
+                   value="{{game_report[23]}}">
             </input>
         </div>
-        
 
     <div class="fieldWrapper">
         <label for="shots_on_goal">Shots On Goal: </label>
@@ -66,6 +65,18 @@
         <textarea name="player_shots" value="{{game_report[19]}}" placeholder="{{game_report[19]}}" rows="15" cols="60"> 
             {{game_report[19]}}
         </textarea>
+    </div>
+    <div class="fieldWrapper">
+        <label for="goalie_saves">Goalie Saves: </label>
+        <input type="number" name="goalie_saves"
+               value="{{game_report[8]}}">
+        </input>
+    </div>
+    <div class="fieldWrapper">
+        <label for="opponent_goalie_saves">Opponent Goalie Saves: </label>
+        <input type="number" name="opponent_goalie_saves"
+               value="{{game_report[26]}}">
+        </input>
     </div>
         <div class="fieldWrapper">
             <label for="home_corner_kicks">Home Corner Kicks: </label>
@@ -86,9 +97,21 @@
             </input>
         </div>
         <div class="fieldWrapper">
+            <label for="opponent_direct_kicks">Opponent Direct Kicks: </label>
+            <input type="number" name="opponent_direct_kicks"
+                   value="{{game_report[24]}}">
+            </input>
+        </div>
+        <div class="fieldWrapper">
             <label for="indirect_kicks">Indirect Kicks: </label>
             <input type="number" name="indirect_kicks"
                    value="{{game_report[21]}}">
+            </input>
+        </div>
+        <div class="fieldWrapper">
+            <label for="opponent_indirect_kicks">Opponent Indirect Kicks: </label>
+            <input type="number" name="opponent_indirect_kicks"
+                   value="{{game_report[25]}}">
             </input>
         </div>
         <div class="fieldWrapper">
@@ -112,7 +135,7 @@
         <div class="fieldWrapper">
             <label for="lineup">Lineup (Player # : Position): </label>
             <textarea name="lineup" value="{{game_report[14]}}" placeholder="{{game_report[14]}}" rows="15" cols="60"> 
-                {{game_report[13]}}
+                {{game_report[14]}}
             </textarea>
         </div>        
         <div class="fieldWrapper">
