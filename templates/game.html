@@ -19,10 +19,15 @@
   <div id="header-box">
         <nav id="navbar">
       <button><a href="{{ url_for('gameReport') }}">View Game Reports</a></button>
+      {% if current_user.isadmin%}
       <button><a href="{{ url_for('createReport') }}">Create a Game</a></button>
+      {% endif %}      
+      {% if current_user.isadmin or current_user.iseditor %}
       <button><a href="{{ url_for('main') }}">Scouting Report</a></button>
+      {% endif %}  
+      <button><a href="{{ url_for('home') }}">Back to the Home Page</a></button>
+      <button><a href="{{ url_for('logout') }}">Log Out</a></button>
 
-      <button><a href="{{ url_for('index') }}">Back to the Home Page</a></button>
 
             
       <dialog id="popup">
