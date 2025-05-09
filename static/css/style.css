@@ -154,3 +154,27 @@
   #dateSelect{
     color: black;
   }
+  .blackText{
+    color:black;
+  }
+  .fullWidthInput {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    height: 44px;              
+    padding: 12px 16px;        
+    font-size: 16px;          
+    border-radius: 6px; 
+  }
+  #submit {
+    margin-bottom: 0;
+  }
+  #loginBox{
+    height: 260px;
+  }
+  .small{
+    height: 10px;
+  }
+  .mini{
+    height: 3px;    
+  }
