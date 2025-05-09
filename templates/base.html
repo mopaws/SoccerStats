@@ -9,44 +9,48 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
     <script>
     function printDiv(button) {
-        var divToPrint = button.closest('.report'); // Find the closest div with class 'report'
-        var printContent = divToPrint.innerHTML; // Get the HTML content of the div
-    
-        // Save the original page content to restore it later
-        var originalContent = document.body.innerHTML;
-    
-        // Replace the body content with the div content
-        document.body.innerHTML = printContent;
-    
-        // Trigger the print dialog
-        window.print();
-    
-        // Restore the original body content after printing
-        document.body.innerHTML = originalContent;
-    }
+    var divToPrint = button.closest('.report');
+    var printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write('<html><head><title>Print Report</title>');
+    printWindow.document.write('<link rel="stylesheet" href="report.css">');
+    printWindow.document.write('<link rel="stylesheet" href="styling.css">');
+    printWindow.document.write('<link rel="stylesheet" href="nav.css">');
+    printWindow.document.write('<link rel="stylesheet" href="response.css">');
+
+
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(divToPrint.innerHTML);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+    setTimeout(function() {
+        printWindow.close();
+    }, 0.0001);
+}
     </script>
     <script>
-        function printAllReports() {
-            // Get all divs with the class 'report'
-            var printContent = '';
-            var reports = document.querySelectorAll('.report');
+function printAllReports() {
+        var printContent = '';
+        var reports = document.querySelectorAll('.report');
+        reports.forEach(function(report) {
+            printContent += report.innerHTML + '<hr>';
+        });
 
-            // Loop through each report and append its HTML to the printContent string
-            reports.forEach(function(report) {
-                printContent += report.innerHTML + '<hr>'; // Adding a horizontal line between reports
-            });
-
-            var originalContent = document.body.innerHTML; // Save the original page content
-
-            // Replace body content with the content to be printed
-            document.body.innerHTML = printContent;
-
-            // Trigger the print dialog
-            window.print();
-
-            // Restore the original content after printing
-            document.body.innerHTML = originalContent;
-        }
+        var printWindow = window.open('', '', 'height=600,width=800');
+        printWindow.document.write('<html><head><title>Print All Reports</title>');
+        printWindow.document.write('<link rel="stylesheet" href="' + "{{ url_for('static', filename='styling.css') }}" + '">');
+        printWindow.document.write('<link rel="stylesheet" href="' + "{{ url_for('static', filename='response.css') }}" + '">');
+        printWindow.document.write('<link rel="stylesheet" href="' + "{{ url_for('static', filename='nav.css') }}" + '">');
+        printWindow.document.write('<link rel="stylesheet" href="' + "{{ url_for('static', filename='report.css') }}" + '">');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(printContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        setTimeout(function() {
+            printWindow.close();
+        }, 0.0001);
+    }
     </script>
 </head>
 <body>
@@ -62,7 +66,8 @@
 
       <button><a href="{{ url_for('main') }}">View Reports</a></button>
       <button><a href="{{ url_for('create') }}">Write a Report</a></button>
-      <button><a href="{{ url_for('index') }}">Back to the Home Page</a></button>
+      <button><a href="{{ url_for('home') }}">Back to the Home Page</a></button>
+      <button><a href="{{ url_for('logout') }}">Log Out</a></button>
 
 
             
@@ -74,5 +79,6 @@
     <div class="content">
         {% block content %} {% endblock %}
     </div>
+    
 </body>
 </html>
