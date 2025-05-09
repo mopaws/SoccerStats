@@ -137,7 +137,7 @@ cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY P
                                  'opponent_indirect_kicks integer,'
                                  'opponent_goalie_saves Integer);'
                                  )
-                                cur.execute('CREATE TABLE dr_users (id SERIAL PRIMARY KEY,'
+cur.execute('CREATE TABLE dr_users (id SERIAL PRIMARY KEY,'
                                 'username VARCHAR(50) UNIQUE NOT NULL,'
                                 'firstname varchar(50) NOT NULL,'
                                 'lastname varchar(50) NOT NULL,'
