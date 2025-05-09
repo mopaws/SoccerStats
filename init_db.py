@@ -94,6 +94,8 @@ conn.close()
 
 cur.execute('DROP TABLE IF EXISTS scouting_report;')
 cur.execute('DROP TABLE IF EXISTS game_report;')
+cur.execute('DROP TABLE IF EXISTS dr_users;')
+
 
 cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
                                  'team TEXT NOT NULL,'
@@ -135,6 +137,17 @@ cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY P
                                  'opponent_indirect_kicks integer,'
                                  'opponent_goalie_saves Integer);'
                                  )
+                                cur.execute('CREATE TABLE dr_users (id SERIAL PRIMARY KEY,'
+                                'username VARCHAR(50) UNIQUE NOT NULL,'
+                                'firstname varchar(50) NOT NULL,'
+                                'lastname varchar(50) NOT NULL,'
+                                'email VARCHAR(100),'
+                                'password_hash VARCHAR(128) NOT NULL,'
+                                'isadmin boolean default FALSE,'
+                                'isreadonly boolean default FALSE,'
+                                'Constraint perm_ck check ((isadmin = true and isreadonly = true)=false));'
+                                )
+
 conn.commit()
 
 cur.close()
