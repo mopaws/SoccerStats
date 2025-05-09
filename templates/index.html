@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
-        <script src="{{ url_for('static', filename='login.js') }}" defer></script>    
   	</head>
   
   
@@ -29,19 +28,18 @@
       </div>
 	<p id = "tester"></p>
     <div id="loginBox">
-      <label for="username">Username:</label>
-      <input type="text" id="username">
+      <form method="POST">
+      <label for="username" >Username:</label>
+      <p class="small"></p>
+      <input type="text" id="username" name="username" class="fullWidthInput">
+      <p class="mini"></p>
       <label for="password">Password:</label>
-      <input type="text" id="password">
-
-      <button id="tryLogin">Login</button>
+      <p class="small"></p>
+      <input type="password" id="password" name="password" class="blackText fullWidthInput" style="margin-bottom: 0.5em;">
+      <button id="submit" class="fullWidthInput">Login</button>
+    </form>
     </div>
     </div>
-
-    <!-- <script src="js/model.js" type="text/javascript"></script>
-    <script src="js/view.js" type="text/javascript"></script>
-    <script src="js/homeController.js" type="text/javascript"></script> -->
-    
   <br>
   </body>
 </html>
