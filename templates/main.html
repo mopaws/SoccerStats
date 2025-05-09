@@ -1,25 +1,45 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    		<title>DRHS Girls' Soccer Statistics</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+  	</head>
+  
+  
+  <body>
+      
+    <header>
+      <h1 id="heading">
+        <img id="logo" src="{{ url_for('static', filename='images/soccerCrest.png') }}" height="50">
+	      <span> DRHS Girls' Soccer Statistics</span> 
+        <img id="logo" src="{{ url_for('static', filename='images/soccerCrest.png') }}" height="50">
+      </h1>  
+    </header>
 
-{% block content %}
-    <h1>{% block title %} Scouting Reports {% endblock %}</h1>
-    {% for report in scouting_report %}
-        <br>
-        <hr>
-        <div class='report' id="printableDiv">
-            
-            <h3>Team: {{ report[1] }}</h3>
-            <p class="italics">Style of Play: {{ report[2] }}</p>
-            <p class="italics">Corners/Set Pieces: {{ report[3] }}</p>
-            <p class="italics">Players To Watch: {{ report[4] }}</p>
-            <p class="italics">Goalkeeper: {{ report[5] }}</p>
-            <p class="italics">Team Notes: {{ report[6] }}</p>
-            <p class="italics">Roster: {{ report[7] }}</p>
-            <p class = "italics">Added: {{ report[8] }}</p>
-            <button><a  class = "box" href="{{ url_for('delete', id=report[0]) }}">Delete a Report</a></button>
-            <button><a  class = "box" href="{{ url_for('edit', id=report[0]) }}">Edit a Report</a></button>
-            <button onclick="printDiv(this)">Print this section</button>
+    
 
-        </div>
-    {% endfor %}<hr>
-    <button onclick="printAllReports()">Print all reports</button>
-{% endblock %}
+    <div id="wrapper">
+      <div id="intro">
+        <h2>Welcome to the DRHS Soccer Stats Website! </h2>
+        <p>Log in by entering the details provided to you.</p>
+      </div>
+	<p id = "tester"></p>
+    <div id="loginBox">
+      <form method="POST">
+      <label for="username" >Username:</label>
+      <p class="small"></p>
+      <input type="text" id="username" name="username" class="fullWidthInput">
+      <p class="mini"></p>
+      <label for="password">Password:</label>
+      <p class="small"></p>
+      <input type="password" id="password" name="password" class="blackText fullWidthInput" style="margin-bottom: 0.5em;">
+      <button id="submit" class="fullWidthInput">Login</button>
+    </form>
+    </div>
+    </div>
+  <br>
+  </body>
+</html>
