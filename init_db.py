@@ -14,6 +14,66 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
+
+cur.execute('DROP TABLE IF EXISTS scouting_report;')
+cur.execute('DROP TABLE IF EXISTS game_report;')
+cur.execute('DROP TABLE IF EXISTS dr_users;')
+
+cur.execute('CREATE TABLE dr_users (id SERIAL PRIMARY KEY,'
+                                'username VARCHAR(50) UNIQUE NOT NULL,'
+                                'firstname varchar(50) NOT NULL,'
+                                'lastname varchar(50) NOT NULL,'
+                                'email VARCHAR(100),'
+                                'password_hash VARCHAR(128) NOT NULL,'
+                                'isadmin boolean default FALSE,'
+                                'isreadonly boolean default FALSE,'
+                                'iseditor boolean default FALSE,'
+                                'Constraint perm_ck check ((isadmin = true and isreadonly = true)=false));'
+                                )
+
+cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
+                                 'team TEXT NOT NULL,'
+                                 'playstyle TEXT,'
+                                 'corners TEXT,'
+                                 'players_to_watch TEXT,'
+                                 'goalkeeper TEXT,'                                 
+                                 'team_notes TEXT,'
+                                 'roster TEXT,'
+                                 'date_added DATE DEFAULT CURRENT_DATE,'
+                                 'image BYTEA,'
+                                 'mimetype VARCHAR(100));'
+                                 )
+cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
+                                 'team_game TEXT NOT NULL,'
+                                 'level TEXT NOT NULL,'
+                                 'home_goals Integer,'
+                                 'opponent_goals Integer,'
+                                 'goal_scorer text,'
+                                 'assister text,'
+                                 'goal_description TEXT,'
+                                 'goalie_saves Integer,'
+                                 'home_corner_kicks Integer,'
+                                 'opponent_corner_kicks Integer,'
+                                 'fouls Integer,'
+                                 'home_goal_kicks Integer,'
+                                 'opponent_goal_kicks Integer,'
+                                 'lineup TEXT,'
+                                 'field_conditions TEXT,'
+                                 'weather_conditions TEXT,'                                 
+                                 'date_added DATE DEFAULT CURRENT_DATE,'
+                                'shots_on_goal Integer,'
+                                'player_shots TEXT,'
+                                'direct_kicks integer,'
+                                'indirect_kicks integer,'
+                                 'notes TEXT,'
+                                 'opponent_shots_on_goal Integer,'
+                                 'opponent_direct_kicks integer,'
+                                 'opponent_indirect_kicks integer,'
+                                 'opponent_goalie_saves Integer);'
+                                 )
+
+conn.commit()
+
 # Insert data into the table
 un='statsAdmin'           #username
 fn='Test'            #First Name
@@ -92,63 +152,8 @@ else:
 cur.close()
 conn.close()
 
-cur.execute('DROP TABLE IF EXISTS scouting_report;')
-cur.execute('DROP TABLE IF EXISTS game_report;')
-cur.execute('DROP TABLE IF EXISTS dr_users;')
 
 
-cur.execute('CREATE TABLE scouting_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
-                                 'team TEXT NOT NULL,'
-                                 'playstyle TEXT,'
-                                 'corners TEXT,'
-                                 'players_to_watch TEXT,'
-                                 'goalkeeper TEXT,'                                 
-                                 'team_notes TEXT,'
-                                 'roster TEXT,'
-                                 'date_added DATE DEFAULT CURRENT_DATE,'
-                                 'image BYTEA,'
-                                 'mimetype VARCHAR(100));'
-                                 )
-cur.execute('CREATE TABLE game_report (id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,'
-                                 'team_game TEXT NOT NULL,'
-                                 'level TEXT NOT NULL,'
-                                 'home_goals Integer,'
-                                 'opponent_goals Integer,'
-                                 'goal_scorer text,'
-                                 'assister text,'
-                                 'goal_description TEXT,'
-                                 'goalie_saves Integer,'
-                                 'home_corner_kicks Integer,'
-                                 'opponent_corner_kicks Integer,'
-                                 'fouls Integer,'
-                                 'home_goal_kicks Integer,'
-                                 'opponent_goal_kicks Integer,'
-                                 'lineup TEXT,'
-                                 'field_conditions TEXT,'
-                                 'weather_conditions TEXT,'                                 
-                                 'date_added DATE DEFAULT CURRENT_DATE,'
-                                'shots_on_goal Integer,'
-                                'player_shots TEXT,'
-                                'direct_kicks integer,'
-                                'indirect_kicks integer,'
-                                 'notes TEXT,'
-                                 'opponent_shots_on_goal Integer,'
-                                 'opponent_direct_kicks integer,'
-                                 'opponent_indirect_kicks integer,'
-                                 'opponent_goalie_saves Integer);'
-                                 )
-cur.execute('CREATE TABLE dr_users (id SERIAL PRIMARY KEY,'
-                                'username VARCHAR(50) UNIQUE NOT NULL,'
-                                'firstname varchar(50) NOT NULL,'
-                                'lastname varchar(50) NOT NULL,'
-                                'email VARCHAR(100),'
-                                'password_hash VARCHAR(128) NOT NULL,'
-                                'isadmin boolean default FALSE,'
-                                'isreadonly boolean default FALSE,'
-                                'Constraint perm_ck check ((isadmin = true and isreadonly = true)=false));'
-                                )
-
-conn.commit()
 
 cur.close()
 conn.close()
