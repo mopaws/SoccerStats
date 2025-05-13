@@ -35,7 +35,7 @@
             <p class = "italics">Added: {{ game[17] }}</p>
 
             {% if current_user.isadmin %}
-            <button><a  class = "box" href="{{ url_for('deleteGame', id=game[0]) }}">Delete a Game</a></button>
+            <button onclick="return confirm('Are you sure you want to delete this game?')"><a  class = "box" href="{{ url_for('deleteGame', id=game[0]) }}">Delete a Game</a></button>
             <button><a  class = "box" href="{{ url_for('editGames', id=game[0]) }}">Edit a Game</a></button>
             {% endif %} 
 
