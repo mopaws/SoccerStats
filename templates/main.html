@@ -42,7 +42,7 @@
             
             <br>
             {% if current_user.isadmin %}
-            <button><a  class = "box" href="{{ url_for('delete', id=enc[0]) }}">Delete a Report</a></button>
+            <button onclick="return confirm('Are you sure you want to delete this report?')"><a  class = "box" href="{{ url_for('delete', id=enc[0]) }}">Delete a Report</a></button>
             {% endif %}  
             <button><a  class = "box" href="{{ url_for('edit', id=enc[0]) }}">Edit a Report</a></button>
             <button onclick="printDiv(this)">Print this section</button>
